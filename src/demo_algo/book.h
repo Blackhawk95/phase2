@@ -5,16 +5,16 @@
 //TODO : age 
 
 struct entry{
-    long int address;
+    long long int address;
     int age;
 };
 
 class Book{
-    //long int address;
+    //long long int address;
     //may store more than an address
     deque<entry> ent;
     //name of book
-    long int book;
+    long long int book;
     int booksize;
     int bookage;
     // int bookage;
@@ -22,22 +22,22 @@ class Book{
     public:
     Book(){}
 
-    void newBookInit(long int a,int ageCounter);
+    void newBookInit(long long int a,int ageCounter);
     void newBookInit(entry e);
 
-    long int getBookName();
-    long int getBookOldAddress();
+    long long int getBookName();
+    long long int getBookOldAddress();
     int getBookAge();
     int getBookSize(); 
 
-    void insertEntry(long int a,int ageCounter);
+    void insertEntry(long long int a,int ageCounter);
     void insertEntry(entry e);
 
     int findOldEntry();
     entry deEntry();
-    bool alreadyExistingEntry(long int a);
+    bool alreadyExistingEntry(long long int a);
     void deBook();
-    int findAndRemoveFromBook(long int a);
+    int findAndRemoveFromBook(long long int a);
 
     void incBookAge();
 
@@ -46,7 +46,7 @@ class Book{
     
 };
 //newBookInit from bare details
-void Book::newBookInit(long int a,int ageCounter){
+void Book::newBookInit(long long int a,int ageCounter){
     
     book = a;
     ent.push_back({a,ageCounter});
@@ -62,11 +62,11 @@ void Book::newBookInit(entry e){
     bookage = 1;
 }
 
-long int Book::getBookName(){
+long long int Book::getBookName(){
     return book;
 }
 //insert a new entry 
-void Book::insertEntry(long int a,int ageCounter){
+void Book::insertEntry(long long int a,int ageCounter){
     if(!alreadyExistingEntry(a)){
         ent.push_back({a,ageCounter}); 
         booksize++;
@@ -101,7 +101,7 @@ bool Book::isEmpty(){
     return false;
 }
 
-long int Book::getBookOldAddress(){
+long long int Book::getBookOldAddress(){
     return ent.front().address;
 }
 
@@ -124,7 +124,7 @@ int Book::getBookSize(){
     return booksize;
 }
 
-int Book::findAndRemoveFromBook(long int a){
+int Book::findAndRemoveFromBook(long long int a){
     for(auto i = ent.begin();i!=ent.end();i++){
         if((*i).address == a){
             ent.erase(i);
@@ -134,7 +134,7 @@ int Book::findAndRemoveFromBook(long int a){
     return 0;
 }
 
-bool Book::alreadyExistingEntry(long int a){
+bool Book::alreadyExistingEntry(long long int a){
     for(auto i = ent.begin();i!=ent.end();i++){
         if((*i).address == a){
             (*i).age = 1;

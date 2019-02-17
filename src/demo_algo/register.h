@@ -3,15 +3,15 @@
 #include <array>
 #define THRESHOLD 1000 //1024
 #define AGECOUNTERLIMIT 10000
-#define BOOKAGELIMIT 5 //100
-#define ARRAYSIZE 8
+#define BOOKAGELIMIT 100 //5 //
+#define ARRAYSIZE 64 //8
 
 #define LOG false
-#define OUTPUT false
+#define OUTPUT true
 
 
 struct track{
-    long int address;
+    long long int address;
     int8_t flag; // bit 1 in flag is 0 for empty,
                  // bit 2 in flag is 1 for dirty
 };
@@ -28,23 +28,23 @@ class Register{
     //Register(){}
     //to generate a new book entry in register
     
-    int  insert(long int a);
-    void createBook(long int a);
-    int tracInsert(long int a);
-    int tracDiscarded(long int a);
+    int  insert(long long int a);
+    void createBook(long long int a);
+    int tracInsert(long long int a);
+    int tracDiscarded(long long int a);
     Book* findBookWithOldestEntry();
-    void createSpace(long int a);
+    void createSpace(long long int a);
     void ageCounterUpdate();
     void updateBookAge();
     void deleteBookIfAged();
-    void removeFromDiscarded(long int a);
-    void writeBackToNVM(int i,long int a);
+    void removeFromDiscarded(long long int a);
+    void writeBackToNVM(int i,long long int a);
 
     //LOGGING PURPOSE
     void logPrintTrac();
 };
 
-int  Register::insert(long int a){
+int  Register::insert(long long int a){
 
 
     //TO DO : No need to do this
@@ -60,48 +60,55 @@ int  Register::insert(long int a){
             printf("ma == -1 in empty register : THIS SHOULDN'T HAPPEN");
             exit(0);
         }
-        return 0;
     }   
     else
     {   if(LOG){printf("Entered register non empty()\n");}
         int ma = tracInsert(a); // this updates the book and creates space
         //check way to make sure new data is inserted into any book
+        int flag = 0;
         for(auto i : reg){
-            long int tempA = i->getBookName();
+            long long int tempA = i->getBookName();
             //checking which book it belongs to
+            if(LOG){printf(" i->getBookName() = , %lld < %lld < %lld \n",tempA - THRESHOLD,tempA,tempA + THRESHOLD);}
+
             if(a > tempA - THRESHOLD && a < tempA + THRESHOLD ){
                 //book found also updates age
+                //printf("entered\n");
                 i->insertEntry(a,ageCounter);
-                return 1;
+                flag = 1;
+                //break;
             }
         }
         //book not found
         //create a new book
-        createBook(a);
+        if(flag == 0)
+            createBook(a);
 
     }
+    updateBookAge();    
+    deleteBookIfAged();
     return 0;
 }
 
-void Register::createBook(long int a){
+void Register::createBook(long long int a){
     Book *nb = new Book;
     nb->newBookInit(a,ageCounter);
     reg.push_back(nb);
 }
 
-int Register::tracInsert(long int a){
+int Register::tracInsert(long long int a){
     //search the entire trac and decide where to put the data
     if(LOG){printf("Entered tracInsert()\n");}
-    
+
     //IF same data comes
     for(int i = 0;i < ARRAYSIZE; i++){
         if(trac[i].address == a){
-            return -2; // found a space
+            return -2; // do nothing on trac
         }   
     }
 
     //NEW DATA
-    for(int i = 0;i < ARRAYSIZE; i++){
+    for(int i = 0;i < ARRAYSIZE; ++i){
         if((trac[i].flag & 0x01) != 1){
             trac[i].address = a;
             trac[i].flag|=0x01;
@@ -110,13 +117,13 @@ int Register::tracInsert(long int a){
         }   
     }
     //Check for discarded
-    for(int i = 0;i < ARRAYSIZE; i++){
+    for(int i = 0;i < ARRAYSIZE; ++i){
         if((trac[i].flag & 0x02) == 2){
             writeBackToNVM(i,trac[i].address);
             removeFromDiscarded(trac[i].address);
             trac[i].address = a;
             trac[i].flag&=(0xFD); // inverted of 0x02
-            if(1){printf("Exited tracInsert & didnot find free space\n");}
+            if(LOG){printf("Exited tracInsert & didnot find free space\n");}
             return i + ARRAYSIZE; // found a discarded
         }   
     }
@@ -124,11 +131,11 @@ int Register::tracInsert(long int a){
     //need to create space
     createSpace(a); // this moves data to dscarded from a queue
     for(int i = 0;i < ARRAYSIZE; i++){
-        if(LOG) {
-            printf("tracdiscarded %ld flag = %x",a,trac[i].flag);
-            printf(" flag changed to %x\n", (trac[i].flag)&0x02);
-        }
         if((trac[i].flag & 0x02) == 2){
+            if(LOG) {
+            printf(" : %lld %lld flag = %x",a,trac[i].address,trac[i].flag);
+            printf(" flag changed to %x\n", (trac[i].flag)&0xFD);
+            }
             writeBackToNVM(i,trac[i].address);
             removeFromDiscarded(trac[i].address);
             trac[i].address = a;
@@ -144,11 +151,11 @@ int Register::tracInsert(long int a){
 }
 
 //a function to discard a trac entry
-int Register::tracDiscarded(long int a){
+int Register::tracDiscarded(long long int a){
     for(int i = 0;i < ARRAYSIZE; i++){
                 if(trac[i].address == a){
                     //update the d bit on the trac
-                    //printf("tracdiscarded %ld flag = %x",a,trac[i].flag);
+                    //printf("tracdiscarded %lld flag = %x",a,trac[i].flag);
                     trac[i].flag|=0x02;
                     //printf(" flag changed to %x\n", trac[i].flag);
                     return 1;
@@ -202,7 +209,7 @@ Book* Register::findBookWithOldestEntry(){
      return NULL;
 }
 
-void Register::createSpace(long int a){
+void Register::createSpace(long long int a){
     //space isnt there
     //need to create space
     //how ?
@@ -217,7 +224,7 @@ void Register::createSpace(long int a){
     if(choosenone){
         if(LOG){printf("the choosen one\n");}
         //getting address from choosenone to select the trac entry - NEED A BETTER SOLUTION
-        long int a = choosenone->getBookOldAddress();
+        long long int a = choosenone->getBookOldAddress();
         //remove old stuff from boook with old entry
         //and push it into discarded queue
         if(discarded.isEmpty()){
@@ -268,7 +275,7 @@ void Register::deleteBookIfAged(){
     //1. for all books
     for(auto i = reg.begin(); i != reg.end(); i++){    
         //2. find books that aged
-        
+        //printf("WEEEBOOOOOOO %d\n",(*i)->getBookAge());
         if((*i)->getBookAge() > BOOKAGELIMIT){
             //3. while queue is not empty
             while((*i)->getBookSize() > 0){
@@ -292,12 +299,12 @@ void Register::deleteBookIfAged(){
     }
 }
 
-void Register::writeBackToNVM(int i,long int a){
-    if(OUTPUT){printf("[writeBackToNVM] %d %ld\n", i, a);}
+void Register::writeBackToNVM(int i,long long int a){
+    if(OUTPUT){printf("[writeBackToNVM] %d %lld\n", i, a);}
 
 }
 
-void Register::removeFromDiscarded(long int a){
+void Register::removeFromDiscarded(long long int a){
 
     if(!discarded.isEmpty()){
         int t = discarded.findAndRemoveFromBook(a);
@@ -306,7 +313,7 @@ void Register::removeFromDiscarded(long int a){
         }
         else
         {
-            printf("[removeFromDiscarded]: Failed to find the book to remove : value of t = %d , a = %ld \n", t, a);
+            printf("[removeFromDiscarded]: Failed to find the book to remove : value of t = %d , a = %lld \n", t, a);
         }
     }
 }
@@ -314,7 +321,7 @@ void Register::removeFromDiscarded(long int a){
 void Register::logPrintTrac(){
     printf ("\n       .............\n");
     for(auto i: trac){
-        printf("        %ld\n", i.address);
+        printf("        %lld    %x\n", i.address, i.flag);
     }
     printf ("       .............\n\n");
 }

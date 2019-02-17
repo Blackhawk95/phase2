@@ -1,12 +1,12 @@
 #include "register.h"
 
 
-void classify(long int address){
+void classify(long long int address){
     
     Register R;
 
     /*
-    R.insert(long int address);
+    R.insert(long long int address);
 
     */
 
