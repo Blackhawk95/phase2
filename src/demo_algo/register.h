@@ -3,6 +3,7 @@
 #include <array>
 #define THRESHOLD 1024
 #define AGECOUNTERLIMIT 10000
+#define BOOKAGELIMIT 100
 
 struct track{
     long int address;
@@ -16,7 +17,6 @@ class Register{
     //book with it.
     Book discarded;
     std::array<track,64> trac{};
-    int regsize=0;
     int ageCounter = 1;
 
     public:
@@ -26,18 +26,24 @@ class Register{
     int  insert(long int a);
     void createBook(long int a);
     int tracInsert(long int a);
+    int tracDiscarded(long int a);
     Book* findBookWithOldestEntry();
-    void createSpaceAndInsert(long int a);
+    void createSpace(long int a);
     void ageCounterUpdate();
+    void updateBookAge();
+    void deleteBookIfAged();
+    void removeFromDiscarded(long int a);
+    void writeBackToNVM(int i,long int a);
 };
 
 int  Register::insert(long int a){
 
+
+    //TO DO : No need to do this
     if(reg.empty()){
         int ma = tracInsert(a);
         if(ma != -1 || ma >= 64){
             createBook(a);
-            regsize = 1;
         }
         else //happens when there is no free space
         {   
@@ -46,23 +52,17 @@ int  Register::insert(long int a){
             exit(0);
         }
         return 0;
-    }
+    }   
     else
     {
-        createSpaceAndInsert(a); // this moves data to dscarded from a queue
         int ma = tracInsert(a); // this updates the book and creates space
         //check way to make sure new data is inserted into any book
         for(auto i : reg){
             long int tempA = i->getBookName();
             //checking which book it belongs to
             if(a > tempA - THRESHOLD && a < tempA + THRESHOLD ){
-                //book found
-                if(regsize < 64){
-                    i->insertEntry(a,ageCounter);
-                }
-                else{
-                    //i->getSpace(a);
-                }
+                //book found also updates age
+                i->insertEntry(a,ageCounter);
                 return 1;
             }
         }
@@ -71,7 +71,7 @@ int  Register::insert(long int a){
         createBook(a);
 
     }
-
+    return 0;
 }
 
 void Register::createBook(long int a){
@@ -94,15 +94,42 @@ int Register::tracInsert(long int a){
     //Check for discarded
     for(int i = 0;i < 64; i++){
         if((trac[i].flag & 0x02) != 1){
-            //TODO : CALL WRITEBACK, REMOVE DATA FROM Discarded and PUT new data in queue
+            writeBackToNVM(i,a);
+            removeFromDiscarded(trac[i].address);
             trac[i].address = a;
             trac[i].flag&=(0xFD); // inverted of 0x02
-            return i + 64; // found a space
+            return i + 64; // found a discarded
         }   
     }
+    //couldn't even find a discarded one
+    //need to create space
+    createSpace(a); // this moves data to dscarded from a queue
+    for(int i = 0;i < 64; i++){
+        if((trac[i].flag & 0x02) != 1){
+            writeBackToNVM(i,a);
+            removeFromDiscarded(trac[i].address);
+            trac[i].address = a;
+            trac[i].flag&=(0xFD); // inverted of 0x02
+            return i + 128; // created a discarded and found it
+        }   
+    }
+
     //no space found
     return -1;
 }
+
+//a function to discard a trac entry
+int Register::tracDiscarded(long int a){
+    for(int i = 0;i < 64; i++){
+                if(trac[i].address == a){
+                    //update the d bit on the trac
+                    trac[i].flag|=0x02;
+                    return 1;
+            } 
+    }
+    return 0;
+}
+
 //Book with oldest entry
 Book* Register::findBookWithOldestEntry(){
  
@@ -148,7 +175,7 @@ Book* Register::findBookWithOldestEntry(){
      return NULL;
 }
 
-void Register::createSpaceAndInsert(long int a){
+void Register::createSpace(long int a){
     //space isnt there
     //need to create space
     //how ?
@@ -174,12 +201,7 @@ void Register::createSpaceAndInsert(long int a){
         }
         //now update the bits in track
         //find the correct entry on trac
-            for(int i = 0;i < 64; i++){
-                if(trac[i].address == a){
-                    //update the d bit on the trac
-                    trac[i].flag|=0x02;
-            }   
-        }
+            tracDiscarded(a);  
         
     }
     else{
@@ -204,4 +226,54 @@ void Register::ageCounterUpdate(){
         ageCounter = -(ageCounter-1);
     }
     
+}
+
+//at every insert age is updated
+void Register::updateBookAge(){
+    for(auto i : reg){
+        i->incBookAge();
+    }
+}
+
+void Register::deleteBookIfAged(){
+    //1. for all books
+    for(auto i = reg.begin(); i != reg.end(); i++){    
+        //2. find books that aged
+        
+        if((*i)->getBookAge() > BOOKAGELIMIT){
+            //3. while queue is not empty
+            while((*i)->getBookSize() > 0){
+                //4. remove each entry from book 
+                entry temp = (*i)->deEntry();
+                //5.  we have to add them to discard queue
+                if(discarded.isEmpty()){
+                    discarded.newBookInit(temp);
+                }
+                else
+                {
+                    discarded.insertEntry(temp);
+                }
+                //6. and assert the discard flag
+                tracDiscarded(temp.address);
+            }
+            // 7. Now to remove the book entirely
+            // didn't manually used delete keyword..I hope its alright
+            reg.erase(i);
+        }
+    }
+}
+
+void Register::writeBackToNVM(int i,long int a){
+    printf("[writeBackToNVM] %d %ld", i, a);
+
+}
+
+void Register::removeFromDiscarded(long int a){
+    if(discarded.findAndRemoveFromBook(a)){
+        //Book removed
+    }
+    else
+    {
+        printf("[removeFromDiscarded]: Failed to find the book to remove\n");
+    }
 }
