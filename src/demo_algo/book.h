@@ -56,7 +56,6 @@ void Book::newBookInit(long int a,int ageCounter){
 
 //newBookInit from an entry
 void Book::newBookInit(entry e){
-    
     book = e.address;
     ent.push_back(e);
     booksize = 1;

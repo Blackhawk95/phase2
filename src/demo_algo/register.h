@@ -1,9 +1,14 @@
 #include "book.h"
 #include <vector>
 #include <array>
-#define THRESHOLD 1024
+#define THRESHOLD 1000 //1024
 #define AGECOUNTERLIMIT 10000
-#define BOOKAGELIMIT 100
+#define BOOKAGELIMIT 5 //100
+#define ARRAYSIZE 8
+
+#define LOG false
+#define OUTPUT false
+
 
 struct track{
     long int address;
@@ -16,11 +21,11 @@ class Register{
     //8bit address or mini-address(ma) is given by register and stored in each entry of
     //book with it.
     Book discarded;
-    std::array<track,64> trac{};
+    std::array<track,ARRAYSIZE> trac{};
     int ageCounter = 1;
 
     public:
-    Register(){}
+    //Register(){}
     //to generate a new book entry in register
     
     int  insert(long int a);
@@ -34,6 +39,9 @@ class Register{
     void deleteBookIfAged();
     void removeFromDiscarded(long int a);
     void writeBackToNVM(int i,long int a);
+
+    //LOGGING PURPOSE
+    void logPrintTrac();
 };
 
 int  Register::insert(long int a){
@@ -41,8 +49,9 @@ int  Register::insert(long int a){
 
     //TO DO : No need to do this
     if(reg.empty()){
+        if(LOG){printf("Entered reg.empty()\n");}
         int ma = tracInsert(a);
-        if(ma != -1 || ma >= 64){
+        if(ma != -1 || ma >= ARRAYSIZE){
             createBook(a);
         }
         else //happens when there is no free space
@@ -54,7 +63,7 @@ int  Register::insert(long int a){
         return 0;
     }   
     else
-    {
+    {   if(LOG){printf("Entered register non empty()\n");}
         int ma = tracInsert(a); // this updates the book and creates space
         //check way to make sure new data is inserted into any book
         for(auto i : reg){
@@ -82,48 +91,66 @@ void Register::createBook(long int a){
 
 int Register::tracInsert(long int a){
     //search the entire trac and decide where to put the data
-   
+    if(LOG){printf("Entered tracInsert()\n");}
+    
+    //IF same data comes
+    for(int i = 0;i < ARRAYSIZE; i++){
+        if(trac[i].address == a){
+            return -2; // found a space
+        }   
+    }
+
     //NEW DATA
-    for(int i = 0;i < 64; i++){
+    for(int i = 0;i < ARRAYSIZE; i++){
         if((trac[i].flag & 0x01) != 1){
             trac[i].address = a;
             trac[i].flag|=0x01;
+            if(LOG){printf("Exited tracInsert & found free space\n");}
             return i; // found a space
         }   
     }
     //Check for discarded
-    for(int i = 0;i < 64; i++){
-        if((trac[i].flag & 0x02) != 1){
-            writeBackToNVM(i,a);
+    for(int i = 0;i < ARRAYSIZE; i++){
+        if((trac[i].flag & 0x02) == 2){
+            writeBackToNVM(i,trac[i].address);
             removeFromDiscarded(trac[i].address);
             trac[i].address = a;
             trac[i].flag&=(0xFD); // inverted of 0x02
-            return i + 64; // found a discarded
+            if(1){printf("Exited tracInsert & didnot find free space\n");}
+            return i + ARRAYSIZE; // found a discarded
         }   
     }
     //couldn't even find a discarded one
     //need to create space
     createSpace(a); // this moves data to dscarded from a queue
-    for(int i = 0;i < 64; i++){
-        if((trac[i].flag & 0x02) != 1){
-            writeBackToNVM(i,a);
+    for(int i = 0;i < ARRAYSIZE; i++){
+        if(LOG) {
+            printf("tracdiscarded %ld flag = %x",a,trac[i].flag);
+            printf(" flag changed to %x\n", (trac[i].flag)&0x02);
+        }
+        if((trac[i].flag & 0x02) == 2){
+            writeBackToNVM(i,trac[i].address);
             removeFromDiscarded(trac[i].address);
             trac[i].address = a;
             trac[i].flag&=(0xFD); // inverted of 0x02
-            return i + 128; // created a discarded and found it
+            if(LOG){printf("Exited tracInsert & created free space\n");}
+            return i + ARRAYSIZE * 2; // created a discarded and found it
         }   
     }
 
+    if(LOG){printf("Exited tracInsert without entering any of the 3 states()\n");}
     //no space found
     return -1;
 }
 
 //a function to discard a trac entry
 int Register::tracDiscarded(long int a){
-    for(int i = 0;i < 64; i++){
+    for(int i = 0;i < ARRAYSIZE; i++){
                 if(trac[i].address == a){
                     //update the d bit on the trac
+                    //printf("tracdiscarded %ld flag = %x",a,trac[i].flag);
                     trac[i].flag|=0x02;
+                    //printf(" flag changed to %x\n", trac[i].flag);
                     return 1;
             } 
     }
@@ -188,15 +215,17 @@ void Register::createSpace(long int a){
     Book* choosenone = findBookWithOldestEntry();
 
     if(choosenone){
+        if(LOG){printf("the choosen one\n");}
         //getting address from choosenone to select the trac entry - NEED A BETTER SOLUTION
         long int a = choosenone->getBookOldAddress();
         //remove old stuff from boook with old entry
         //and push it into discarded queue
         if(discarded.isEmpty()){
+            if(LOG){printf("Discarded being created\n");}
             discarded.newBookInit(choosenone->deEntry());
         }
         else
-        {
+        {   if(LOG){printf("Discarded being inserted data\n");}
             discarded.insertEntry(choosenone->deEntry());
         }
         //now update the bits in track
@@ -264,16 +293,28 @@ void Register::deleteBookIfAged(){
 }
 
 void Register::writeBackToNVM(int i,long int a){
-    printf("[writeBackToNVM] %d %ld", i, a);
+    if(OUTPUT){printf("[writeBackToNVM] %d %ld\n", i, a);}
 
 }
 
 void Register::removeFromDiscarded(long int a){
-    if(discarded.findAndRemoveFromBook(a)){
-        //Book removed
+
+    if(!discarded.isEmpty()){
+        int t = discarded.findAndRemoveFromBook(a);
+        if(t){
+            //Book removed
+        }
+        else
+        {
+            printf("[removeFromDiscarded]: Failed to find the book to remove : value of t = %d , a = %ld \n", t, a);
+        }
     }
-    else
-    {
-        printf("[removeFromDiscarded]: Failed to find the book to remove\n");
+}
+
+void Register::logPrintTrac(){
+    printf ("\n       .............\n");
+    for(auto i: trac){
+        printf("        %ld\n", i.address);
     }
+    printf ("       .............\n\n");
 }
