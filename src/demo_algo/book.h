@@ -138,8 +138,13 @@ bool Book::alreadyExistingEntry(long long int a){
     for(auto i = ent.begin();i!=ent.end();i++){
         if((*i).address == a){
             (*i).age = 1;
+            //move the element from that position to back of the queue
+            auto temp = (*i);
+            ent.erase(i);
+            ent.push_back(temp);
             return 1;
         }
+
     }
     return 0;
 }
