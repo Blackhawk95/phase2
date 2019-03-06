@@ -52,13 +52,13 @@ entry* Queue::old(){
     else{
         struct entry *head = e;
         printf("%lld ",head->Address);
-        printf("%d\n",head->next);
+        printf("%d\n",head->miniAddress);
         return head;
     }
 }
 
 void Queue::touch(int ma){
-    if(e->next == NULL){
+    if(e == NULL || e->next == NULL){
         return;
     }
     else if (e->miniAddress == ma){
@@ -66,17 +66,19 @@ void Queue::touch(int ma){
         node->Address = e->Address;
         node->miniAddress = e->miniAddress;
         node->next = NULL;
-
+	
         struct entry* head = e;
-        struct entry* second = (head->next);
-        e = second;
+	e = e->next;
         free(head);
-        while(second->next != NULL){
+
+	struct entry* second = e;
+        while(second != NULL && second->next != NULL){
             second = second->next;
         }
+	
         second->next = node;
-
-    }{
+	
+    }else{
         struct entry* head = e;
         while(head->next->miniAddress == ma && head->next->next != NULL){
             head = head->next;
