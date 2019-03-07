@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Queue.h"
-
+#include "QofQueue.h"
 
 int main(){
     Queue q;
