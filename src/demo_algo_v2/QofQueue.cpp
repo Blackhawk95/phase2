@@ -1,4 +1,5 @@
 #include "QofQueue.h"
+#include <cstdio>
 #define SIZE 64
 
 QofQueue::QofQueue(){
@@ -48,7 +49,7 @@ void QofQueue::findMiniAddress(long long a){
 					m_dump = true;
 				} 	
 			}
-			if(ma_dump == false){
+			if(m_dump == false){
 				//TO.DO	function - based on age 		
 				m_ma = createDump(); //should be implemented by QoQ; -- address passing around may work
 				m_dump = true;
