@@ -8,7 +8,7 @@ QofQueue::QofQueue(){
 void QofQueue::findMiniAddress(long long a){
 	
 	//have to convert this into a message
-	long long m_a = 0;
+	long long m_addr = a;
 	bool m_taken = false;
 	bool m_dump = false;
 	int m_ma = 0;
@@ -56,9 +56,12 @@ void QofQueue::findMiniAddress(long long a){
 			}
 		}
 	}
-	updateFlag();
-}
-
-void QoQueue::updateFlag(){
+	//updateFlag();
+	//Updates the flag
 	flag[m_ma] = {m_addr,m_taken,m_dump};
 }
+
+/*
+void QofQueue::updateFlag(){
+	flag[m_ma] = {m_addr,m_taken,m_dump};
+}*/

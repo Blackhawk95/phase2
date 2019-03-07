@@ -36,6 +36,7 @@ class QofQueue{
 	*/
 	QofQueue();
 	void findMiniAddress(long long int a);
+	void updateFlag();
 	
 };
 
