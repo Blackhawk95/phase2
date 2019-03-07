@@ -5,13 +5,19 @@
 QofQueue::QofQueue(){
 }
 
+/*
+ *
+ * Deals with finding mini address available by loookin at the flag
+ * directory
+ * */
+
 void QofQueue::findMiniAddress(long long a){
 	
-	//have to convert this into a message
+	//have to convert this into a message format
 	long long m_addr = a;
 	bool m_taken = false;
 	bool m_dump = false;
-	int m_ma = 0;
+	int m_ma = -1;
 
 	bool l_present = false;
 	
@@ -20,7 +26,6 @@ void QofQueue::findMiniAddress(long long a){
 		if(flag[i].addr == a){
 			//found - so touch corresponding queue
 			l_present = true;
-			m_a = a;
 		} 	
 	}	
 	if(l_present == false){
@@ -35,7 +40,7 @@ void QofQueue::findMiniAddress(long long a){
 					break;
 				} 
 			}
-			if(m_ma == 0){
+			if(m_ma == -1){
 				printf(" Something is wrong :: find MINI Address \n");		
 			}							
 		}
@@ -51,7 +56,7 @@ void QofQueue::findMiniAddress(long long a){
 			}
 			if(m_dump == false){
 				//TO.DO	function - based on age 		
-				m_ma = createDump(); //should be implemented by QoQ; -- address passing around may work
+				m_ma = createADump(); //should be implemented by QoQ; -- address passing around may work
 				m_dump = true;
 			}
 		}
@@ -65,3 +70,34 @@ void QofQueue::findMiniAddress(long long a){
 void QofQueue::updateFlag(){
 	flag[m_ma] = {m_addr,m_taken,m_dump};
 }*/
+
+/*
+ * Deals with moving an old entry in QoQ and returning the mini address
+ **/
+
+int QofQueue::createADump(){
+	int tempma;
+	struct entry* temp = old()->old();
+	tempma = temp->miniAddress;
+	dump.insert(temp); // this handles edge cases inside
+	old()->remove();
+	return tempma;
+}
+
+
+
+
+
+/*
+ * Old queue = Entry of Entry
+ * */
+
+Queue* QofQueue::old(){
+    if(eoe == NULL){
+        return NULL;
+    }
+    else{
+        struct Queue* head = &(eoe->q);
+        return head;
+    }
+}

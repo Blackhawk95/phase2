@@ -1,10 +1,13 @@
 #ifndef QOFQUEUE_H
 #define QOFQUEUE_H
+
+#include "Queue.h"
+
 #define SIZE 64
 
-struct EofEntry{
+struct eofentry{
 	Queue q;
-	EofEntry* next;
+	eofentry* next;
 };
 
 struct flagObj{
@@ -13,10 +16,11 @@ struct flagObj{
 	bool dump;
 };
 
-class QofQueue{
-	EofEntry* eoe;
+class QofQueue {
+	eofentry* eoe;
 	flagObj flag[SIZE] {};
 	int size; 
+	Queue dump;
 	public:
 	/*
 		FUNCTIONS
@@ -37,7 +41,11 @@ class QofQueue{
 	QofQueue();
 	void findMiniAddress(long long int a);
 	void updateFlag();
+	int createADump();
 	
+
+	//QoQueue related ops
+	Queue* old();
 };
 
 #endif

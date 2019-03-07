@@ -32,6 +32,20 @@ void Queue::insert(long long int a, int ma){
         head->next = node;        
     }
 }
+//insert using entry*
+void Queue::insert(entry* ein){
+    if(e == NULL){
+        e = ein;
+    }
+    else{
+        struct entry *head = e;
+        while(head->next != NULL){
+            head = head->next;    
+        }
+        head->next = e;
+    }
+}
+
 
 void Queue::remove(){
     if(e == NULL){
@@ -51,8 +65,8 @@ entry* Queue::old(){
     }
     else{
         struct entry *head = e;
-        printf("%lld ",head->Address);
-        printf("%d\n",head->miniAddress);
+        //printf("%lld ",head->Address);
+        //printf("%d\n",head->miniAddress);
         return head;
     }
 }
@@ -91,4 +105,12 @@ void Queue::touch(int ma){
         head->next=second;
         second->next=NULL;
     }
+}
+
+bool Queue::isEmpty(){
+    if(e == NULL){
+        return true;
+    }
+    else
+        return false;
 }
