@@ -1,10 +1,11 @@
 #include <iostream>
 #include <sstream> 
 #include "csvextract.h"
-#include "register.h"
-//#include "registerlru.h" // for LRU
+//#include "register.h"
+#include "registerlru.h" // for LRU
 //#include "testinput.h" //sample input
-#include "hai.h"
+//#include "hai.h"
+#include "rhai.h"
 
 int main(){
 
@@ -21,7 +22,7 @@ int main(){
 	//long long int arr[16] = { 1234, 5678, 1235, 9012, 1236, 8000, 3001, 1235, 1239, 1237, 8001, 9013, 9014,
 	//					8025, 6012, 1234};
 	
-	for( int i = 0; i < 150; i++ ){
+	for( int i = 0; i < 80; i++ ){
 		//R.logPrintTrac();
 		//printf("%lld\n",arr[i][0]);
 		R.insert(arr[i][0]);

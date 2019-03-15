@@ -148,3 +148,9 @@ void QofQueue::write(long long int a, message* mptr){
 	tempq->insert(a,mptr->m_ma);
 
 }
+
+void QofQueue::read(long long int a,message* mptr){
+
+	Queue* tempq = getQueue(a);
+
+}

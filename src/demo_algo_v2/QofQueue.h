@@ -58,7 +58,7 @@ class QofQueue {
 	Queue* classForNewData(long long int a); //if empty, make a new
 	void initEoE();
 	void write(long long a,message* mptr); //use this after findMiniAddress to get ma
-
+	void read(long long a,message* mptr);
 	//QoQueue related ops
 	Queue* old();
 };

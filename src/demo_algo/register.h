@@ -58,7 +58,7 @@ int  Register::insert(long long int a){
         {   
             //THIS SHOULDN'T HAPPEN
             printf("ma == -1 in empty register : THIS SHOULDN'T HAPPEN");
-            exit(0);
+            //exit(0);
         }
     }   
     else
@@ -242,7 +242,7 @@ void Register::createSpace(long long int a){
     }
     else{
         printf("ERROR findBookWithOldestEntry() gave NULL\n");
-        exit(0);
+        //exit(0);
     }
 
 
