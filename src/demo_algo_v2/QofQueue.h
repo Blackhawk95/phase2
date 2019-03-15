@@ -16,11 +16,20 @@ struct flagObj{
 	bool dump;
 };
 
+struct message{
+	long long int m_addr;
+	int m_ma;
+	bool m_taken;
+	bool m_dump;
+};
+
+
 class QofQueue {
 	eofentry* eoe;
 	flagObj flag[SIZE] {};
 	int size; 
 	Queue dump;
+	message m;
 	public:
 	/*
 		FUNCTIONS
@@ -39,10 +48,16 @@ class QofQueue {
 			
 	*/
 	QofQueue();
-	void findMiniAddress(long long int a);
+
+	
+
+	//ops
+	void findMiniAddress(long long int a, message* mptr);
 	void updateFlag();
 	int createADump();
-	
+	Queue* classForNewData(long long int a); //if empty, make a new
+	void initEoE();
+	void write(long long a,message* mptr); //use this after findMiniAddress to get ma
 
 	//QoQueue related ops
 	Queue* old();

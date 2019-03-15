@@ -1,6 +1,9 @@
 #include "QofQueue.h"
+#include <cstdlib>
 #include <cstdio>
+
 #define SIZE 64
+#define THRESHOLD 1000
 
 QofQueue::QofQueue(){
 }
@@ -11,7 +14,7 @@ QofQueue::QofQueue(){
  * directory
  * */
 
-void QofQueue::findMiniAddress(long long a){
+void QofQueue::findMiniAddress(long long a,message* mptr){
 	
 	//have to convert this into a message format
 	long long m_addr = a;
@@ -27,7 +30,8 @@ void QofQueue::findMiniAddress(long long a){
 			//found - so touch corresponding queue
 			l_present = true;
 		} 	
-	}	
+	}
+
 	if(l_present == false){
 		// If the DRAM isn't full
 		if(size != 64){
@@ -64,6 +68,12 @@ void QofQueue::findMiniAddress(long long a){
 	//updateFlag();
 	//Updates the flag
 	flag[m_ma] = {m_addr,m_taken,m_dump};
+
+	//setting message
+	mptr->m_addr=m_addr;
+	mptr->m_dump=m_dump;
+	mptr->m_taken=m_taken;
+	mptr->m_ma=m_ma;
 }
 
 /*
@@ -100,4 +110,41 @@ Queue* QofQueue::old(){
         struct Queue* head = &(eoe->q);
         return head;
     }
+}
+
+void QofQueue::initEoE(){
+	eoe = (struct eofentry*) malloc (sizeof(struct eofentry)); 
+}
+
+Queue* QofQueue::classForNewData(long long int a){
+	/*	find the right class
+	if class doesn't exist
+		make one
+	else
+		use that
+	*/
+	struct eofentry* e = eoe;
+	if(e == NULL){
+		initEoE();
+		return &(eoe->q);
+	}
+	while(e != NULL){
+		//if incoming address exist
+		if(e->q.old()->Address <= a + THRESHOLD || e->q.old()->Address >= a - THRESHOLD){
+			return &(e->q);
+		}
+	}
+	//else, create a new queue in q of queue
+	e = (struct eofentry*) malloc (sizeof(struct eofentry)); 
+	return &(e->q); 
+}
+
+
+void QofQueue::write(long long int a, message* mptr){
+
+	Queue* tempq = classForNewData(a);
+	findMiniAddress(a,mptr);
+	//insert data
+	tempq->insert(a,mptr->m_ma);
+
 }
