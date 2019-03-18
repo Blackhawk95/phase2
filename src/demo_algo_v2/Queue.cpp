@@ -76,6 +76,15 @@ entry* Queue::old(){
 
 void Queue::touch(int ma){
     if(e == NULL || e->next == NULL){
+        printf("ERROR: Blank Queue");
+        return;
+    }
+    if(e->next == NULL){
+        printf("MSG: Single element Queue\n");
+        return;
+    }
+    if(ma < 0 || ma > 63){
+        printf("ERROR: Invalid Mini Address\n");
         return;
     }
     else if (e->miniAddress == ma){
@@ -85,7 +94,7 @@ void Queue::touch(int ma){
         node->next = NULL;
 	
         struct entry* head = e;
-	e = e->next;
+	    e = e->next;
         free(head);
 
 	struct entry* second = e;

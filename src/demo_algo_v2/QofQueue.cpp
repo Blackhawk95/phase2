@@ -56,17 +56,19 @@ void QofQueue::findMiniAddress(long long a,message* mptr){
 		}
 		//DRAM is full
 		else {
+			//m_dump = true;
 			//check if any dump ones exist
 			for(int i = 0;i< SIZE;i++){
 				if(flag[i].dump == true){ //this indicates, checking for a dump entry
 					//prep for message
 					m_ma = i;	
-					//m_dump = false; //this indicates, replaced a dump entry
+					m_dump = false; //this indicates, replaced a dump entry
 				} 	
 			}
 			if(m_dump == false){ // using it as a flag
 				//TO.DO	function - based on age 		
-				m_ma = createADump(); //should be implemented by QoQ; -- address passing around may work
+				//m_ma = createADump(); //should be implemented by QoQ; -- address passing around may work
+				m_ma = performWriteBack();
 				//m_dump = false;
 			}
 		}
@@ -101,7 +103,26 @@ int QofQueue::createADump(){
 	return tempma;
 }
 
+/*
+ * Writeback instantly sends message to release the oldest memory location
+ * and returns its mini address
+ * */
 
+int QofQueue::performWriteBack(){
+	int tempma;
+	struct entry* temp = old()->old();
+	tempma = temp->miniAddress;
+	writeBack(temp);
+	return tempma;
+}
+
+/*
+ * This is a temporary writeback function - for now it prints only
+ * */
+
+void QofQueue::writeBack(entry* we){
+	printf("Writing back to main memory Address : %lld, from MA: %d\n",we->Address,we->miniAddress);
+}
 
 
 
@@ -126,7 +147,7 @@ void QofQueue::initEoE(){
 	eoe->next = NULL;
 }
 
-Queue* QofQueue::classForNewData(long long int a){
+eofentry* QofQueue::classForNewData(long long int a){
 	/*	find the right class
 	if class doesn't exist
 		make one
@@ -137,14 +158,15 @@ Queue* QofQueue::classForNewData(long long int a){
 	struct eofentry* prev = NULL;
 	if(e == NULL){
 		initEoE();
-		return &(eoe->q);
+		return (eoe);
 	}
 	while(e != NULL){
 		//if incoming address exist
 		entry* findq = ((e->q).old());
 		if(findq->Address <= a + THRESHOLD && findq->Address >= a - THRESHOLD){
-			//printf("Loop: %lld :%d\n",findq->Address,a);
-			return &(e->q);
+			printf("Loop: %lld :%d\n",findq->Address,a);
+			//move the queue to the end/ indicating the update
+			return (e);
 		}
 		prev = e;
 		e = e->next;
@@ -154,8 +176,50 @@ Queue* QofQueue::classForNewData(long long int a){
 	e->next = NULL;
 	e->q = Queue();
 	prev->next = e;
-	return &(e->q); 
+	return (e); 
 }
+
+/*
+ * This function moves the given eoe to the back of the list
+ * */
+eofentry* QofQueue::updateQofQueue(eofentry* ce){
+	if(ce !=NULL && ce->next != NULL ){
+		printf("Blah A\n");
+		struct eofentry* neweoe = (struct eofentry*)malloc(sizeof(&ce));
+		//printf("size of eoe- %d\n",sizeof(&ce));
+		//create a copy 
+		neweoe->q = ce->q;
+		neweoe->next = ce->next;
+
+		//made a pointer to neighbour
+		struct eofentry* tempe = NULL;
+		tempe = ce->next;
+
+		//copy the data from next to current
+		ce->q = tempe->q;
+		ce->next = tempe->next;
+
+		//freeing the next
+		free(tempe);
+		struct eofentry* te = ce;
+		printf("Blah B\n");
+		//connect the copy to end of the eoe queue;
+		while(te->next!=NULL){
+			printf("Blah B.1\n");
+			te = te->next;
+			printf("Blah B.2\n");
+		}
+		printf("Blah C\n");
+		te->next = neweoe;
+		printf("Blah D\n");
+		te = te->next;
+		printf("Blah E\n");
+
+		return te;
+	}	
+	return ce;
+}
+
 
 Queue* QofQueue::getQueue(long long int a){
 	// just return the queue
@@ -191,10 +255,11 @@ Queue* QofQueue::getQueue(long long int a){
 
 void QofQueue::write(long long int a){
 
-	Queue* tempq = classForNewData(a);
+	eofentry* tempq = classForNewData(a);
+	updateQofQueue(tempq);
 	findMiniAddress(a,&m);
 	//insert data
-	tempq->insert(a,m.m_ma);
+	(&(tempq->q))->insert(a,m.m_ma);
 
 }
 

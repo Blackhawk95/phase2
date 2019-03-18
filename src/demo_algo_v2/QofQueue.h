@@ -55,9 +55,12 @@ class QofQueue {
 	void findMiniAddress(long long int a, message* mptr);
 	void updateFlag();
 	int createADump();
-	Queue* classForNewData(long long int a); //if empty, make a new
+	eofentry* classForNewData(long long int a); //if empty, make a new
 	void initEoE();
 	Queue* getQueue(long long int a);
+	int performWriteBack();
+	void writeBack(entry* we);
+	eofentry* updateQofQueue(eofentry* q);
 	void write(long long a); //use this after findMiniAddress to get ma
 	void read(long long a);
 	//QoQueue related ops
