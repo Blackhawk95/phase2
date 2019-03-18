@@ -3,7 +3,7 @@
 
 #include "Queue.h"
 
-#define SIZE 64
+#define SIZE 8
 
 struct eofentry{
 	Queue q;
@@ -57,8 +57,9 @@ class QofQueue {
 	int createADump();
 	Queue* classForNewData(long long int a); //if empty, make a new
 	void initEoE();
-	void write(long long a,message* mptr); //use this after findMiniAddress to get ma
-	void read(long long a,message* mptr);
+	Queue* getQueue(long long int a);
+	void write(long long a); //use this after findMiniAddress to get ma
+	void read(long long a);
 	//QoQueue related ops
 	Queue* old();
 };

@@ -2,10 +2,14 @@
 #include <cstdlib>
 #include <cstdio>
 
-#define SIZE 64
-#define THRESHOLD 1000
+#define SIZE 8
+#define THRESHOLD 500
 
 QofQueue::QofQueue(){
+	eoe = NULL;
+	size = 0; 
+	Queue dump = Queue();
+	message m = {0,0,false,false};
 }
 
 /*
@@ -27,14 +31,15 @@ void QofQueue::findMiniAddress(long long a,message* mptr){
 	// Address already on the DRAM
 	for(int i = 0;i< SIZE;i++){
 		if(flag[i].addr == a){
-			//found - so touch corresponding queue
+			//found - so touch corresponding queue TO.DO
 			l_present = true;
 		} 	
 	}
 
 	if(l_present == false){
+		//printf("Size : %d\n",size);
 		// If the DRAM isn't full
-		if(size != 64){
+		if(size < SIZE){
 			for(int i = 0;i< SIZE;i++){
 				//find an empty location
 				if(flag[i].taken == false){
@@ -46,22 +51,23 @@ void QofQueue::findMiniAddress(long long a,message* mptr){
 			}
 			if(m_ma == -1){
 				printf(" Something is wrong :: find MINI Address \n");		
-			}							
+			}	
+			size++;			
 		}
 		//DRAM is full
 		else {
 			//check if any dump ones exist
 			for(int i = 0;i< SIZE;i++){
-				if(flag[i].dump != false){
+				if(flag[i].dump == true){ //this indicates, checking for a dump entry
 					//prep for message
 					m_ma = i;	
-					m_dump = true;
+					//m_dump = false; //this indicates, replaced a dump entry
 				} 	
 			}
-			if(m_dump == false){
+			if(m_dump == false){ // using it as a flag
 				//TO.DO	function - based on age 		
 				m_ma = createADump(); //should be implemented by QoQ; -- address passing around may work
-				m_dump = true;
+				//m_dump = false;
 			}
 		}
 	}
@@ -89,6 +95,7 @@ int QofQueue::createADump(){
 	int tempma;
 	struct entry* temp = old()->old();
 	tempma = temp->miniAddress;
+	temp->miniAddress = -2;
 	dump.insert(temp); // this handles edge cases inside
 	old()->remove();
 	return tempma;
@@ -113,7 +120,10 @@ Queue* QofQueue::old(){
 }
 
 void QofQueue::initEoE(){
-	eoe = (struct eofentry*) malloc (sizeof(struct eofentry)); 
+	eoe = (struct eofentry*) malloc (sizeof(struct eofentry));
+	//Queue qu;
+	eoe->q = Queue();
+	eoe->next = NULL;
 }
 
 Queue* QofQueue::classForNewData(long long int a){
@@ -124,33 +134,87 @@ Queue* QofQueue::classForNewData(long long int a){
 		use that
 	*/
 	struct eofentry* e = eoe;
+	struct eofentry* prev = NULL;
 	if(e == NULL){
 		initEoE();
 		return &(eoe->q);
 	}
 	while(e != NULL){
 		//if incoming address exist
-		if(e->q.old()->Address <= a + THRESHOLD || e->q.old()->Address >= a - THRESHOLD){
+		entry* findq = ((e->q).old());
+		if(findq->Address <= a + THRESHOLD && findq->Address >= a - THRESHOLD){
+			//printf("Loop: %lld :%d\n",findq->Address,a);
 			return &(e->q);
 		}
+		prev = e;
+		e = e->next;
 	}
 	//else, create a new queue in q of queue
-	e = (struct eofentry*) malloc (sizeof(struct eofentry)); 
+	e = (struct eofentry*) malloc (sizeof(struct eofentry));
+	e->next = NULL;
+	e->q = Queue();
+	prev->next = e;
 	return &(e->q); 
 }
 
+Queue* QofQueue::getQueue(long long int a){
+	// just return the queue
+	
+	struct eofentry* e = eoe;
+	if(e == NULL){
+		return NULL;
+	}
 
-void QofQueue::write(long long int a, message* mptr){
+	//	find in dump cause no class found - but there can be a case where found in dump but with class
+	for(int i = 0;i< SIZE;i++){
+		if(flag[i].addr == a){
+			if(flag[i].dump == true){
+				printf("Found in Dump\n");
+				return &dump;
+			}
+		}
+	}
+
+	while(e != NULL){
+		//if incoming address exist
+		entry* findq = ((e->q).old());
+		if(findq->Address <= a + THRESHOLD && findq->Address >= a - THRESHOLD){
+			printf("Loop: %lld :%d\n",findq->Address,a);
+			return &(e->q);
+		}
+		e = e->next;
+	}
+	
+	
+	return NULL;
+}
+
+void QofQueue::write(long long int a){
 
 	Queue* tempq = classForNewData(a);
-	findMiniAddress(a,mptr);
+	findMiniAddress(a,&m);
 	//insert data
-	tempq->insert(a,mptr->m_ma);
+	tempq->insert(a,m.m_ma);
 
 }
 
-void QofQueue::read(long long int a,message* mptr){
+void QofQueue::read(long long int a){
 
+	int minia=0;
 	Queue* tempq = getQueue(a);
+	if(tempq == NULL){
+		printf("Look at DRAM\n");
+		return;
+	}
+	minia = tempq->getMiniAddressFromQueue(a);
+	if(minia == -1){
+		printf("data missing in the queue / wrong queue\n");
+	}
+	else if(minia == -2){
+		printf("data found in dump\n");
 
+	}
+	else{
+		printf("Address: %lld, MiniAddress: %d",a,minia);
+	}
 }

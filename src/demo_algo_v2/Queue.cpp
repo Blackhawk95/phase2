@@ -12,6 +12,7 @@ Queue::Queue(){
 
 void Queue::insert(long long int a, int ma){
     if(e == NULL){
+        //printf("Hello Bug\n");
         struct entry *node = (struct entry*) malloc(sizeof(struct entry));
         node->Address = a;
         node->miniAddress = ma;
@@ -20,6 +21,7 @@ void Queue::insert(long long int a, int ma){
         e = node;
     }
     else{
+        //printf("Hello Bug B\n");
         struct entry *node = (struct entry*) malloc(sizeof(struct entry));
         node->Address = a;
         node->miniAddress = ma;
@@ -60,6 +62,7 @@ void Queue::remove(){
 }
 
 entry* Queue::old(){
+    //printf("Hello Bug C\n");
     if(e == NULL){
         return NULL;
     }
@@ -105,6 +108,18 @@ void Queue::touch(int ma){
         head->next=second;
         second->next=NULL;
     }
+}
+
+int Queue::getMiniAddressFromQueue(long long int a){
+    int m_ma = -1;
+    struct entry* ea = e;
+    while(ea != NULL){
+        if(ea->Address == a){
+            m_ma = ea->miniAddress;
+        }
+        ea = ea->next;
+    }
+    return m_ma;
 }
 
 bool Queue::isEmpty(){

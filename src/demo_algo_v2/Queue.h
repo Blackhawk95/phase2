@@ -19,7 +19,7 @@ class Queue{
     void remove();
     entry* old();
     void touch(int ma);
-    
+    int getMiniAddressFromQueue(long long int);
     //flag checks
     bool isEmpty();
 };

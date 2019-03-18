@@ -1,19 +1,22 @@
 #include <iostream>
-#include "Queue.h"
+//#include "Queue.h"
 #include "QofQueue.h"
 
 int main(){
-    Queue q;
-    q.insert(100,1);
-    q.insert(101,2);
-	q.insert(102,3);
-    q.old();
-    q.touch(1);
-    q.old();
-	q.touch(2);
-    q.old();
-	q.touch(3);
-    q.old();
+    QofQueue qoq;
+    qoq.write(1000);
+    qoq.write(2000);
+    qoq.write(3000);
+    qoq.write(1001);
+    qoq.write(2001);
+    qoq.write(3001);
+    qoq.write(1002);
+    qoq.write(2002);
+    qoq.write(3002);
+    qoq.write(1003);
+    qoq.write(2003);
+    qoq.write(3003);
+    qoq.read(1000);
     return 0;
 }
 
