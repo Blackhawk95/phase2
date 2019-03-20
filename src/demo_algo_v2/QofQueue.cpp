@@ -184,12 +184,11 @@ eofentry* QofQueue::classForNewData(long long int a){
  * */
 eofentry* QofQueue::updateQofQueue(eofentry* ce){
 	if(ce !=NULL && ce->next != NULL ){
-		printf("Blah A\n");
 		struct eofentry* neweoe = (struct eofentry*)malloc(sizeof(&ce));
 		//printf("size of eoe- %d\n",sizeof(&ce));
 		//create a copy 
 		neweoe->q = ce->q;
-		neweoe->next = ce->next;
+		neweoe->next = NULL; //ce->next;
 
 		//made a pointer to neighbour
 		struct eofentry* tempe = NULL;
@@ -201,20 +200,14 @@ eofentry* QofQueue::updateQofQueue(eofentry* ce){
 
 		//freeing the next
 		free(tempe);
-		struct eofentry* te = ce;
-		printf("Blah B\n");
-		//connect the copy to end of the eoe queue;
-		while(te->next!=NULL){
-			printf("Blah B.1\n");
-			te = te->next;
-			printf("Blah B.2\n");
-		}
-		printf("Blah C\n");
-		te->next = neweoe;
-		printf("Blah D\n");
-		te = te->next;
-		printf("Blah E\n");
 
+		struct eofentry* te = ce;
+		//connect the copy to end of the eoe queue;
+		while(te!= NULL && te->next!=NULL){
+				te = te->next;
+		}
+		te->next = neweoe;
+		te = te->next;
 		return te;
 	}	
 	return ce;
