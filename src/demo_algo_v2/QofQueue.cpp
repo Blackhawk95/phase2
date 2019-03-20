@@ -122,8 +122,8 @@ int QofQueue::performWriteBack(){
 
 void QofQueue::writeBack(entry* we){
 	printf("Writing back to main memory Address : %lld, from MA: %d\n",we->Address,we->miniAddress);
+	old()->remove();
 }
-
 
 
 /*
@@ -162,6 +162,7 @@ eofentry* QofQueue::classForNewData(long long int a){
 	}
 	while(e != NULL){
 		//if incoming address exist
+		//printf("\t\t Problem after queue movement : %lld \t\n",(e->q).old()->Address);
 		entry* findq = ((e->q).old());
 		if(findq->Address <= a + THRESHOLD && findq->Address >= a - THRESHOLD){
 			printf("Loop: %lld :%d\n",findq->Address,a);
@@ -183,17 +184,21 @@ eofentry* QofQueue::classForNewData(long long int a){
  * This function moves the given eoe to the back of the list
  * */
 eofentry* QofQueue::updateQofQueue(eofentry* ce){
+	printf(" Flag\n");
 	if(ce !=NULL && ce->next != NULL ){
+		printf(" Flag A\n");
 		struct eofentry* neweoe = (struct eofentry*)malloc(sizeof(&ce));
 		//printf("size of eoe- %d\n",sizeof(&ce));
 		//create a copy 
 		neweoe->q = ce->q;
 		neweoe->next = NULL; //ce->next;
 
+		printf(" Flag B\n");
 		//made a pointer to neighbour
 		struct eofentry* tempe = NULL;
 		tempe = ce->next;
 
+		printf(" Flag C\n");
 		//copy the data from next to current
 		ce->q = tempe->q;
 		ce->next = tempe->next;
@@ -201,15 +206,20 @@ eofentry* QofQueue::updateQofQueue(eofentry* ce){
 		//freeing the next
 		free(tempe);
 
+		printf(" Flag D\n");
 		struct eofentry* te = ce;
+		
 		//connect the copy to end of the eoe queue;
 		while(te!= NULL && te->next!=NULL){
 				te = te->next;
 		}
+		printf(" Flag E\n");
 		te->next = neweoe;
 		te = te->next;
 		return te;
-	}	
+	}
+	if(ce == NULL)
+		printf("ERROR: an empty queue");	
 	return ce;
 }
 
@@ -249,6 +259,7 @@ Queue* QofQueue::getQueue(long long int a){
 void QofQueue::write(long long int a){
 
 	eofentry* tempq = classForNewData(a);
+	printf(" Step 1 complete\n");
 	updateQofQueue(tempq);
 	findMiniAddress(a,&m);
 	//insert data
