@@ -158,6 +158,7 @@ eofentry* QofQueue::classForNewData(long long int a){
 	struct eofentry* prev = NULL;
 	if(e == NULL){
 		initEoE();
+		printf("a");
 		return (eoe);
 	}
 	while(e != NULL){
@@ -167,6 +168,7 @@ eofentry* QofQueue::classForNewData(long long int a){
 		if(findq->Address <= a + THRESHOLD && findq->Address >= a - THRESHOLD){
 			printf("Loop: %lld :%d\n",findq->Address,a);
 			//move the queue to the end/ indicating the update
+			printf("b");
 			return (e);
 		}
 		prev = e;
@@ -177,6 +179,7 @@ eofentry* QofQueue::classForNewData(long long int a){
 	e->next = NULL;
 	e->q = Queue();
 	prev->next = e;
+	printf("c");
 	return (e); 
 }
 
