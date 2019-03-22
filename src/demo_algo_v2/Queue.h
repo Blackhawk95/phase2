@@ -16,7 +16,7 @@ class Queue{
     Queue();
     void insert(long long int a,int ma);
     void insert(entry*);
-    void remove();
+    int remove();
     entry* old();
     void touch(int ma);
     int getMiniAddressFromQueue(long long int);

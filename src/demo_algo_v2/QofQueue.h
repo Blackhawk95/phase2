@@ -65,6 +65,7 @@ class QofQueue {
 	void read(long long a);
 	//QoQueue related ops
 	Queue* old();
+
 };
 
 #endif

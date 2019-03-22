@@ -92,7 +92,7 @@ void QofQueue::updateFlag(){
 /*
  * Deals with moving an old entry in QoQ and returning the mini address
  **/
-
+/* NOT NEEDED NOW, NEED IN FUTURE
 int QofQueue::createADump(){
 	int tempma;
 	struct entry* temp = old()->old();
@@ -101,7 +101,7 @@ int QofQueue::createADump(){
 	dump.insert(temp); // this handles edge cases inside
 	old()->remove();
 	return tempma;
-}
+}*/
 
 /*
  * Writeback instantly sends message to release the oldest memory location
@@ -122,7 +122,8 @@ int QofQueue::performWriteBack(){
 
 void QofQueue::writeBack(entry* we){
 	printf("Writing back to main memory Address : %lld, from MA: %d\n",we->Address,we->miniAddress);
-	old()->remove();
+	int fl = old()->remove();
+	
 }
 
 

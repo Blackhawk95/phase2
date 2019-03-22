@@ -49,15 +49,21 @@ void Queue::insert(entry* ein){
 }
 
 
-void Queue::remove(){
+int Queue::remove(){
     if(e == NULL){
-        return;
+        return 0; // shouldn't happen
+    }
+    else if( e->next == NULL){
+        free(e);
+        e = NULL;
+        return -1; // destroy the queue
     }
     else{
         struct entry *head = e;
         struct entry *second = (e)->next;
         e = second;
         free(head); // removing deleted one
+        return 1;
     }
 }
 
