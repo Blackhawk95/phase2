@@ -291,7 +291,9 @@ Queue* QofQueue::getQueue(long long int a){
 }
 
 void QofQueue::dumptriggercheck(){
-
+	if(dumptrigger == DUMPLIMIT){
+		//MOVE the eoe's queue to 
+	}
 }
 
 void QofQueue::write(long long int a){
