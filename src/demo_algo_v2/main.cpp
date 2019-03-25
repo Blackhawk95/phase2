@@ -17,8 +17,8 @@ int main(){
     qoq.write(1003);
     qoq.write(2003);
     qoq.write(3003); //it fzails TO. DO
-    qoq.read(3003);
-    qoq.read(1001);
+    //qoq.read(3003);
+    //qoq.read(1001);
     return 0;
 }
 

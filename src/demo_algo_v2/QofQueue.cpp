@@ -12,6 +12,7 @@ QofQueue::QofQueue(){
 	Queue dump = Queue();
 	message m = {0,0,false,false};
 	dumptrigger = 0;
+	exists = false;
 }
 
 /*
@@ -34,6 +35,8 @@ void QofQueue::findMiniAddress(long long a,message* mptr){
 	for(int i = 0;i< SIZE;i++){
 		if(flag[i].addr == a){
 			//found - so touch corresponding queue TO.DO
+			exists = true;
+			m_ma = i;
 			l_present = true;
 		} 	
 	}
@@ -291,8 +294,15 @@ Queue* QofQueue::getQueue(long long int a){
 }
 
 void QofQueue::dumptriggercheck(){
-	if(dumptrigger == DUMPLIMIT){
-		//MOVE the eoe's queue to 
+	//printf("DumpTrigger: %d\n",dumptrigger);
+	if(dumptrigger >= DUMPLIMIT){
+		//MOVE the eoe's queue to
+		Queue* tempq = &(eoe->q);
+		dump.insert(tempq->old()); // copy the initial entry to dump and let it insert there
+		eofentry* tempe = eoe->next;
+		eoe = tempe;
+		eoe->next = tempe->next;
+		free(tempe);
 	}
 }
 
@@ -303,8 +313,13 @@ void QofQueue::write(long long int a){
 	tempq = updateQofQueue(tempq);
 	findMiniAddress(a,&m);
 	//insert data
+	/*
+	if(exists) //if already existing
+		(&(tempq->q))->touch(m.m_ma);
+	else //else insert*/
 	(&(tempq->q))->insert(a,m.m_ma);
-	dumptriggercheck();
+	
+	//dumptriggercheck();
 
 }
 

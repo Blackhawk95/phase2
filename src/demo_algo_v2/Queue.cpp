@@ -103,13 +103,13 @@ void Queue::touch(int ma){
 	    e = e->next;
         free(head);
 
-	struct entry* second = e;
+	    struct entry* second = e;
         while(second != NULL && second->next != NULL){
             second = second->next;
         }
 	
         second->next = node;
-	
+        return;
     }else{
         struct entry* head = e;
         while(head->next->miniAddress == ma && head->next->next != NULL){
@@ -122,7 +122,9 @@ void Queue::touch(int ma){
         }
         head->next=second;
         second->next=NULL;
+        return;
     }
+    printf("ERROR: Mini Address is missing in the queue\n");
 }
 
 int Queue::getMiniAddressFromQueue(long long int a){

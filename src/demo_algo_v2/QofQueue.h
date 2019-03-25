@@ -31,6 +31,7 @@ class QofQueue {
 	Queue dump;
 	message m;
 	int dumptrigger; //dumptrigger is trigger to put older queue into dump
+	bool exists;
 	public:
 	/*
 		FUNCTIONS
