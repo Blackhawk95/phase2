@@ -30,6 +30,7 @@ class QofQueue {
 	int size; 
 	Queue dump;
 	message m;
+	int dumptrigger; //dumptrigger is trigger to put older queue into dump
 	public:
 	/*
 		FUNCTIONS
@@ -61,10 +62,12 @@ class QofQueue {
 	int performWriteBack();
 	void writeBack(entry* we);
 	eofentry* updateQofQueue(eofentry* q);
+	void dumptriggercheck();
 	void write(long long a); //use this after findMiniAddress to get ma
 	void read(long long a);
 	//QoQueue related ops
 	Queue* old();
+	eofentry* old_eoe();
 
 };
 

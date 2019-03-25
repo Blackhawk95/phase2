@@ -4,12 +4,14 @@
 
 #define SIZE 8
 #define THRESHOLD 500
+#define DUMPLIMIT 4
 
 QofQueue::QofQueue(){
 	eoe = NULL;
 	size = 0; 
 	Queue dump = Queue();
 	message m = {0,0,false,false};
+	dumptrigger = 0;
 }
 
 /*
@@ -123,6 +125,15 @@ int QofQueue::performWriteBack(){
 void QofQueue::writeBack(entry* we){
 	printf("Writing back to main memory Address : %lld, from MA: %d\n",we->Address,we->miniAddress);
 	int fl = old()->remove();
+	if(fl == -1){
+		struct eofentry* temp = old_eoe();
+		struct eofentry* temp2 = temp->next;
+		temp->q = temp2->q;
+		temp->next = temp2->next;
+		free(temp2);
+		//halve the dumptrigger
+		dumptrigger = dumptrigger / 2;		
+	}
 	
 }
 
@@ -141,6 +152,15 @@ Queue* QofQueue::old(){
     }
 }
 
+eofentry* QofQueue::old_eoe(){
+	if(eoe == NULL){
+		return NULL;
+	}
+	else{
+		return eoe;
+	}
+}
+
 void QofQueue::initEoE(){
 	eoe = (struct eofentry*) malloc (sizeof(struct eofentry));
 	//Queue qu;
@@ -157,21 +177,32 @@ eofentry* QofQueue::classForNewData(long long int a){
 	*/
 	struct eofentry* e = eoe;
 	struct eofentry* prev = NULL;
+	int dumptriggerflag = 0;
 	if(e == NULL){
 		initEoE();
-		printf("a");
+		//printf("a");
 		return (eoe);
 	}
 	while(e != NULL){
 		//if incoming address exist
 		//printf("\t\t Problem after queue movement : %lld \t\n",(e->q).old()->Address);
 		entry* findq = ((e->q).old());
+		
 		if(findq->Address <= a + THRESHOLD && findq->Address >= a - THRESHOLD){
-			printf("Loop: %lld :%d\n",findq->Address,a);
+			//printf("Loop: %lld :%d\n",findq->Address,a);
 			//move the queue to the end/ indicating the update
-			printf("b");
+			//printf("b");
+
+			if(dumptriggerflag == 0){ //if its the oldest that gets updated, then halve the dumptrigger
+				dumptrigger = dumptrigger/2;
+			}
+			else { // else add 1 to the dumptrigger
+				dumptrigger++;
+			}
 			return (e);
 		}
+		dumptriggerflag++;
+
 		prev = e;
 		e = e->next;
 	}
@@ -180,7 +211,8 @@ eofentry* QofQueue::classForNewData(long long int a){
 	e->next = NULL;
 	e->q = Queue();
 	prev->next = e;
-	printf("c");
+	//printf("c");
+	dumptrigger++;
 	return (e); 
 }
 
@@ -188,21 +220,21 @@ eofentry* QofQueue::classForNewData(long long int a){
  * This function moves the given eoe to the back of the list
  * */
 eofentry* QofQueue::updateQofQueue(eofentry* ce){
-	printf(" Flag\n");
+	//printf(" Flag\n");
 	if(ce !=NULL && ce->next != NULL ){
-		printf(" Flag A\n");
+		//printf(" Flag A\n");
 		struct eofentry* neweoe = (struct eofentry*)malloc(sizeof(&ce));
 		//printf("size of eoe- %d\n",sizeof(&ce));
 		//create a copy 
 		neweoe->q = ce->q;
 		neweoe->next = NULL; //ce->next;
 
-		printf(" Flag B\n");
+		//printf(" Flag B\n");
 		//made a pointer to neighbour
 		struct eofentry* tempe = NULL;
 		tempe = ce->next;
 
-		printf(" Flag C\n");
+		//printf(" Flag C\n");
 		//copy the data from next to current
 		ce->q = tempe->q;
 		ce->next = tempe->next;
@@ -210,14 +242,14 @@ eofentry* QofQueue::updateQofQueue(eofentry* ce){
 		//freeing the next
 		free(tempe);
 
-		printf(" Flag D\n");
+		//printf(" Flag D\n");
 		struct eofentry* te = ce;
 		
 		//connect the copy to end of the eoe queue;
 		while(te!= NULL && te->next!=NULL){
 				te = te->next;
 		}
-		printf(" Flag E\n");
+		//printf(" Flag E\n");
 		te->next = neweoe;
 		te = te->next;
 		return te;
@@ -255,19 +287,22 @@ Queue* QofQueue::getQueue(long long int a){
 		}
 		e = e->next;
 	}
-	
-	
 	return NULL;
+}
+
+void QofQueue::dumptriggercheck(){
+
 }
 
 void QofQueue::write(long long int a){
 
 	eofentry* tempq = classForNewData(a);
-	printf(" Step 1 complete\n");
-	updateQofQueue(tempq);
+	//printf(" Step 1 complete\n");
+	tempq = updateQofQueue(tempq);
 	findMiniAddress(a,&m);
 	//insert data
 	(&(tempq->q))->insert(a,m.m_ma);
+	dumptriggercheck();
 
 }
 
@@ -288,6 +323,6 @@ void QofQueue::read(long long int a){
 
 	}
 	else{
-		printf("Address: %lld, MiniAddress: %d",a,minia);
+		printf("Address: %lld, MiniAddress: %d\n",a,minia);
 	}
 }

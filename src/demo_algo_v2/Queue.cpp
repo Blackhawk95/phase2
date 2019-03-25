@@ -129,6 +129,7 @@ int Queue::getMiniAddressFromQueue(long long int a){
     int m_ma = -1;
     struct entry* ea = e;
     while(ea != NULL){
+        //printf(" getMiniAddressFromQueue Address in queue:  %lld Address looking for: %lld\n",ea->Address, a);
         if(ea->Address == a){
             m_ma = ea->miniAddress;
         }
