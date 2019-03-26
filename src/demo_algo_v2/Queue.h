@@ -22,5 +22,6 @@ class Queue{
     int getMiniAddressFromQueue(long long int);
     //flag checks
     bool isEmpty();
+    void clean();
 };
 #endif

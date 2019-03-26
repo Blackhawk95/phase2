@@ -19,6 +19,7 @@ int main(){
     qoq.write(3003); //it fzails TO. DO
     //qoq.read(3003);
     //qoq.read(1001);
+    qoq.clean();
     return 0;
 }
 

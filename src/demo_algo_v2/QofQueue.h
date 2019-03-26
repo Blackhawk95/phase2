@@ -66,6 +66,7 @@ class QofQueue {
 	void dumptriggercheck();
 	void write(long long a); //use this after findMiniAddress to get ma
 	void read(long long a);
+	void clean();
 	//QoQueue related ops
 	Queue* old();
 	eofentry* old_eoe();

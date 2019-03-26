@@ -147,3 +147,9 @@ bool Queue::isEmpty(){
     else
         return false;
 }
+
+void Queue::clean(){
+    while(remove() != -1){
+        continue;
+    }
+}

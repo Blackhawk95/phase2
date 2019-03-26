@@ -294,9 +294,10 @@ Queue* QofQueue::getQueue(long long int a){
 }
 
 void QofQueue::dumptriggercheck(){
-	//printf("DumpTrigger: %d\n",dumptrigger);
+	printf("DumpTrigger: %d\n",dumptrigger);
 	if(dumptrigger >= DUMPLIMIT){
 		//MOVE the eoe's queue to
+		printf("bhhaahhahha: %d\n",dumptrigger);
 		Queue* tempq = &(eoe->q);
 		dump.insert(tempq->old()); // copy the initial entry to dump and let it insert there
 		eofentry* tempe = eoe->next;
@@ -341,5 +342,14 @@ void QofQueue::read(long long int a){
 	}
 	else{
 		printf("Address: %lld, MiniAddress: %d\n",a,minia);
+	}
+}
+
+void QofQueue::clean(){
+	while(eoe != NULL){
+		(eoe->q).clean();
+		eofentry* next = eoe;
+		eoe = eoe->next;
+		free(next);
 	}
 }
