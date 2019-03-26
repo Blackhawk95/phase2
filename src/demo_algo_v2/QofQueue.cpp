@@ -68,10 +68,11 @@ void QofQueue::findMiniAddress(long long a,message* mptr){
 					//prep for message
 					m_ma = i;	
 					m_dump = false; //this indicates, replaced a dump entry
+					//TO.DO for a writeback to memory from dump
+					dumpWriteBack(i);
 				} 	
 			}
 			if(m_dump == false){ // using it as a flag
-				//TO.DO	function - based on age 		
 				//m_ma = createADump(); //should be implemented by QoQ; -- address passing around may work
 				m_ma = performWriteBack();
 				//m_dump = false;
@@ -140,6 +141,40 @@ void QofQueue::writeBack(entry* we){
 	
 }
 
+void QofQueue::dumpWriteBack(int ma){
+	entry* tempe = dump.old();
+	if(tempe == NULL){
+		printf("ERROR: NOT FOUND 1\n");
+		return;
+	}
+	if(tempe->next == NULL && tempe->miniAddress == ma){
+		printf("Writing back to main memory Address : %lld, from DUMP\n",tempe->Address);
+		free(tempe);
+		return;
+	}
+	else if(tempe->next == NULL && tempe->miniAddress != ma){
+		printf("ERROR: NOT FOUND 2\n");
+		return;
+	}
+	while(tempe->next!=NULL){
+		if(tempe->next->miniAddress == ma){
+			//TO.DO BUGGGGGG????????
+			printf("Writing back to main memory Address : %lld, from DUMP, having MA: %d\n",tempe->next->Address,
+				tempe->next->miniAddress);
+			struct entry* tempe2 = tempe->next;
+			tempe->next = tempe2->next;
+			free(tempe2);
+			return;
+		}
+		tempe = tempe->next;
+	}
+	if(tempe->miniAddress == ma){
+		printf("Writing back to main memory Address : %lld, from DUMP\n",tempe->Address);
+		return;
+	}
+	printf("ERROR: NOT FOUND 3 : MIniAddress : %d. tempe->miniAddress = %d\n", ma,tempe->miniAddress);
+	return;
+}
 
 /*
  * Old queue = Entry of Entry
@@ -297,18 +332,21 @@ void QofQueue::dumptriggercheck(){
 	//printf("DumpTrigger: %d\n",dumptrigger);
 	if(dumptrigger >= DUMPLIMIT){
 		//MOVE the eoe's queue to
-		printf("bhhaahhahha: %d\n",dumptrigger);
+		//printf("bhhaahhahha: %d\n",dumptrigger);
 		eofentry* tempe = eoe;
 		eofentry* e = eoe->next;
-		//eoe = e;
-		//printf("A\n");
-		dump.insert((&(tempe->q))->old()); // copy the initial entry to dump and let it insert there
-		//printf("B\n");
-		//eofentry* tempe = eoe->next;
-		//printf("C\n");
+
+		entry* en = (&(tempe->q))->old();
+		entry* tempen = en;
+		while(tempen != NULL){
+			flag[tempen->miniAddress].dump = true;
+			//tempen->miniAddress = -5;
+			tempen = tempen->next;
+		}
+		dump.insert(en); // copy the initial entry to dump and let it insert there
 		eoe = e;
 		//eoe->next = tempe->next;
-		printf("D\n");
+		//printf("D\n");
 		free(tempe);
 	}
 }
@@ -338,7 +376,7 @@ void QofQueue::read(long long int a){
 		return;
 	}
 	minia = tempq->getMiniAddressFromQueue(a);
-	if(minia == -1){
+	if(minia == -1){		
 		printf("data missing in the queue / wrong queue\n");
 	}
 	else if(minia == -2){
@@ -346,7 +384,7 @@ void QofQueue::read(long long int a){
 
 	}
 	else{
-		printf("Address: %lld, MiniAddress: %d\n",a,minia);
+		printf("Address: %lld, MiniAddress: %d\n",a,(true) ? minia : -80085);
 	}
 }
 

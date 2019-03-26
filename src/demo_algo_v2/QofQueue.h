@@ -64,6 +64,7 @@ class QofQueue {
 	void writeBack(entry* we);
 	eofentry* updateQofQueue(eofentry* q);
 	void dumptriggercheck();
+	void dumpWriteBack(int ma);
 	void write(long long a); //use this after findMiniAddress to get ma
 	void read(long long a);
 	void clean();
