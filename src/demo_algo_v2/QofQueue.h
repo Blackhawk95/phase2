@@ -71,7 +71,9 @@ class QofQueue {
 	//QoQueue related ops
 	Queue* old();
 	eofentry* old_eoe();
-
+	//LOGs
+	void logFlag();
+	void logQofqueue();
 };
 
 #endif

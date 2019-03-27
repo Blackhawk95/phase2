@@ -139,6 +139,29 @@ int Queue::getMiniAddressFromQueue(long long int a){
     }
     return m_ma;
 }
+void Queue::clean(){
+    while(remove() != -1){
+        continue;
+    }
+}
+
+void Queue::removeTail(){
+    if(e == NULL){
+        printf("Queue : removeTail() | Error : Queue empty\n");
+        return;
+    }
+    entry* tempe = e;
+    if(e->next==NULL){
+        free(tempe);
+        e = NULL;
+    } 
+    while(tempe->next->next !=NULL){
+        tempe = tempe->next;
+    }
+    entry* tempe2 = tempe->next;
+    tempe->next = NULL;
+    free(tempe2);
+}
 
 bool Queue::isEmpty(){
     if(e == NULL){
@@ -148,8 +171,3 @@ bool Queue::isEmpty(){
         return false;
 }
 
-void Queue::clean(){
-    while(remove() != -1){
-        continue;
-    }
-}

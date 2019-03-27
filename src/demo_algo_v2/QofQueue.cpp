@@ -3,7 +3,7 @@
 #include <cstdio>
 
 #define SIZE 8
-#define THRESHOLD 500
+#define THRESHOLD 1000
 #define DUMPLIMIT 4
 
 QofQueue::QofQueue(){
@@ -30,14 +30,25 @@ void QofQueue::findMiniAddress(long long a,message* mptr){
 	int m_ma = -1;
 
 	bool l_present = false;
+	bool l_dumpfoundflag = false;
 	
 	// Address already on the DRAM
 	for(int i = 0;i< SIZE;i++){
 		if(flag[i].addr == a){
 			//found - so touch corresponding queue TO.DO
-			exists = true;
+			//if a data with same address exist in dump, remove the data from dump and proceed with an insert
+			//instead of touch, also remove the dump entry
+			if(flag[i].dump == true){
+				//This is a hack to remove an element from the queue
+				dump.touch(i);
+				dump.removeTail();
+			}else{
+				exists = true;
+			}
 			m_ma = i;
 			l_present = true;
+			m_taken = true;
+			m_dump = false;
 		} 	
 	}
 
@@ -51,6 +62,7 @@ void QofQueue::findMiniAddress(long long a,message* mptr){
 					//prep for the message				
 					m_ma = i;
 					m_taken = true;
+					m_dump = false;
 					break;
 				} 
 			}
@@ -68,13 +80,18 @@ void QofQueue::findMiniAddress(long long a,message* mptr){
 					//prep for message
 					m_ma = i;	
 					m_dump = false; //this indicates, replaced a dump entry
-					//TO.DO for a writeback to memory from dump
+					m_taken = true;
+					//printf("Address: %lld\n",a);
+					l_dumpfoundflag = true;
 					dumpWriteBack(i);
+					break;
 				} 	
 			}
-			if(m_dump == false){ // using it as a flag
+			if(l_dumpfoundflag != true){ // using it as a flag
 				//m_ma = createADump(); //should be implemented by QoQ; -- address passing around may work
 				m_ma = performWriteBack();
+				m_dump = false;
+				m_taken = true;
 				//m_dump = false;
 			}
 		}
@@ -143,6 +160,7 @@ void QofQueue::writeBack(entry* we){
 
 void QofQueue::dumpWriteBack(int ma){
 	entry* tempe = dump.old();
+	//printf(" dumpWriteBack(%d) ",ma);
 	if(tempe == NULL){
 		printf("ERROR: NOT FOUND 1\n");
 		return;
@@ -150,15 +168,24 @@ void QofQueue::dumpWriteBack(int ma){
 	if(tempe->next == NULL && tempe->miniAddress == ma){
 		printf("Writing back to main memory Address : %lld, from DUMP\n",tempe->Address);
 		free(tempe);
+		dump = Queue();
 		return;
 	}
 	else if(tempe->next == NULL && tempe->miniAddress != ma){
 		printf("ERROR: NOT FOUND 2\n");
 		return;
 	}
+	if(tempe->miniAddress == ma){
+		printf("Writing back to main memory Address : %lld, from DUMP\n",tempe->Address);
+		entry* tempe3 = tempe->next;
+		tempe->Address = tempe3->Address;
+		tempe->miniAddress = tempe3->miniAddress;
+		tempe->next = tempe3->next;
+		free(tempe3);
+		return;
+	}
 	while(tempe->next!=NULL){
 		if(tempe->next->miniAddress == ma){
-			//TO.DO BUGGGGGG????????
 			printf("Writing back to main memory Address : %lld, from DUMP, having MA: %d\n",tempe->next->Address,
 				tempe->next->miniAddress);
 			struct entry* tempe2 = tempe->next;
@@ -172,7 +199,7 @@ void QofQueue::dumpWriteBack(int ma){
 		printf("Writing back to main memory Address : %lld, from DUMP\n",tempe->Address);
 		return;
 	}
-	printf("ERROR: NOT FOUND 3 : MIniAddress : %d. tempe->miniAddress = %d\n", ma,tempe->miniAddress);
+	printf("ERROR: NOT FOUND 3 : MIniAddress : %d tempe->miniAddress = %d \n", ma,tempe->miniAddress);
 	return;
 }
 
@@ -310,7 +337,7 @@ Queue* QofQueue::getQueue(long long int a){
 	for(int i = 0;i< SIZE;i++){
 		if(flag[i].addr == a){
 			if(flag[i].dump == true){
-				printf("Found in Dump\n");
+				//printf("Found in Dump\n");
 				return &dump;
 			}
 		}
@@ -320,7 +347,7 @@ Queue* QofQueue::getQueue(long long int a){
 		//if incoming address exist
 		entry* findq = ((e->q).old());
 		if(findq->Address <= a + THRESHOLD && findq->Address >= a - THRESHOLD){
-			printf("Loop: %lld :%d\n",findq->Address,a);
+			//printf("Loop: %lld :%d\n",findq->Address,a);
 			return &(e->q);
 		}
 		e = e->next;
@@ -343,12 +370,15 @@ void QofQueue::dumptriggercheck(){
 			//tempen->miniAddress = -5;
 			tempen = tempen->next;
 		}
+		//printf("DUMPTRIGGER LOG, MA OF FIRST: %d\n",en->miniAddress);
 		dump.insert(en); // copy the initial entry to dump and let it insert there
 		eoe = e;
 		//eoe->next = tempe->next;
 		//printf("D\n");
 		free(tempe);
+		dumptrigger = 0;
 	}
+	
 }
 
 void QofQueue::write(long long int a){
@@ -356,14 +386,17 @@ void QofQueue::write(long long int a){
 	eofentry* tempq = classForNewData(a);
 	//printf(" Step 1 complete\n");
 	tempq = updateQofQueue(tempq);
+	//printf(" Step 2 complete\n");
 	findMiniAddress(a,&m);
+	//printf(" Step 3 complete\n");
 	//insert data
 	if(exists) //if already existing
 		(&(tempq->q))->touch(m.m_ma);
 	else //else insert
 		(&(tempq->q))->insert(a,m.m_ma);
-	
+	//printf(" Step 4 complete\n");
 	dumptriggercheck();
+	//printf(" Step 5 complete\n");
 
 }
 
@@ -377,14 +410,13 @@ void QofQueue::read(long long int a){
 	}
 	minia = tempq->getMiniAddressFromQueue(a);
 	if(minia == -1){		
-		printf("data missing in the queue / wrong queue\n");
+		printf("data missing in the queue, check / wrong queue\n");
 	}
-	else if(minia == -2){
-		printf("data found in dump\n");
-
+	else if((flag[minia].dump == true)){
+		printf("data found in dump, Address: %lld\n",a);
 	}
 	else{
-		printf("Address: %lld, MiniAddress: %d\n",a,(true) ? minia : -80085);
+		printf("Address: %lld, MiniAddress: %d\n",a,minia);
 	}
 }
 
@@ -395,4 +427,31 @@ void QofQueue::clean(){
 		eoe = eoe->next;
 		free(next);
 	}
+}
+
+void QofQueue::logFlag(){
+	printf("___________________________________\n");
+	printf(" miAdd\tAdd\tDmp\tTkn\n");
+	for (int i = 0;i < SIZE;i++){
+		printf(" %d\t%lld\t%d\t%d\n",i,flag[i].addr,flag[i].dump,flag[i].taken);
+	}
+	printf("___________________________________\n");
+}
+
+void QofQueue::logQofqueue(){
+	printf("___________________________________\n\n");
+	eofentry* tempeoe = eoe;
+	while(tempeoe != NULL){
+		Queue* tempq = &(tempeoe->q);
+		entry* tempe = tempq->old();
+		printf(" #");
+		while(tempe != NULL){
+			printf("-> %d ",tempe->miniAddress);
+			tempe = tempe->next;
+		}
+		printf("\n |\n");
+		tempeoe = tempeoe->next;
+	}
+	printf(" NULL\n");
+	printf("___________________________________\n");
 }

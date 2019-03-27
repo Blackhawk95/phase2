@@ -19,9 +19,11 @@ class Queue{
     int remove();
     entry* old();
     void touch(int ma);
+    void removeTail();
     int getMiniAddressFromQueue(long long int);
+    void clean();
     //flag checks
     bool isEmpty();
-    void clean();
+    
 };
 #endif

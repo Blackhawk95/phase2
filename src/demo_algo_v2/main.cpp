@@ -1,16 +1,25 @@
 #include <iostream>
 //#include "Queue.h"
 #include "QofQueue.h"
+#include "testinput.h"
 
-int arr[9] = {1000,1001,2000,2001,2002,2003,2005,2006,1003};
+//int arr[] = {1000,1001,2000,2001,2002,2003,2005,2006,1003,1004,1005,3001,3002,2003};
 
 int main(){
     QofQueue qoq;
 
-    for(int i = 0;i< 9;i++){
-	    qoq.write(arr[i]);
+    for(int i = 0;i< 100;i++){
+	    qoq.write(arr[i][0]);
+        printf("Number : %d",i);
     }
-    qoq.read(1001);
+    qoq.logFlag();
+    qoq.logQofqueue();
+    /* 
+    for(int i = 0;i< 11;i++){
+	    qoq.read(arr[i]);
+    }
+    */
+    //qoq.read(2006);
     /*
     qoq.write(1000);
     qoq.write(2000);
