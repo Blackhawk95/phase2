@@ -29,9 +29,9 @@ void Queue::insert(long long int a, int ma){
 
         struct entry *head = e;
         while(head->next != NULL){
-            head = head->next;    
+            head = head->next;
         }
-        head->next = node;        
+        head->next = node;
     }
 }
 //insert using entry*
@@ -42,7 +42,7 @@ void Queue::insert(entry* ein){
     else{
         struct entry *head = e;
         while(head->next != NULL){
-            head = head->next;    
+            head = head->next;
         }
         head->next = e;
     }
@@ -70,6 +70,7 @@ int Queue::remove(){
 entry* Queue::old(){
     //printf("Hello Bug C\n");
     if(e == NULL){
+        //printf("Queue : old() | E is NULL\n");
         return NULL;
     }
     else{
@@ -98,18 +99,26 @@ void Queue::touch(int ma){
         node->Address = e->Address;
         node->miniAddress = e->miniAddress;
         node->next = NULL;
-	
-        struct entry* head = e;
-	    e = e->next;
-        free(head);
 
-	    struct entry* second = e;
-        while(second != NULL && second->next != NULL){
-            second = second->next;
+        if(e->next != NULL){
+          struct entry* head = e->next;
+  	      e->Address = head->Address;
+          e->miniAddress = head->miniAddress;
+          e->next = head->next;
+
+          free(head);
+
+  	      struct entry* second = e;
+          while(second != NULL && second->next != NULL){
+              second = second->next;
+          }
+
+          second->next = node;
+          return;
         }
-	
-        second->next = node;
-        return;
+        else{
+          e->next = node;
+        }
     }else{
         struct entry* head = e;
         while(head->next->miniAddress == ma && head->next->next != NULL){
@@ -154,7 +163,7 @@ void Queue::removeTail(){
     if(e->next==NULL){
         free(tempe);
         e = NULL;
-    } 
+    }
     while(tempe->next->next !=NULL){
         tempe = tempe->next;
     }
@@ -170,4 +179,3 @@ bool Queue::isEmpty(){
     else
         return false;
 }
-
