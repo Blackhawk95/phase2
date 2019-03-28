@@ -176,7 +176,7 @@ void QofQueue::dumpWriteBack(int ma){
 		return;
 	}
 	if(tempe->next == NULL && tempe->miniAddress == ma){
-		printf("Writing back to main memory Address : %lld, from DUMP\n",tempe->Address);
+		printf("Writing back to main memory Address <> : %lld, from DUMP (ma = %d)\n",tempe->Address,ma);
 		free(tempe);
 		dump = Queue();
 		return;
@@ -186,7 +186,7 @@ void QofQueue::dumpWriteBack(int ma){
 		return;
 	}
 	if(tempe->miniAddress == ma){
-		printf("Writing back to main memory Address : %lld, from DUMP\n",tempe->Address);
+		printf("Writing back to main memory Address : %lld, from DUMP (ma = %d)\n",tempe->Address,ma);
 		entry* tempe3 = tempe->next;
 		tempe->Address = tempe3->Address;
 		tempe->miniAddress = tempe3->miniAddress;
@@ -300,7 +300,7 @@ eofentry* QofQueue::updateQofQueue(eofentry* ce){
 	//printf(" Flag\n");
 	if(ce !=NULL && ce->next != NULL ){
 		//printf(" Flag A\n");
-		struct eofentry* neweoe = (struct eofentry*)malloc(sizeof(&ce));
+		struct eofentry* neweoe = (struct eofentry*)malloc(sizeof(eofentry));
 		//printf("size of eoe- %ld\n",sizeof(&ce));
 		//create a copy
 		neweoe->q = ce->q;
@@ -417,7 +417,6 @@ void QofQueue::write(long long int a){
 	//printf(" Step 4 complete\n");
 	dumptriggercheck();
 	//printf(" Step 5 complete\n");
-
 }
 
 void QofQueue::read(long long int a){
@@ -471,6 +470,18 @@ void QofQueue::logQofqueue(){
 		}
 		printf("\n |\n");
 		tempeoe = tempeoe->next;
+	}
+	printf(" NULL\n");
+	printf("___________________________________\n");
+}
+
+void QofQueue::logDump(){
+	printf("___________________________________\n\n");
+	entry* tempe = dump.old();
+	printf(" #");
+	while(tempe != NULL)
+		printf("-> %d | %lld",tempe->miniAddress, tempe->Address);
+		tempe = tempe->next;
 	}
 	printf(" NULL\n");
 	printf("___________________________________\n");

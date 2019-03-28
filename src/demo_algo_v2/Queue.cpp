@@ -158,9 +158,10 @@ void Queue::removeTail(){
         return;
     }
     entry* tempe = e;
-    if(e->next==NULL){
+    if(tempe->next==NULL){
         free(tempe);
         e = NULL;
+        return;
     }
     while(tempe->next->next !=NULL){
         tempe = tempe->next;

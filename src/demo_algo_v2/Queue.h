@@ -9,8 +9,8 @@ struct entry{
 
 
 class Queue{
-    
-    entry* e;    
+
+    entry* e;
 
     public:
     Queue();
@@ -24,6 +24,6 @@ class Queue{
     void clean();
     //flag checks
     bool isEmpty();
-    
+
 };
 #endif

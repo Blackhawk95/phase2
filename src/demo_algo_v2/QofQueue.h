@@ -27,7 +27,7 @@ struct message{
 class QofQueue {
 	eofentry* eoe;
 	flagObj flag[SIZE] {};
-	int size; 
+	int size;
 	Queue dump;
 	message m;
 	int dumptrigger; //dumptrigger is trigger to put older queue into dump
@@ -37,21 +37,21 @@ class QofQueue {
 		FUNCTIONS
 			CREATE A CLASS
 			INSERT IN CLASS
-	
-	
-	
+
+
+
 		TO.DO outside this qoq
 			IF IN CLASS
 				GENERATE MINI ADDRESS
 				STORE IN CLASS
 			NOT IN CLASS
 				GENERATE MINI ADDRESS
-				CREATE A CLASS	
-			
+				CREATE A CLASS
+
 	*/
 	QofQueue();
 
-	
+
 
 	//ops
 	void findMiniAddress(long long int a, message* mptr);
@@ -74,6 +74,7 @@ class QofQueue {
 	//LOGs
 	void logFlag();
 	void logQofqueue();
+	void logDump();
 };
 
 #endif

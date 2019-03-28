@@ -1,19 +1,20 @@
 #include <iostream>
 //#include "Queue.h"
 #include "QofQueue.h"
-#include "testinput.h"
-
+//#include "../../dataset/testinput.h"
+#include "../../dataset/hai.h"
+#define INST_SIZE 351
 //int arr[] = {1000,1001,2000,2001,2002,2003,2005,2006,1003,1004,1005,3001,3002,2003};
 
 int main(int argc, char** argv){
     QofQueue qoq;
 
-    for(int i = 0;i< 100;i++){
+    for(int i = 0;i< INST_SIZE;i++){
 	    qoq.write(arr[i][0]);
       //qoq.write(arr[i]);
     }
 
-    //printf("IA : %lld\n",arr[47][0]);
+    printf("IA : %lld\n",arr[INST_SIZE][0]);
     qoq.logFlag();
     qoq.logQofqueue();
     /*
