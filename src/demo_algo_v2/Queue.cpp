@@ -82,58 +82,56 @@ entry* Queue::old(){
 }
 
 void Queue::touch(int ma){
-    if(e == NULL || e->next == NULL){
+    if(e == NULL && e->next == NULL){
         printf("ERROR: Blank Queue");
         return;
     }
     if(e->next == NULL){
-        printf("MSG: Single element Queue\n");
+        //No action required
+        //printf("MSG: Single element Queue\n");
         return;
     }
     if(ma < 0 || ma > 63){
         printf("ERROR: Invalid Mini Address\n");
         return;
     }
-    else if (e->miniAddress == ma){
+    struct entry* tempe = e;
+    while(tempe != NULL && tempe->next != NULL){
+      if (tempe->miniAddress == ma){
         struct entry *node = (struct entry*) malloc(sizeof(entry));
-        node->Address = e->Address;
-        node->miniAddress = e->miniAddress;
+        node->Address = tempe->Address;
+        node->miniAddress = tempe->miniAddress;
         node->next = NULL;
 
-        if(e->next != NULL){
-          struct entry* head = e->next;
-  	      e->Address = head->Address;
-          e->miniAddress = head->miniAddress;
-          e->next = head->next;
+        struct entry* head = tempe->next;
+        tempe->Address = head->Address;
+        tempe->miniAddress = head->miniAddress;
+        tempe->next = head->next;
 
-          free(head);
+        free(head);
 
-  	      struct entry* second = e;
-          while(second != NULL && second->next != NULL){
-              second = second->next;
-          }
+	      struct entry* second = tempe;
+        while(second != NULL && second->next != NULL){
+          second = second->next;
+        }
 
-          second->next = node;
-          return;
-        }
-        else{
-          e->next = node;
-        }
-    }else{
-        struct entry* head = e;
-        while(head->next->miniAddress == ma && head->next->next != NULL){
-            head = head->next;
-        }
-        struct entry* second = head->next;
-        head = head->next->next;
-        while(head->next != NULL){
-            head = head->next;
-        }
-        head->next=second;
-        second->next=NULL;
+        second->next = node;
         return;
+      }
+      tempe = tempe->next;
     }
-    printf("ERROR: Mini Address is missing in the queue\n");
+    if(tempe != NULL || tempe->next != NULL){
+      if(tempe->miniAddress == ma){
+        //No action needed
+        //printf("MSG: Mini Address is last in the queue\n");
+        return;
+      }else{
+        printf("ERROR: Mini Address is missing in the queue\n");
+      }
+    }else{
+      printf("ERROR: Mini Address is missing in the queue\n");
+    }
+
 }
 
 int Queue::getMiniAddressFromQueue(long long int a){

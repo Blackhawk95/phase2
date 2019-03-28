@@ -265,7 +265,7 @@ eofentry* QofQueue::classForNewData(long long int a){
 		entry* findq = ((e->q).old());
 
 		if(findq->Address <= a + THRESHOLD && findq->Address >= a - THRESHOLD){
-			printf("Loop: %lld :%lld\n",findq->Address,a);
+			//printf("Loop: %lld :%lld\n",findq->Address,a);
 			//printf("b");
 			//move the queue to the end/ indicating the update
 
@@ -275,7 +275,7 @@ eofentry* QofQueue::classForNewData(long long int a){
 			else { // else add 1 to the dumptrigger
 				dumptrigger++;
 			}
-			printf("HAHA %d\n",((e->q).old())->miniAddress);
+			//printf("HAHA %d\n",((e->q).old())->miniAddress);
 			return (e);
 		}
 		dumptriggerflag++;
@@ -321,18 +321,18 @@ eofentry* QofQueue::updateQofQueue(eofentry* ce){
 
 		//printf(" Flag D\n");
 		struct eofentry* te = ce;
-
+		/*
 		if(te->next == NULL){
 			printf("FLAG (((())))\n");
 			printf("%llx -> %d\n",neweoe,((neweoe->q).old())->miniAddress);
-		}
+		}*/
 		//connect the copy to end of the eoe queue;
 		while(te->next!=NULL){
 				te = te->next;
 		}
 		//printf(" Flag E\n");
 		te->next = neweoe;
-		printf("%d -- %llx\n",((te->q).old())->miniAddress,ce);
+		//printf("%d -- %llx\n",((te->q).old())->miniAddress,ce);
 		//printf(" Flag F\n");
 		te = te->next;
 		return te;
@@ -406,10 +406,12 @@ void QofQueue::write(long long int a){
 	eofentry* tempq = classForNewData(a);
 	//printf(" Step 2 complete\n");
 	tempq = updateQofQueue(tempq);
-	printf(" Step 3 complete %d\n",m.m_ma);
+	//printf(" Step 3 complete %d\n",m.m_ma);
 	//insert data
-	if(exists) //if already existing
+	if(exists){ //if already existing
 		(&(tempq->q))->touch(m.m_ma);
+		exists = false;
+	}
 	else //else insert
 		(&(tempq->q))->insert(a,m.m_ma);
 	//printf(" Step 4 complete\n");

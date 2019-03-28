@@ -8,12 +8,12 @@
 int main(int argc, char** argv){
     QofQueue qoq;
 
-    for(int i = 0;i< 47;i++){
+    for(int i = 0;i< 100;i++){
 	    qoq.write(arr[i][0]);
       //qoq.write(arr[i]);
     }
 
-    printf("IA : %lld\n",arr[47][0]);
+    //printf("IA : %lld\n",arr[47][0]);
     qoq.logFlag();
     qoq.logQofqueue();
     /*
