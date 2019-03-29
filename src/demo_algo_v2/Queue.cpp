@@ -44,7 +44,7 @@ void Queue::insert(entry* ein){
         while(head->next != NULL){
             head = head->next;
         }
-        head->next = e;
+        head->next = ein;
     }
 }
 
