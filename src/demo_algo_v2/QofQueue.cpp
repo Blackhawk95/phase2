@@ -167,7 +167,7 @@ void QofQueue::writeBack(entry* we){
 	}
 	//printf("QofQueue : writeBack | Flag C\n");
 }
-
+/*
 void QofQueue::dumpWriteBack(int ma){
 	entry* tempe = dump.old();
 	//printf(" dumpWriteBack(%d) ",ma);
@@ -187,6 +187,8 @@ void QofQueue::dumpWriteBack(int ma){
 	}
 	if(tempe->miniAddress == ma){
 		printf("Writing back to main memory Address : %lld, from DUMP (ma = %d)\n",tempe->Address,ma);
+		dump.touch();
+		dump.removeTail();
 		entry* tempe3 = tempe->next;
 		tempe->Address = tempe3->Address;
 		tempe->miniAddress = tempe3->miniAddress;
@@ -207,10 +209,20 @@ void QofQueue::dumpWriteBack(int ma){
 	}
 	if(tempe->miniAddress == ma){
 		printf("Writing back to main memory Address : %lld, from DUMP\n",tempe->Address);
+		dump.removeTail();
 		return;
 	}
 	printf("ERROR: NOT FOUND 3 : MIniAddress : %d tempe->miniAddress = %d \n", ma,tempe->miniAddress);
 	return;
+}*/
+
+/*
+This also works
+*/
+void QofQueue::dumpWriteBack(int ma){
+	printf("Writing back to main memory Address : %lld, from DUMP, having MA: %d\n",0,ma);
+	dump.touch(ma);
+	dump.removeTail();
 }
 
 /*
@@ -479,10 +491,10 @@ void QofQueue::logDump(){
 	printf("___________________________________\n\n");
 	entry* tempe = dump.old();
 	printf(" #");
-	while(tempe != NULL)
-		printf("-> %d | %lld",tempe->miniAddress, tempe->Address);
+	while(tempe != NULL){
+		printf("-> ( %d | %lld )",tempe->miniAddress, tempe->Address);
 		tempe = tempe->next;
 	}
-	printf(" NULL\n");
+	printf(" -> NULL\n");
 	printf("___________________________________\n");
 }
