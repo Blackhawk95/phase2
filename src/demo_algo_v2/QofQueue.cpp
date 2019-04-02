@@ -21,10 +21,10 @@ QofQueue::QofQueue(){
  * directory
  * */
 
-void QofQueue::findMiniAddress(long long a,message* mptr){
+void QofQueue::findMiniAddress(addr_uint a,message* mptr){
 	//printf("QofQueue : findMiniAddress | Flag A\n");
 	//have to convert this into a message format
-	long long m_addr = a;
+	addr_uint m_addr = a;
 	bool m_taken = false;
 	bool m_dump = false;
 	int m_ma = -1;
@@ -83,7 +83,7 @@ void QofQueue::findMiniAddress(long long a,message* mptr){
 					m_ma = i;
 					m_dump = false; //this indicates, replaced a dump entry
 					m_taken = true;
-					//printf("Address: %lld\n",a);
+					//printf("Address: " " PRINTADD " "\n",a);
 					l_dumpfoundflag = true;
 					dumpWriteBack(i);
 					break;
@@ -151,7 +151,7 @@ int QofQueue::performWriteBack(){
  * */
 
 void QofQueue::writeBack(entry* we){
-	printf("Writing back to main memory Address : %lld, from MA: %d\n",we->Address,we->miniAddress);
+	printf("Writing back to main memory Address : " PRINTADD ", from MA: %d\n",we->Address,we->miniAddress);
 	//printf("QofQueue : writeBack | Flag A.1\n");
 	int fl = old()->remove();
 	//printf("QofQueue : writeBack | Flag A.2\n");
@@ -176,7 +176,7 @@ void QofQueue::dumpWriteBack(int ma){
 		return;
 	}
 	if(tempe->next == NULL && tempe->miniAddress == ma){
-		printf("Writing back to main memory Address <> : %lld, from DUMP (ma = %d)\n",tempe->Address,ma);
+		printf("Writing back to main memory Address <> : " PRINTADD ", from DUMP (ma = %d)\n",tempe->Address,ma);
 		free(tempe);
 		dump = Queue();
 		return;
@@ -186,7 +186,7 @@ void QofQueue::dumpWriteBack(int ma){
 		return;
 	}
 	if(tempe->miniAddress == ma){
-		printf("Writing back to main memory Address : %lld, from DUMP (ma = %d)\n",tempe->Address,ma);
+		printf("Writing back to main memory Address : " PRINTADD ", from DUMP (ma = %d)\n",tempe->Address,ma);
 		//dump.touch();
 		//dump.removeTail();
 		entry* tempe3 = tempe->next;
@@ -200,7 +200,7 @@ void QofQueue::dumpWriteBack(int ma){
 	printf("BLAAHH\n");
 	while(tempe->next!=NULL){
 		if(tempe->next->miniAddress == ma){
-			printf("Writing back to main memory Address : %lld, from DUMP, having MA: %d\n",tempe->next->Address,
+			printf("Writing back to main memory Address : " PRINTADD ", from DUMP, having MA: %d\n",tempe->next->Address,
 				tempe->next->miniAddress);
 			struct entry* tempe2 = tempe->next;
 			tempe->next = tempe2->next;
@@ -210,7 +210,7 @@ void QofQueue::dumpWriteBack(int ma){
 		tempe = tempe->next;
 	}
 	if(tempe->miniAddress == ma){
-		printf("Writing back to main memory Address : %lld, from DUMP\n",tempe->Address);
+		printf("Writing back to main memory Address : " PRINTADD ", from DUMP\n",tempe->Address);
 		dump.removeTail();
 		return;
 	}
@@ -222,7 +222,7 @@ void QofQueue::dumpWriteBack(int ma){
 This also works
 
 void QofQueue::dumpWriteBack(int ma){
-	printf("Writing back to main memory Address : %lld, from DUMP, having MA: %d\n",0,ma);
+	printf("Writing back to main memory Address : " PRINTADD ", from DUMP, having MA: %d\n",0,ma);
 	dump.touch(ma);
 	dump.removeTail();
 }*/
@@ -258,7 +258,7 @@ void QofQueue::initEoE(){
 	eoe->next = NULL;
 }
 
-eofentry* QofQueue::classForNewData(long long int a){
+eofentry* QofQueue::classForNewData(addr_uint a){
 	/*	find the right class
 	if class doesn't exist
 		make one
@@ -275,11 +275,11 @@ eofentry* QofQueue::classForNewData(long long int a){
 	}
 	while(e != NULL){
 		//if incoming address exist
-		//printf("\t\t Problem after queue movement : %lld \t\n",(e->q).old()->Address);
+		//printf("\t\t Problem after queue movement : " PRINTADD " \t\n",(e->q).old()->Address);
 		entry* findq = ((e->q).old());
 
 		if(findq->Address <= a + THRESHOLD && findq->Address >= a - THRESHOLD){
-			//printf("Loop: %lld :%lld\n",findq->Address,a);
+			//printf("Loop: " PRINTADD " :" PRINTADD "\n",findq->Address,a);
 			//printf("b");
 			//move the queue to the end/ indicating the update
 
@@ -357,7 +357,7 @@ eofentry* QofQueue::updateQofQueue(eofentry* ce){
 }
 
 
-Queue* QofQueue::getQueue(long long int a){
+Queue* QofQueue::getQueue(addr_uint a){
 	// just return the queue
 
 	struct eofentry* e = eoe;
@@ -379,7 +379,7 @@ Queue* QofQueue::getQueue(long long int a){
 		//if incoming address exist
 		entry* findq = ((e->q).old());
 		if(findq->Address <= a + THRESHOLD && findq->Address >= a - THRESHOLD){
-			//printf("Loop: %lld :%d\n",findq->Address,a);
+			//printf("Loop: " PRINTADD " :%d\n",findq->Address,a);
 			return &(e->q);
 		}
 		e = e->next;
@@ -413,7 +413,7 @@ void QofQueue::dumptriggercheck(){
 
 }
 
-void QofQueue::write(long long int a){
+void QofQueue::write(addr_uint a){
 
 	findMiniAddress(a,&m);
 	//printf(" Step 1 complete\n");
@@ -434,7 +434,7 @@ void QofQueue::write(long long int a){
 	//printf(" Step 5 complete\n");
 }
 
-void QofQueue::read(long long int a){
+void QofQueue::read(addr_uint a){
 
 	int minia=0;
 	Queue* tempq = getQueue(a);
@@ -447,10 +447,10 @@ void QofQueue::read(long long int a){
 		//printf("data missing in the queue, check / wrong queue\n");
 	}
 	else if((flag[minia].dump == true)){
-		//printf("data found in dump, Address: %lld\n",a);
+		//printf("data found in dump, Address: " PRINTADD "\n",a);
 	}
 	else{
-		//printf("Address: %lld, MiniAddress: %d\n",a,minia);
+		//printf("Address: " PRINTADD ", MiniAddress: %d\n",a,minia);
 	}
 }
 
@@ -467,7 +467,7 @@ void QofQueue::logFlag(){
 	printf("___________________________________\n");
 	printf(" miAdd\tAdd\tDmp\tTkn\n");
 	for (int i = 0;i < SIZE;i++){
-		printf(" %d\t%lld\t%d\t%d\n",i,flag[i].addr,flag[i].dump,flag[i].taken);
+		printf(" %d\t" PRINTADD "\t%d\t%d\n",i,flag[i].addr,flag[i].dump,flag[i].taken);
 	}
 	printf("___________________________________\n");
 }
@@ -495,7 +495,7 @@ void QofQueue::logDump(){
 	entry* tempe = dump.old();
 	printf(" #");
 	while(tempe != NULL){
-		printf("-> ( %d | %lld )",tempe->miniAddress, tempe->Address);
+		printf("-> ( %d | " PRINTADD " )",tempe->miniAddress, tempe->Address);
 		tempe = tempe->next;
 	}
 	printf(" -> NULL\n");

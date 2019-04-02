@@ -11,13 +11,13 @@ struct eofentry{
 };
 
 struct flagObj{
-	long long int addr;
+	addr_uint addr;
 	bool taken;
 	bool dump;
 };
 
 struct message{
-	long long int m_addr;
+	addr_uint m_addr;
 	int m_ma;
 	bool m_taken;
 	bool m_dump;
@@ -54,19 +54,19 @@ class QofQueue {
 
 
 	//ops
-	void findMiniAddress(long long int a, message* mptr);
+	void findMiniAddress(addr_uint a, message* mptr);
 	void updateFlag();
 	int createADump();
-	eofentry* classForNewData(long long int a); //if empty, make a new
+	eofentry* classForNewData(addr_uint a); //if empty, make a new
 	void initEoE();
-	Queue* getQueue(long long int a);
+	Queue* getQueue(addr_uint a);
 	int performWriteBack();
 	void writeBack(entry* we);
 	eofentry* updateQofQueue(eofentry* q);
 	void dumptriggercheck();
 	void dumpWriteBack(int ma);
-	void write(long long a); //use this after findMiniAddress to get ma
-	void read(long long a);
+	void write(addr_uint a); //use this after findMiniAddress to get ma
+	void read(addr_uint a);
 	void clean();
 	//QoQueue related ops
 	Queue* old();

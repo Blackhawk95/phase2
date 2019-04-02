@@ -9,12 +9,19 @@
 int main(int argc, char** argv){
     QofQueue qoq;
 
-    for(int i = 0;i< INST_SIZE;i++){
-	    qoq.write(arr[i][0]);
-      //qoq.write(arr[i]);
+    //int arrn[sizeof(arr)/16];
+
+    //taking the last 16 bits only - Hashing
+    for(int i = 0;i < INST_SIZE;i++){
+      arr[i][0] = (int)(arr[i][0] & 0xFFFF);
     }
 
-    printf("IA : %lld\n",arr[INST_SIZE][0]);
+    for(int i = 0;i< INST_SIZE;i++){
+	    qoq.write(arr[i][0]);
+      //qoq.write(arrn[i]);
+    }
+
+    printf("IA : " PRINTADD "\n",arr[INST_SIZE][0]);
     qoq.logFlag();
     qoq.logQofqueue();
     qoq.logDump();

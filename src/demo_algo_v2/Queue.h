@@ -1,12 +1,16 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
+#define PRINTADD "%d"
+
+
+typedef /*long long int*/ int addr_uint;
+
 struct entry{
-    long long int Address;
+    addr_uint Address;
     int miniAddress;
     entry* next;
 };
-
 
 class Queue{
 
@@ -14,13 +18,13 @@ class Queue{
 
     public:
     Queue();
-    void insert(long long int a,int ma);
+    void insert(addr_uint a,int ma);
     void insert(entry*);
     int remove();
     entry* old();
     void touch(int ma);
     void removeTail();
-    int getMiniAddressFromQueue(long long int);
+    int getMiniAddressFromQueue(addr_uint);
     void clean();
     //flag checks
     bool isEmpty();

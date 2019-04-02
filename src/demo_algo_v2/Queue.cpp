@@ -10,7 +10,7 @@ Queue::Queue(){
         e = NULL;
 }
 
-void Queue::insert(long long int a, int ma){
+void Queue::insert(addr_uint a, int ma){
     if(e == NULL){
         //printf("Hello Bug\n");
         struct entry *node = (struct entry*) malloc(sizeof(struct entry));
@@ -75,7 +75,7 @@ entry* Queue::old(){
     }
     else{
         struct entry *head = e;
-        //printf("%lld ",head->Address);
+        //printf("" PRINTADD " ",head->Address);
         //printf("%d\n",head->miniAddress);
         return head;
     }
@@ -134,11 +134,11 @@ void Queue::touch(int ma){
 
 }
 
-int Queue::getMiniAddressFromQueue(long long int a){
+int Queue::getMiniAddressFromQueue(addr_uint a){
     int m_ma = -1;
     struct entry* ea = e;
     while(ea != NULL){
-        //printf(" getMiniAddressFromQueue Address in queue:  %lld Address looking for: %lld\n",ea->Address, a);
+        //printf(" getMiniAddressFromQueue Address in queue:  " PRINTADD " Address looking for: " PRINTADD "\n",ea->Address, a);
         if(ea->Address == a){
             m_ma = ea->miniAddress;
         }
