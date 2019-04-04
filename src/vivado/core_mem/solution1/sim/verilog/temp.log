@@ -1,0 +1,70 @@
+
+D:\Workspace\phase2\src\vivado\core_mem\solution1\sim\verilog>set PATH= 
+
+D:\Workspace\phase2\src\vivado\core_mem\solution1\sim\verilog>call D:/Xilinx/Vivado/2018.3/bin/xelab xil_defaultlib.apatb_mem_top glbl -prj mem.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm --initfile "D:/Xilinx/Vivado/2018.3/data/xsim/ip/xsim_ip.ini" --lib "ieee_proposed=./ieee_proposed" -s mem  
+INFO: [XSIM 43-3496] Using init file passed via -initfile option "D:/Xilinx/Vivado/2018.3/data/xsim/ip/xsim_ip.ini".
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.apatb_mem_top glbl -prj mem.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm --initfile D:/Xilinx/Vivado/2018.3/data/xsim/ip/xsim_ip.ini --lib ieee_proposed=./ieee_proposed -s mem 
+Multi-threading is on. Using 2 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/phase2/src/vivado/core_mem/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/phase2/src/vivado/core_mem/solution1/sim/verilog/AESL_axi_slave_CRTL_BUS.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_slave_CRTL_BUS
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/phase2/src/vivado/core_mem/solution1/sim/verilog/mem.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_mem_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/phase2/src/vivado/core_mem/solution1/sim/verilog/mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/phase2/src/vivado/core_mem/solution1/sim/verilog/mem_CRTL_BUS_s_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_CRTL_BUS_s_axi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/phase2/src/vivado/core_mem/solution1/sim/verilog/mem_dram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_dram_ram
+INFO: [VRFC 10-311] analyzing module mem_dram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/phase2/src/vivado/core_mem/solution1/sim/verilog/mem_nvm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_nvm_ram
+INFO: [VRFC 10-311] analyzing module mem_nvm
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.mem_nvm_ram
+Compiling module xil_defaultlib.mem_nvm(DataWidth=8,AddressRange...
+Compiling module xil_defaultlib.mem_dram_ram
+Compiling module xil_defaultlib.mem_dram(DataWidth=8,AddressRang...
+Compiling module xil_defaultlib.mem_CRTL_BUS_s_axi
+Compiling module xil_defaultlib.mem
+Compiling module xil_defaultlib.AESL_axi_slave_CRTL_BUS
+Compiling module xil_defaultlib.apatb_mem_top
+Compiling module work.glbl
+Built simulation snapshot mem
+
+****** Webtalk v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source D:/Workspace/phase2/src/vivado/core_mem/solution1/sim/verilog/xsim.dir/mem/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Wed Apr  3 12:27:51 2019...
+
+****** xsim v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/mem/xsim_script.tcl
+# xsim {mem} -autoloadwcfg -tclbatch {mem.tcl}
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source mem.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 2 [0.00%] @ "125000"
+// RTL Simulation : 0 / 2 [1000000000.00%] @ "100000145000"
+// RTL Simulation : 0 / 2 [2000000100.00%] @ "200000155000"
+// RTL Simulation : 0 / 2 [3000000200.00%] @ "300000165000"

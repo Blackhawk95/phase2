@@ -1,0 +1,13 @@
+16:30:58 **** Incremental Build of configuration Debug for project testMemory ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building target: testMemory.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -L"D:\Xilinx\Vivado\2018.3\include\" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory.elf"  ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+arm-none-eabi-g++: fatal error: no input files
+compilation terminated.
+make: *** [makefile:53: testMemory.elf] Error 1
+
+16:30:59 Build Finished (took 506ms)
+

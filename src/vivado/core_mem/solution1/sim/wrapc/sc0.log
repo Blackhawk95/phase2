@@ -1,0 +1,5 @@
+   Build using "D:/Xilinx/Vivado/2018.3/msys64/mingw64/bin/g++"
+   Compiling maincode.cpp_pre.cpp.tb.cpp
+   Compiling test.cpp_pre.cpp.tb.cpp
+   Compiling apatb_mem.cpp
+   Generating cosim.tv.exe

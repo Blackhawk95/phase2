@@ -5,6 +5,7 @@
 #define SIZE 8
 #define THRESHOLD 500
 #define DUMPLIMIT 4
+#define PRINTLOG //
 
 QofQueue::QofQueue(){
 	eoe = NULL;
@@ -21,7 +22,7 @@ QofQueue::QofQueue(){
  * directory
  * */
 
-void QofQueue::findMiniAddress(addr_uint a,message* mptr){
+void QofQueue::findMiniAddress(addr_uint a,message* mptr,mes_mem* signal){
 	//printf("QofQueue : findMiniAddress | Flag A\n");
 	//have to convert this into a message format
 	addr_uint m_addr = a;
@@ -85,14 +86,14 @@ void QofQueue::findMiniAddress(addr_uint a,message* mptr){
 					m_taken = true;
 					//printf("Address: " " PRINTADD " "\n",a);
 					l_dumpfoundflag = true;
-					dumpWriteBack(i);
+					dumpWriteBack(i,signal);
 					break;
 				}
 			}
 			//printf("QofQueue : findMiniAddress | Flag E\n");
 			if(l_dumpfoundflag != true){ // using it as a flag
 				//m_ma = createADump(); //should be implemented by QoQ; -- address passing around may work
-				m_ma = performWriteBack();
+				m_ma = performWriteBack(signal);
 				m_dump = false;
 				m_taken = true;
 				//m_dump = false;
@@ -135,13 +136,13 @@ int QofQueue::createADump(){
  * and returns its mini address
  * */
 
-int QofQueue::performWriteBack(){
+int QofQueue::performWriteBack(mes_mem* signal){
 	int tempma;
 	//printf("QofQueue : performWriteBack | Flag A\n");
 	struct entry* temp = old()->old();
 	tempma = temp->miniAddress;
 	//printf("QofQueue : performWriteBack | Flag B\n");
-	writeBack(temp);
+	writeBack(temp,signal);
 	//printf("QofQueue : performWriteBack | Flag C\n");
 	return tempma;
 }
@@ -150,8 +151,11 @@ int QofQueue::performWriteBack(){
  * This is a temporary writeback function - for now it prints only
  * */
 
-void QofQueue::writeBack(entry* we){
-	printf("Writing back to main memory Address : " PRINTADD ", from MA: %d\n",we->Address,we->miniAddress);
+void QofQueue::writeBack(entry* we,mes_mem* signal){
+	PRINTLOG printf("Writing back to main memory Address : " PRINTADD ", from MA: %d\n",we->Address,we->miniAddress);
+	signal->mmA = we->Address;
+	signal->ma = we->miniAddress;
+	signal->writeBack = true;
 	//printf("QofQueue : writeBack | Flag A.1\n");
 	int fl = old()->remove();
 	//printf("QofQueue : writeBack | Flag A.2\n");
@@ -168,7 +172,7 @@ void QofQueue::writeBack(entry* we){
 	//printf("QofQueue : writeBack | Flag C\n");
 }
 
-void QofQueue::dumpWriteBack(int ma){
+void QofQueue::dumpWriteBack(int ma,mes_mem* signal){
 	entry* tempe = dump.old();
 	//printf(" dumpWriteBack(%d) ",ma);
 	if(tempe == NULL){
@@ -176,7 +180,10 @@ void QofQueue::dumpWriteBack(int ma){
 		return;
 	}
 	if(tempe->next == NULL && tempe->miniAddress == ma){
-		printf("Writing back to main memory Address <> : " PRINTADD ", from DUMP (ma = %d)\n",tempe->Address,ma);
+		PRINTLOG printf("Writing back to main memory Address <> : " PRINTADD ", from DUMP (ma = %d)\n",tempe->Address,ma);
+		signal->mmA = tempe->Address;
+		signal->ma = ma;
+		signal->writeBack = true;
 		free(tempe);
 		dump = Queue();
 		return;
@@ -186,22 +193,25 @@ void QofQueue::dumpWriteBack(int ma){
 		return;
 	}
 	if(tempe->miniAddress == ma){
-		printf("Writing back to main memory Address : " PRINTADD ", from DUMP (ma = %d)\n",tempe->Address,ma);
-		//dump.touch();
-		//dump.removeTail();
+		PRINTLOG printf("Writing back to main memory Address : " PRINTADD ", from DUMP (ma = %d)\n",tempe->Address,ma);
+		signal->mmA = tempe->Address;
+		signal->ma = ma;
+		signal->writeBack = true;
 		entry* tempe3 = tempe->next;
 		tempe->Address = tempe3->Address;
 		tempe->miniAddress = tempe3->miniAddress;
 		tempe->next = tempe3->next;
 		free(tempe3);
-		//logDump();
 		return;
 	}
-	printf("BLAAHH\n");
+	//printf("BLAAHH\n");
 	while(tempe->next!=NULL){
 		if(tempe->next->miniAddress == ma){
-			printf("Writing back to main memory Address : " PRINTADD ", from DUMP, having MA: %d\n",tempe->next->Address,
-				tempe->next->miniAddress);
+			PRINTLOG printf("Writing back to main memory Address : " PRINTADD ", from DUMP, having MA: %d\n",tempe->next->Address,
+			PRINTLOG	tempe->next->miniAddress);
+			signal->mmA = tempe->next->Address;
+			signal->ma = ma;
+			signal->writeBack = true;
 			struct entry* tempe2 = tempe->next;
 			tempe->next = tempe2->next;
 			free(tempe2);
@@ -210,7 +220,10 @@ void QofQueue::dumpWriteBack(int ma){
 		tempe = tempe->next;
 	}
 	if(tempe->miniAddress == ma){
-		printf("Writing back to main memory Address : " PRINTADD ", from DUMP\n",tempe->Address);
+		PRINTLOG printf("Writing back to main memory Address : " PRINTADD ", from DUMP\n",tempe->Address);
+		signal->mmA = tempe->Address;
+		signal->ma = ma;
+		signal->writeBack = true;
 		dump.removeTail();
 		return;
 	}
@@ -413,9 +426,9 @@ void QofQueue::dumptriggercheck(){
 
 }
 
-void QofQueue::write(addr_uint a){
+void QofQueue::write(addr_uint a,mes_mem* signal){
 
-	findMiniAddress(a,&m);
+	findMiniAddress(a,&m,signal);
 	//printf(" Step 1 complete\n");
 	eofentry* tempq = classForNewData(a);
 	//printf(" Step 2 complete\n");

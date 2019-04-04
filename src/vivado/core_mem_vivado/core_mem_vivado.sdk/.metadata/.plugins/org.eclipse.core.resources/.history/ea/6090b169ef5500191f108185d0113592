@@ -1,0 +1,13 @@
+/*
+ * Empty C++ Application
+ */
+
+#include <xparameters.h>
+#include <xmem.h>
+#include "platform.h"
+
+int main()
+{
+	init_platform();
+	return 0;
+}

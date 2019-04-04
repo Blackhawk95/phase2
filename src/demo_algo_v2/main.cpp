@@ -3,11 +3,13 @@
 #include "QofQueue.h"
 //#include "../../dataset/testinput.h"
 #include "../../dataset/hai.h"
+#include "mes_mem.h"
 #define INST_SIZE 50000
 //int arr[] = {1000,1001,2000,2001,2002,2003,2005,2006,1003,1004,1005,3001,3002,2003};
 
 int main(int argc, char** argv){
     QofQueue qoq;
+    mes_mem signal;
 
     //int arrn[sizeof(arr)/16];
 
@@ -17,8 +19,14 @@ int main(int argc, char** argv){
     }
 
     for(int i = 0;i< INST_SIZE;i++){
-	    qoq.write(arr[i][0]);
+	    qoq.write(arr[i][0],&signal);
       //qoq.write(arrn[i]);
+
+      //this handles only writebacks- TO.DO handle normal writes
+      if(signal.writeBack){
+      printf("MA %d, WriteBackAddress: %d, NewAddress: %d\n",signal.ma,signal.mmA,arr[i][0]);
+      signal.writeBack = false;
+      }
     }
 
     printf("IA : " PRINTADD "\n",arr[INST_SIZE][0]);

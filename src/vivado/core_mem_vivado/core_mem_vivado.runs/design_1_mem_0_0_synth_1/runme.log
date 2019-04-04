@@ -1,0 +1,543 @@
+
+*** Running vivado
+    with args -log design_1_mem_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_mem_0_0.tcl
+
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source design_1_mem_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/Workspace/phase2/src/vivado/core_mem'.
+WARNING: [IP_Flow 19-3656] If you move the project, the path for repository 'd:/Workspace/phase2/src/vivado/core_mem' may become invalid. A better location for the repository would be in a path adjacent to the project. (Current project location is 'd:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.runs/design_1_mem_0_0_synth_1'.)
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2018.3/data/ip'.
+update_ip_catalog: Time (s): cpu = 00:00:04 ; elapsed = 00:00:12 . Memory (MB): peak = 276.289 ; gain = 27.629
+Command: synth_design -top design_1_mem_0_0 -part xc7z020clg484-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 4040 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:11 . Memory (MB): peak = 394.836 ; gain = 99.695
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'design_1_mem_0_0' [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ip/design_1_mem_0_0/synth/design_1_mem_0_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'mem' [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem.v:12]
+	Parameter ap_ST_fsm_state1 bound to: 2'b01 
+	Parameter ap_ST_fsm_state2 bound to: 2'b10 
+	Parameter C_S_AXI_CRTL_BUS_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_CRTL_BUS_ADDR_WIDTH bound to: 6 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_CRTL_BUS_WSTRB_WIDTH bound to: 4 - type: integer 
+	Parameter C_S_AXI_WSTRB_WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem.v:69]
+INFO: [Synth 8-6157] synthesizing module 'mem_nvm' [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_nvm.v:46]
+	Parameter DataWidth bound to: 8 - type: integer 
+	Parameter AddressRange bound to: 65536 - type: integer 
+	Parameter AddressWidth bound to: 16 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'mem_nvm_ram' [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_nvm.v:9]
+	Parameter DWIDTH bound to: 8 - type: integer 
+	Parameter AWIDTH bound to: 16 - type: integer 
+	Parameter MEM_SIZE bound to: 65536 - type: integer 
+INFO: [Synth 8-5534] Detected attribute (* ram_style = "block" *) [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_nvm.v:22]
+INFO: [Synth 8-3876] $readmem data file './mem_nvm_ram.dat' is read successfully [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_nvm.v:25]
+INFO: [Synth 8-6155] done synthesizing module 'mem_nvm_ram' (1#1) [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_nvm.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'mem_nvm' (2#1) [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_nvm.v:46]
+INFO: [Synth 8-6157] synthesizing module 'mem_dram' [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_dram.v:46]
+	Parameter DataWidth bound to: 8 - type: integer 
+	Parameter AddressRange bound to: 64 - type: integer 
+	Parameter AddressWidth bound to: 6 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'mem_dram_ram' [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_dram.v:9]
+	Parameter DWIDTH bound to: 8 - type: integer 
+	Parameter AWIDTH bound to: 6 - type: integer 
+	Parameter MEM_SIZE bound to: 64 - type: integer 
+INFO: [Synth 8-5534] Detected attribute (* ram_style = "block" *) [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_dram.v:22]
+INFO: [Synth 8-3876] $readmem data file './mem_dram_ram.dat' is read successfully [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_dram.v:25]
+INFO: [Synth 8-6155] done synthesizing module 'mem_dram_ram' (3#1) [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_dram.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'mem_dram' (4#1) [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_dram.v:46]
+INFO: [Synth 8-6157] synthesizing module 'mem_CRTL_BUS_s_axi' [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_CRTL_BUS_s_axi.v:9]
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 6 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter ADDR_AP_CTRL bound to: 6'b000000 
+	Parameter ADDR_GIE bound to: 6'b000100 
+	Parameter ADDR_IER bound to: 6'b001000 
+	Parameter ADDR_ISR bound to: 6'b001100 
+	Parameter ADDR_A_V_DATA_0 bound to: 6'b010000 
+	Parameter ADDR_A_V_CTRL bound to: 6'b010100 
+	Parameter ADDR_MA_V_DATA_0 bound to: 6'b011000 
+	Parameter ADDR_MA_V_CTRL bound to: 6'b011100 
+	Parameter ADDR_DATA_V_I_DATA_0 bound to: 6'b100000 
+	Parameter ADDR_DATA_V_I_CTRL bound to: 6'b100100 
+	Parameter ADDR_DATA_V_O_DATA_0 bound to: 6'b101000 
+	Parameter ADDR_DATA_V_O_CTRL bound to: 6'b101100 
+	Parameter ADDR_FLAG_V_DATA_0 bound to: 6'b110000 
+	Parameter ADDR_FLAG_V_CTRL bound to: 6'b110100 
+	Parameter WRIDLE bound to: 2'b00 
+	Parameter WRDATA bound to: 2'b01 
+	Parameter WRRESP bound to: 2'b10 
+	Parameter WRRESET bound to: 2'b11 
+	Parameter RDIDLE bound to: 2'b00 
+	Parameter RDDATA bound to: 2'b01 
+	Parameter RDRESET bound to: 2'b10 
+	Parameter ADDR_BITS bound to: 6 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_CRTL_BUS_s_axi.v:233]
+INFO: [Synth 8-6155] done synthesizing module 'mem_CRTL_BUS_s_axi' (5#1) [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_CRTL_BUS_s_axi.v:9]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem.v:314]
+INFO: [Synth 8-6155] done synthesizing module 'mem' (6#1) [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_mem_0_0' (7#1) [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ip/design_1_mem_0_0/synth/design_1_mem_0_0.v:58]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[31]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[30]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[29]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[28]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[27]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[26]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[25]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[24]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[23]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[22]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[21]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[20]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[19]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[18]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[17]
+WARNING: [Synth 8-3331] design mem_CRTL_BUS_s_axi has unconnected port WDATA[16]
+WARNING: [Synth 8-3331] design mem_dram has unconnected port reset
+WARNING: [Synth 8-3331] design mem_nvm has unconnected port reset
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:15 . Memory (MB): peak = 473.273 ; gain = 178.133
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:16 . Memory (MB): peak = 473.273 ; gain = 178.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:16 . Memory (MB): peak = 473.273 ; gain = 178.133
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ip/design_1_mem_0_0/constraints/mem_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [d:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.srcs/sources_1/bd/design_1/ip/design_1_mem_0_0/constraints/mem_ooc.xdc] for cell 'inst'
+Parsing XDC File [D:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.runs/design_1_mem_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [D:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.runs/design_1_mem_0_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 821.113 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 821.113 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.579 . Memory (MB): peak = 822.617 ; gain = 1.504
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:28 ; elapsed = 00:00:48 . Memory (MB): peak = 822.617 ; gain = 527.477
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:28 ; elapsed = 00:00:48 . Memory (MB): peak = 822.617 ; gain = 527.477
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for inst. (constraint file  D:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.runs/design_1_mem_0_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:48 . Memory (MB): peak = 822.617 ; gain = 527.477
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'wstate_reg' in module 'mem_CRTL_BUS_s_axi'
+INFO: [Synth 8-802] inferred FSM for state register 'rstate_reg' in module 'mem_CRTL_BUS_s_axi'
+INFO: [Synth 8-5544] ROM "wnext" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "wnext" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-5583] The signal ram_reg is implemented as block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The depth (6 address bits) is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                             0001 |                               11
+*
+                  WRIDLE |                             0010 |                               00
+                  WRDATA |                             0100 |                               01
+                  WRRESP |                             1000 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'wstate_reg' using encoding 'one-hot' in module 'mem_CRTL_BUS_s_axi'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              001 |                               10
+*
+                  RDIDLE |                              010 |                               00
+                  RDDATA |                              100 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'rstate_reg' using encoding 'one-hot' in module 'mem_CRTL_BUS_s_axi'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:29 ; elapsed = 00:00:50 . Memory (MB): peak = 822.617 ; gain = 527.477
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 2     
+	                8 Bit    Registers := 6     
+	                6 Bit    Registers := 1     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 11    
++---RAMs : 
+	             512K Bit         RAMs := 1     
+	              512 Bit         RAMs := 1     
++---Muxes : 
+	  11 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 5     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 3     
+	   3 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 2     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module mem_nvm_ram 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
++---RAMs : 
+	             512K Bit         RAMs := 1     
+Module mem_dram_ram 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
++---RAMs : 
+	              512 Bit         RAMs := 1     
+Module mem_CRTL_BUS_s_axi 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 1     
+	                8 Bit    Registers := 4     
+	                6 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 9     
++---Muxes : 
+	  11 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 3     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 3     
+	   3 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 2     
+Module mem 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 2     
+	   4 Input      2 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[31]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[30]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[29]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[28]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[27]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[26]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[25]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[24]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[23]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[22]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[21]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[20]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[19]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[18]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[17]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WDATA[16]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WSTRB[3]
+WARNING: [Synth 8-3331] design mem has unconnected port s_axi_CRTL_BUS_WSTRB[2]
+INFO: [Synth 8-5583] The signal dram_U/mem_dram_ram_U/ram_reg is implemented as block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The depth (6 address bits) is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[16]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[17]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[17]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[18]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[18]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[19]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[19]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[20]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[20]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[21]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[21]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[22]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[22]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[23]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[23]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[24]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[24]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[25]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[25]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[26]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[26]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[27]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[27]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[28]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[28]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[29]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[29]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[30]'
+INFO: [Synth 8-3886] merging instance 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[30]' (FDE) to 'inst/mem_CRTL_BUS_s_axi_U/rdata_reg[31]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/\mem_CRTL_BUS_s_axi_U/rdata_reg[31] )
+WARNING: [Synth 8-3332] Sequential element (mem_CRTL_BUS_s_axi_U/FSM_onehot_wstate_reg[0]) is unused and will be removed from module mem.
+WARNING: [Synth 8-3332] Sequential element (mem_CRTL_BUS_s_axi_U/FSM_onehot_rstate_reg[0]) is unused and will be removed from module mem.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:00:53 . Memory (MB): peak = 822.617 ; gain = 527.477
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping  Report (see note below)
++--------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name   | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++--------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|mem_nvm_ram:  | ram_reg    | 64 K x 8(READ_FIRST)   | W | R |                        |   |   | Port A           | 0      | 16     | 
+|mem_dram_ram: | ram_reg    | 64 x 8(READ_FIRST)     | W | R |                        |   |   | Port A           | 1      | 0      | 
++--------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6837] The timing for the instance inst/i_1/nvm_U/mem_nvm_ram_U/ram_reg_1_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/i_1/nvm_U/mem_nvm_ram_U/ram_reg_1_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/i_1/nvm_U/mem_nvm_ram_U/ram_reg_1_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/i_1/nvm_U/mem_nvm_ram_U/ram_reg_1_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/i_1/nvm_U/mem_nvm_ram_U/ram_reg_1_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/i_1/nvm_U/mem_nvm_ram_U/ram_reg_1_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/i_1/nvm_U/mem_nvm_ram_U/ram_reg_1_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/i_1/nvm_U/mem_nvm_ram_U/ram_reg_1_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/i_2/dram_U/mem_dram_ram_U/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:50 ; elapsed = 00:01:12 . Memory (MB): peak = 824.789 ; gain = 529.648
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:50 ; elapsed = 00:01:12 . Memory (MB): peak = 836.121 ; gain = 540.980
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping  Report
++--------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name   | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++--------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|mem_nvm_ram:  | ram_reg    | 64 K x 8(READ_FIRST)   | W | R |                        |   |   | Port A           | 0      | 16     | 
+|mem_dram_ram: | ram_reg    | 64 x 8(READ_FIRST)     | W | R |                        |   |   | Port A           | 1      | 0      | 
++--------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6837] The timing for the instance inst/nvm_U/mem_nvm_ram_U/ram_reg_1_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/nvm_U/mem_nvm_ram_U/ram_reg_1_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/nvm_U/mem_nvm_ram_U/ram_reg_1_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/nvm_U/mem_nvm_ram_U/ram_reg_1_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/nvm_U/mem_nvm_ram_U/ram_reg_1_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/nvm_U/mem_nvm_ram_U/ram_reg_1_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/nvm_U/mem_nvm_ram_U/ram_reg_1_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/nvm_U/mem_nvm_ram_U/ram_reg_1_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/dram_U/mem_dram_ram_U/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:50 ; elapsed = 00:01:13 . Memory (MB): peak = 845.156 ; gain = 550.016
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6064] Net nvm_we0 is driving 64 big block pins (URAM, BRAM and DSP loads). Created 7 replicas of its driver. 
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:53 ; elapsed = 00:01:15 . Memory (MB): peak = 845.156 ; gain = 550.016
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:53 ; elapsed = 00:01:15 . Memory (MB): peak = 845.156 ; gain = 550.016
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:53 ; elapsed = 00:01:15 . Memory (MB): peak = 845.156 ; gain = 550.016
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:53 ; elapsed = 00:01:15 . Memory (MB): peak = 845.156 ; gain = 550.016
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:53 ; elapsed = 00:01:15 . Memory (MB): peak = 845.156 ; gain = 550.016
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:53 ; elapsed = 00:01:15 . Memory (MB): peak = 845.156 ; gain = 550.016
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |LUT1       |     1|
+|2     |LUT2       |     8|
+|3     |LUT3       |    76|
+|4     |LUT4       |    18|
+|5     |LUT5       |    13|
+|6     |LUT6       |    23|
+|7     |MUXF7      |     2|
+|8     |RAMB18E1   |     1|
+|9     |RAMB36E1   |     8|
+|10    |RAMB36E1_1 |     8|
+|11    |FDRE       |   105|
+|12    |FDSE       |     1|
++------+-----------+------+
+
+Report Instance Areas: 
++------+-------------------------+-------------------+------+
+|      |Instance                 |Module             |Cells |
++------+-------------------------+-------------------+------+
+|1     |top                      |                   |   264|
+|2     |  inst                   |mem                |   264|
+|3     |    dram_U               |mem_dram           |     9|
+|4     |      mem_dram_ram_U     |mem_dram_ram       |     9|
+|5     |    mem_CRTL_BUS_s_axi_U |mem_CRTL_BUS_s_axi |   212|
+|6     |    nvm_U                |mem_nvm            |    23|
+|7     |      mem_nvm_ram_U      |mem_nvm_ram        |    23|
++------+-------------------------+-------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:53 ; elapsed = 00:01:15 . Memory (MB): peak = 845.156 ; gain = 550.016
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 20 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:50 . Memory (MB): peak = 845.156 ; gain = 200.672
+Synthesis Optimization Complete : Time (s): cpu = 00:00:53 ; elapsed = 00:01:16 . Memory (MB): peak = 845.156 ; gain = 550.016
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 19 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 845.156 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+78 Infos, 40 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:56 ; elapsed = 00:01:24 . Memory (MB): peak = 845.156 ; gain = 558.207
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 845.156 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'D:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.runs/design_1_mem_0_0_synth_1/design_1_mem_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_mem_0_0, cache-ID = e71f5032b15eed13
+INFO: [Coretcl 2-1174] Renamed 6 cell refs.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 845.156 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'D:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.runs/design_1_mem_0_0_synth_1/design_1_mem_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_mem_0_0_utilization_synth.rpt -pb design_1_mem_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Apr  3 13:08:18 2019...

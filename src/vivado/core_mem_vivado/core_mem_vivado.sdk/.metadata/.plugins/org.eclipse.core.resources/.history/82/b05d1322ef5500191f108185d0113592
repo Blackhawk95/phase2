@@ -1,0 +1,12 @@
+/*
+ * Empty C++ Application
+ */
+
+#include <xparameters.h>
+#include <xmem.h>
+
+
+int main()
+{
+	return 0;
+}

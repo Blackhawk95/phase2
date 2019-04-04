@@ -1,0 +1,161 @@
+
+
+================================================================
+== Vivado HLS Report for 'mem'
+================================================================
+* Date:           Wed Apr  3 13:02:08 2019
+
+* Version:        2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)
+* Project:        core_mem
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     6.508|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    1|    1|    1|    1|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 2
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 4.25>
+ST_1 : Operation 3 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i16 %a_V), !map !41"   --->   Operation 3 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 4 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i8 %ma_V), !map !47"   --->   Operation 4 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i8* %data_V), !map !51"   --->   Operation 5 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i8 %flag_V), !map !57"   --->   Operation 6 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([4 x i8]* @mem_str) nounwind"   --->   Operation 7 'spectopmodule' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (1.00ns)   --->   "%flag_V_read = call i8 @_ssdm_op_Read.s_axilite.i8(i8 %flag_V)" [core_mem/maincode.cpp:23]   --->   Operation 8 'read' 'flag_V_read' <Predicate = true> <Delay = 1.00> <Core = "s_axilite">   --->   Core 10 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 9 [1/1] (1.00ns)   --->   "%ma_V_read = call i8 @_ssdm_op_Read.s_axilite.i8(i8 %ma_V)" [core_mem/maincode.cpp:23]   --->   Operation 9 'read' 'ma_V_read' <Predicate = true> <Delay = 1.00> <Core = "s_axilite">   --->   Core 10 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 10 [1/1] (1.00ns)   --->   "%a_V_read = call i16 @_ssdm_op_Read.s_axilite.i16(i16 %a_V)" [core_mem/maincode.cpp:23]   --->   Operation 10 'read' 'a_V_read' <Predicate = true> <Delay = 1.00> <Core = "s_axilite">   --->   Core 10 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32 0, [10 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 0, [9 x i8]* @p_str2, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [core_mem/maincode.cpp:24]   --->   Operation 11 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i8 %flag_V, [10 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 0, [9 x i8]* @p_str2, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [core_mem/maincode.cpp:25]   --->   Operation 12 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i8* %data_V, [10 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 0, [9 x i8]* @p_str2, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [core_mem/maincode.cpp:26]   --->   Operation 13 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i8 %ma_V, [10 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 0, [9 x i8]* @p_str2, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [core_mem/maincode.cpp:27]   --->   Operation 14 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16 %a_V, [10 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 0, [9 x i8]* @p_str2, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [core_mem/maincode.cpp:28]   --->   Operation 15 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecMemCore([65536 x i8]* @nvm, [1 x i8]* @p_str1, [12 x i8]* @p_str3, [1 x i8]* @p_str1, i32 -1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1)" [core_mem/maincode.cpp:34]   --->   Operation 16 'specmemcore' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecMemCore([64 x i8]* @dram, [1 x i8]* @p_str1, [12 x i8]* @p_str3, [1 x i8]* @p_str1, i32 -1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1)" [core_mem/maincode.cpp:36]   --->   Operation 17 'specmemcore' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%tmp = trunc i8 %flag_V_read to i1" [core_mem/maincode.cpp:38]   --->   Operation 18 'trunc' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%tmp_1 = call i1 @_ssdm_op_BitSelect.i1.i8.i32(i8 %flag_V_read, i32 1)" [core_mem/maincode.cpp:45]   --->   Operation 19 'bitselect' 'tmp_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "br i1 %tmp, label %_ifconv, label %1" [core_mem/maincode.cpp:38]   --->   Operation 20 'br' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "br i1 %tmp_1, label %2, label %3" [core_mem/maincode.cpp:45]   --->   Operation 21 'br' <Predicate = (!tmp)> <Delay = 0.00>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%tmp_3 = sext i8 %ma_V_read to i64" [core_mem/maincode.cpp:48]   --->   Operation 22 'sext' 'tmp_3' <Predicate = (!tmp & !tmp_1)> <Delay = 0.00>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%dram_addr_1 = getelementptr [64 x i8]* @dram, i64 0, i64 %tmp_3" [core_mem/maincode.cpp:48]   --->   Operation 23 'getelementptr' 'dram_addr_1' <Predicate = (!tmp & !tmp_1)> <Delay = 0.00>
+ST_1 : Operation 24 [2/2] (3.25ns)   --->   "%dram_load_1 = load i8* %dram_addr_1, align 1" [core_mem/maincode.cpp:48]   --->   Operation 24 'load' 'dram_load_1' <Predicate = (!tmp & !tmp_1)> <Delay = 3.25> <Core = "RAM_1P_BRAM">   --->   Core 46 'RAM_1P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 64> <RAM>
+ST_1 : Operation 25 [1/1] (1.00ns)   --->   "%data_V_read = call i8 @_ssdm_op_Read.s_axilite.i8P(i8* %data_V)" [core_mem/maincode.cpp:46]   --->   Operation 25 'read' 'data_V_read' <Predicate = (!tmp & tmp_1)> <Delay = 1.00> <Core = "s_axilite">   --->   Core 10 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 26 [1/1] (0.00ns)   --->   "%tmp_6 = sext i8 %ma_V_read to i64" [core_mem/maincode.cpp:46]   --->   Operation 26 'sext' 'tmp_6' <Predicate = (!tmp & tmp_1)> <Delay = 0.00>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "%dram_addr_2 = getelementptr [64 x i8]* @dram, i64 0, i64 %tmp_6" [core_mem/maincode.cpp:46]   --->   Operation 27 'getelementptr' 'dram_addr_2' <Predicate = (!tmp & tmp_1)> <Delay = 0.00>
+ST_1 : Operation 28 [1/1] (3.25ns)   --->   "store i8 %data_V_read, i8* %dram_addr_2, align 1" [core_mem/maincode.cpp:46]   --->   Operation 28 'store' <Predicate = (!tmp & tmp_1)> <Delay = 3.25> <Core = "RAM_1P_BRAM">   --->   Core 46 'RAM_1P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 64> <RAM>
+ST_1 : Operation 29 [1/1] (0.00ns)   --->   "br label %4" [core_mem/maincode.cpp:47]   --->   Operation 29 'br' <Predicate = (!tmp & tmp_1)> <Delay = 0.00>
+ST_1 : Operation 30 [1/1] (0.00ns)   --->   "%tmp_7 = sext i16 %a_V_read to i64" [core_mem/maincode.cpp:42]   --->   Operation 30 'sext' 'tmp_7' <Predicate = (tmp)> <Delay = 0.00>
+ST_1 : Operation 31 [1/1] (0.00ns)   --->   "%nvm_addr = getelementptr [65536 x i8]* @nvm, i64 0, i64 %tmp_7" [core_mem/maincode.cpp:42]   --->   Operation 31 'getelementptr' 'nvm_addr' <Predicate = (tmp)> <Delay = 0.00>
+ST_1 : Operation 32 [2/2] (3.25ns)   --->   "%nvm_load = load i8* %nvm_addr, align 1" [core_mem/maincode.cpp:42]   --->   Operation 32 'load' 'nvm_load' <Predicate = (tmp)> <Delay = 3.25> <Core = "RAM_1P_BRAM">   --->   Core 46 'RAM_1P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 64> <RAM>
+ST_1 : Operation 33 [1/1] (0.00ns)   --->   "%tmp_8 = sext i8 %ma_V_read to i64" [core_mem/maincode.cpp:40]   --->   Operation 33 'sext' 'tmp_8' <Predicate = (tmp)> <Delay = 0.00>
+ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%dram_addr = getelementptr [64 x i8]* @dram, i64 0, i64 %tmp_8" [core_mem/maincode.cpp:40]   --->   Operation 34 'getelementptr' 'dram_addr' <Predicate = (tmp)> <Delay = 0.00>
+ST_1 : Operation 35 [2/2] (3.25ns)   --->   "%dram_load = load i8* %dram_addr, align 1" [core_mem/maincode.cpp:40]   --->   Operation 35 'load' 'dram_load' <Predicate = (tmp)> <Delay = 3.25> <Core = "RAM_1P_BRAM">   --->   Core 46 'RAM_1P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 64> <RAM>
+
+State 2 <SV = 1> <Delay = 6.50>
+ST_2 : Operation 36 [1/2] (3.25ns)   --->   "%dram_load_1 = load i8* %dram_addr_1, align 1" [core_mem/maincode.cpp:48]   --->   Operation 36 'load' 'dram_load_1' <Predicate = (!tmp & !tmp_1)> <Delay = 3.25> <Core = "RAM_1P_BRAM">   --->   Core 46 'RAM_1P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 64> <RAM>
+ST_2 : Operation 37 [1/1] (0.00ns)   --->   "%tmp_4 = sext i16 %a_V_read to i64" [core_mem/maincode.cpp:48]   --->   Operation 37 'sext' 'tmp_4' <Predicate = (!tmp & !tmp_1)> <Delay = 0.00>
+ST_2 : Operation 38 [1/1] (0.00ns)   --->   "%nvm_addr_1 = getelementptr [65536 x i8]* @nvm, i64 0, i64 %tmp_4" [core_mem/maincode.cpp:48]   --->   Operation 38 'getelementptr' 'nvm_addr_1' <Predicate = (!tmp & !tmp_1)> <Delay = 0.00>
+ST_2 : Operation 39 [1/1] (3.25ns)   --->   "store i8 %dram_load_1, i8* %nvm_addr_1, align 1" [core_mem/maincode.cpp:48]   --->   Operation 39 'store' <Predicate = (!tmp & !tmp_1)> <Delay = 3.25> <Core = "RAM_1P_BRAM">   --->   Core 46 'RAM_1P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 64> <RAM>
+ST_2 : Operation 40 [1/1] (0.00ns)   --->   "br label %4"   --->   Operation 40 'br' <Predicate = (!tmp & !tmp_1)> <Delay = 0.00>
+ST_2 : Operation 41 [1/1] (0.00ns)   --->   "br label %5"   --->   Operation 41 'br' <Predicate = (!tmp)> <Delay = 0.00>
+ST_2 : Operation 42 [1/2] (3.25ns)   --->   "%nvm_load = load i8* %nvm_addr, align 1" [core_mem/maincode.cpp:42]   --->   Operation 42 'load' 'nvm_load' <Predicate = (tmp)> <Delay = 3.25> <Core = "RAM_1P_BRAM">   --->   Core 46 'RAM_1P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 64> <RAM>
+ST_2 : Operation 43 [1/2] (3.25ns)   --->   "%dram_load = load i8* %dram_addr, align 1" [core_mem/maincode.cpp:40]   --->   Operation 43 'load' 'dram_load' <Predicate = (tmp)> <Delay = 3.25> <Core = "RAM_1P_BRAM">   --->   Core 46 'RAM_1P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 64> <RAM>
+ST_2 : Operation 44 [1/1] (1.24ns)   --->   "%storemerge_in_v = select i1 %tmp_1, i8 %dram_load, i8 %nvm_load" [core_mem/maincode.cpp:40]   --->   Operation 44 'select' 'storemerge_in_v' <Predicate = (tmp)> <Delay = 1.24> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_2 : Operation 45 [1/1] (1.00ns)   --->   "call void @_ssdm_op_Write.s_axilite.i8P(i8* %data_V, i8 %storemerge_in_v)" [core_mem/maincode.cpp:42]   --->   Operation 45 'write' <Predicate = (tmp)> <Delay = 1.00> <Core = "s_axilite">   --->   Core 10 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_2 : Operation 46 [1/1] (0.00ns)   --->   "br label %5" [core_mem/maincode.cpp:44]   --->   Operation 46 'br' <Predicate = (tmp)> <Delay = 0.00>
+ST_2 : Operation 47 [1/1] (0.00ns)   --->   "ret void" [core_mem/maincode.cpp:52]   --->   Operation 47 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 4.25ns
+The critical path consists of the following:
+	s_axi read on port 'ma_V' (core_mem/maincode.cpp:23) [13]  (1 ns)
+	'getelementptr' operation ('dram_addr_1', core_mem/maincode.cpp:48) [29]  (0 ns)
+	'load' operation ('dram_load_1', core_mem/maincode.cpp:48) on array 'dram' [30]  (3.25 ns)
+
+ <State 2>: 6.51ns
+The critical path consists of the following:
+	'load' operation ('dram_load_1', core_mem/maincode.cpp:48) on array 'dram' [30]  (3.25 ns)
+	'store' operation (core_mem/maincode.cpp:48) of variable 'dram_load_1', core_mem/maincode.cpp:48 on array 'nvm' [33]  (3.25 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

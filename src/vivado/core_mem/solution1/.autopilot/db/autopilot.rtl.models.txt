@@ -1,0 +1,4 @@
+mem_nvm
+mem_dram
+mem_CRTL_BUS_s_axi
+mem

@@ -1,0 +1,22 @@
+/*
+ * Empty C++ Application
+ */
+
+#include <xparameters.h>
+#include <xmem.h>
+#include "platform.h"
+
+int main()
+{
+	init_platform();
+
+	//intialize core (mem)
+
+	int status;
+	XMem doMem;
+	XMem_Config *doMem_cfg;
+
+
+
+	return 0;
+}

@@ -1,0 +1,62 @@
+/*
+ * Empty C++ Application
+ */
+
+#include <xparameters.h>
+#include <xmem.h>
+#include "platform.h"
+#include <stdio.h>
+//#include <ap_int.h>
+
+typedef /*long long int*/ int addr_uint;
+typedef char int8;
+
+int main()
+{
+	init_platform();
+
+	//intialize core (mem)
+
+	int status;
+	XMem doMem;
+	XMem_Config *doMem_cfg;
+	doMem_cfg = XMem_LookupConfig(XPAR_MEM_0_DEVICE_ID);
+	if(!doMem_cfg){
+		printf(" Error loading config for doMem_cfg\n");
+	}
+	status = XMem_CfgInitialize(&doMem,doMem_cfg);
+	if(status != XST_SUCCESS){
+		printf("Error initializing for doMem\n");
+	}
+
+	//Hardware code
+	printf(" Hello\n");
+
+	addr_uint a = 1900;
+	int8 ma = 54;
+	int8 flag = 0x02;
+	int8 data = 15;
+
+	XMem_Set_a_V(&doMem,a);
+	XMem_Set_ma_V(&doMem,ma);
+	XMem_Set_flag_V(&doMem,flag);
+	XMem_Set_data_V_i(&doMem,data);
+	XMem_Start(&doMem);
+
+	while(!XMem_IsDone(&doMem));
+
+	data = 10;
+	flag = 0x03;
+	XMem_Set_a_V(&doMem,a);
+	XMem_Set_ma_V(&doMem,ma);
+	XMem_Set_flag_V(&doMem,flag);
+	//XMem_Set_data_V_i(&doMem,data);
+	XMem_Start(&doMem);
+
+	while(!XMem_IsDone(&doMem));
+
+	data = XMem_Get_data_V_o(&doMem);
+	printf("The result after doing the %d",(char)data);
+
+	return 0;
+}

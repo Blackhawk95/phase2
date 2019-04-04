@@ -1,0 +1,110 @@
+16:30:35 **** Incremental Build of configuration Debug for project testMemory ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building target: testMemory.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -L"D:\Xilinx\Vivado\2018.3\include\" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory.elf"  ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+arm-none-eabi-g++: fatal error: no input files
+compilation terminated.
+make: *** [makefile:53: testMemory.elf] Error 1
+16:30:58 **** Incremental Build of configuration Debug for project testMemory ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building target: testMemory.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -L"D:\Xilinx\Vivado\2018.3\include\" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory.elf"  ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+arm-none-eabi-g++: fatal error: no input files
+compilation terminated.
+make: *** [makefile:53: testMemory.elf] Error 1
+16:33:08 **** Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  19024	   1144	  22576	  42744	   a6f8	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:33:10 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+16:33:40 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/platform.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.cc"
+'Finished building: ../src/platform.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  19140	   1144	  22576	  42860	   a76c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:33:57 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  81308	   2588	  23344	 107240	  1a2e8	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:34:36 **** Incremental Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+17:11:55 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  81308	   2588	  23344	 107240	  1a2e8	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '

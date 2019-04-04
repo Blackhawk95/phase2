@@ -1,0 +1,12 @@
+<annotationInfo>
+<annotationInfo>
+<item  id="22" filename="core_mem/maincode.cpp" linenumber="38" name="tmp" contextFuncName="mem" moduleName="mem" rtlName="tmp_fu_131_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="D:\Workspace\phase2\src\vivado"><\/item>
+<item  id="23" filename="core_mem/maincode.cpp" linenumber="45" name="tmp_1" contextFuncName="mem" moduleName="mem" rtlName="tmp_1_reg_184" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="D:\Workspace\phase2\src\vivado"><\/item>
+<item  id="28" filename="core_mem/maincode.cpp" linenumber="48" name="tmp_3" contextFuncName="mem" moduleName="mem" rtlName="tmp_3_fu_143_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="D:\Workspace\phase2\src\vivado"><\/item>
+<item  id="31" filename="core_mem/maincode.cpp" linenumber="48" name="tmp_4" contextFuncName="mem" moduleName="mem" rtlName="tmp_4_fu_163_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="D:\Workspace\phase2\src\vivado"><\/item>
+<item  id="37" filename="core_mem/maincode.cpp" linenumber="46" name="tmp_6" contextFuncName="mem" moduleName="mem" rtlName="tmp_6_fu_148_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="D:\Workspace\phase2\src\vivado"><\/item>
+<item  id="44" filename="core_mem/maincode.cpp" linenumber="42" name="tmp_7" contextFuncName="mem" moduleName="mem" rtlName="tmp_7_fu_153_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="D:\Workspace\phase2\src\vivado"><\/item>
+<item  id="47" filename="core_mem/maincode.cpp" linenumber="40" name="tmp_8" contextFuncName="mem" moduleName="mem" rtlName="tmp_8_fu_158_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="D:\Workspace\phase2\src\vivado"><\/item>
+<item  id="50" filename="core_mem/maincode.cpp" linenumber="40" name="storemerge_in_v" contextFuncName="mem" moduleName="mem" rtlName="storemerge_in_v_fu_167_p3" latency="0" BRAM="-1" DSP="-1" FF="0" LUT="8" fileDirectory="D:\Workspace\phase2\src\vivado"><\/item>
+<\/annotationInfo>
+</annotationInfo>

@@ -2,7 +2,7 @@
 #define QUEUE_H
 
 #define PRINTADD "%d"
-
+#include "mes_mem.h"
 
 typedef /*long long int*/ int addr_uint;
 

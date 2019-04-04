@@ -2,6 +2,7 @@
 #define QOFQUEUE_H
 
 #include "Queue.h"
+#include "mes_mem.h"
 
 #define SIZE 8
 
@@ -54,18 +55,18 @@ class QofQueue {
 
 
 	//ops
-	void findMiniAddress(addr_uint a, message* mptr);
+	void findMiniAddress(addr_uint a, message* mptr,mes_mem* signal);
 	void updateFlag();
 	int createADump();
 	eofentry* classForNewData(addr_uint a); //if empty, make a new
 	void initEoE();
 	Queue* getQueue(addr_uint a);
-	int performWriteBack();
-	void writeBack(entry* we);
+	int performWriteBack(mes_mem* signal);
+	void writeBack(entry* we,mes_mem* signal);
 	eofentry* updateQofQueue(eofentry* q);
 	void dumptriggercheck();
-	void dumpWriteBack(int ma);
-	void write(addr_uint a); //use this after findMiniAddress to get ma
+	void dumpWriteBack(int ma,mes_mem* signal);
+	void write(addr_uint a,mes_mem* signal); //use this after findMiniAddress to get ma
 	void read(addr_uint a);
 	void clean();
 	//QoQueue related ops

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="maincode.cpp" path="D:\Workspace\phase2\src\vivado\core_mem\maincode.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="test.cpp" path="D:\Workspace\phase2\src\vivado\core_mem\test.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>
