@@ -4,8 +4,6 @@
 #include "Queue.h"
 #include "mes_mem.h"
 
-#define SIZE 8
-
 struct eofentry{
 	Queue q;
 	eofentry* next;
@@ -67,7 +65,7 @@ class QofQueue {
 	void dumptriggercheck();
 	void dumpWriteBack(int ma,mes_mem* signal);
 	void write(addr_uint a,mes_mem* signal); //use this after findMiniAddress to get ma
-	void read(addr_uint a);
+	void read(addr_uint a,mes_mem* signal);
 	void clean();
 	//QoQueue related ops
 	Queue* old();

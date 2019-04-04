@@ -21,15 +21,15 @@ void mem(addr_uint a,int ma,int data,char flag){
     int dram[(1<<BITSDRAM)];
 
     if(READ){
-        if(DRAM){
+        if(DRAM){//11 - 3
             data = dram[ma];
-        } else {
+        } else { //01 - 1
             data = nvm[a];
         }
     } else {
-        if(DRAM){
-            dram[ma] = data;
-        } else {
+        if(DRAM){//10 - 2 
+            dram[ma] = data; 
+        } else {//00 - 0
             nvm[a] = dram[ma]; // the writeback
         }
     }

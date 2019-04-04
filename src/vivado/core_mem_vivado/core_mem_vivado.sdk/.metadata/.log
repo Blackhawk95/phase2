@@ -9026,3 +9026,43 @@ Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-10
 
 !ENTRY com.xilinx.sdk.utils 0 0 2019-04-03 17:11:53.069
 !MESSAGE XSCT command with result: [disconnect tcfchan#4], Result: [null, ]. Thread: Thread-366
+!SESSION 2019-04-04 14:47:14.630 -----------------------------------------------
+eclipse.buildId=2018.3
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data D:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.sdk
+
+!ENTRY org.eclipse.ui 2 0 2019-04-04 14:48:46.760
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2019-04-04 14:48:46.760
+!MESSAGE Commands should really have a category: plug-in='com.xilinx.sdk.appwiz', id='com.xilinx.sdk.app.commands.ChangeAtfBuiltReferences', categoryId='com.xilinx.sdk.app.commands.category'
+
+!ENTRY org.eclipse.ui 2 0 2019-04-04 14:48:58.413
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2019-04-04 14:48:58.413
+!MESSAGE Commands should really have a category: plug-in='com.xilinx.sdk.appwiz', id='com.xilinx.sdk.app.commands.ChangeAtfBuiltReferences', categoryId='com.xilinx.sdk.app.commands.category'
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-04-04 14:49:54.984
+!MESSAGE XSCT Command: [::hsi::utils::init_repo], Thread: Worker-1
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-04-04 14:49:55.183
+!MESSAGE XSCT Command: [set sdk::sdk_chan tcfchan#0], Thread: Thread-18
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-04-04 14:50:07.036
+!MESSAGE XSCT command with result: [::hsi::utils::init_repo], Result: [null, ]. Thread: Worker-1
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-04-04 14:50:07.052
+!MESSAGE XSCT command with result: [set sdk::sdk_chan tcfchan#0], Result: [null, tcfchan#0]. Thread: Thread-18
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-04-04 14:50:07.072
+!MESSAGE XSCT Command: [setws D:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.sdk], Thread: Thread-18
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-04-04 14:50:07.084
+!MESSAGE XSCT command with result: [setws D:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.sdk], Result: [null, ]. Thread: Thread-18
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-04-04 14:50:07.163
+!MESSAGE XSCT Command: [::hsi::utils::openhw D:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.sdk/design_1_wrapper_hw_platform_0/system.hdf], Thread: Worker-4
+
+!ENTRY com.xilinx.sdk.utils 0 0 2019-04-04 14:50:19.724
+!MESSAGE XSCT command with result: [::hsi::utils::openhw D:/Workspace/phase2/src/vivado/core_mem_vivado/core_mem_vivado.sdk/design_1_wrapper_hw_platform_0/system.hdf], Result: [null, ]. Thread: Worker-4

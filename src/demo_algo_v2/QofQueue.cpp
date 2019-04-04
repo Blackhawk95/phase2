@@ -2,11 +2,6 @@
 #include <cstdlib>
 #include <cstdio>
 
-#define SIZE 8
-#define THRESHOLD 500
-#define DUMPLIMIT 4
-#define PRINTLOG //
-
 QofQueue::QofQueue(){
 	eoe = NULL;
 	size = 0;
@@ -152,7 +147,8 @@ int QofQueue::performWriteBack(mes_mem* signal){
  * */
 
 void QofQueue::writeBack(entry* we,mes_mem* signal){
-	PRINTLOG printf("Writing back to main memory Address : " PRINTADD ", from MA: %d\n",we->Address,we->miniAddress);
+	// PRINTLOG
+	// printf("Writing back to main memory Address : " PRINTADD ", from MA: %d\n",we->Address,we->miniAddress);
 	signal->mmA = we->Address;
 	signal->ma = we->miniAddress;
 	signal->writeBack = true;
@@ -180,7 +176,8 @@ void QofQueue::dumpWriteBack(int ma,mes_mem* signal){
 		return;
 	}
 	if(tempe->next == NULL && tempe->miniAddress == ma){
-		PRINTLOG printf("Writing back to main memory Address <> : " PRINTADD ", from DUMP (ma = %d)\n",tempe->Address,ma);
+		//PRINTLOG
+		//printf("Writing back to main memory Address <> : " PRINTADD ", from DUMP (ma = %d)\n",tempe->Address,ma);
 		signal->mmA = tempe->Address;
 		signal->ma = ma;
 		signal->writeBack = true;
@@ -193,7 +190,8 @@ void QofQueue::dumpWriteBack(int ma,mes_mem* signal){
 		return;
 	}
 	if(tempe->miniAddress == ma){
-		PRINTLOG printf("Writing back to main memory Address : " PRINTADD ", from DUMP (ma = %d)\n",tempe->Address,ma);
+		//PRINTLOG 
+		//printf("Writing back to main memory Address : " PRINTADD ", from DUMP (ma = %d)\n",tempe->Address,ma);
 		signal->mmA = tempe->Address;
 		signal->ma = ma;
 		signal->writeBack = true;
@@ -207,8 +205,9 @@ void QofQueue::dumpWriteBack(int ma,mes_mem* signal){
 	//printf("BLAAHH\n");
 	while(tempe->next!=NULL){
 		if(tempe->next->miniAddress == ma){
-			PRINTLOG printf("Writing back to main memory Address : " PRINTADD ", from DUMP, having MA: %d\n",tempe->next->Address,
-			PRINTLOG	tempe->next->miniAddress);
+			//PRINTLOG 
+			//printf("Writing back to main memory Address : " PRINTADD ", from DUMP, having MA: %d\n",tempe->next->Address,
+			//	tempe->next->miniAddress);
 			signal->mmA = tempe->next->Address;
 			signal->ma = ma;
 			signal->writeBack = true;
@@ -220,7 +219,8 @@ void QofQueue::dumpWriteBack(int ma,mes_mem* signal){
 		tempe = tempe->next;
 	}
 	if(tempe->miniAddress == ma){
-		PRINTLOG printf("Writing back to main memory Address : " PRINTADD ", from DUMP\n",tempe->Address);
+		//PRINTLOG 
+		//printf("Writing back to main memory Address : " PRINTADD ", from DUMP\n",tempe->Address);
 		signal->mmA = tempe->Address;
 		signal->ma = ma;
 		signal->writeBack = true;
@@ -435,35 +435,48 @@ void QofQueue::write(addr_uint a,mes_mem* signal){
 	tempq = updateQofQueue(tempq);
 	//printf(" Step 3 complete %d\n",m.m_ma);
 	//insert data
+	signal->ma = m.m_ma;
 	if(exists){ //if already existing
+		signal->write = true;
 		(&(tempq->q))->touch(m.m_ma);
 		exists = false;
 	}
-	else //else insert
+	else{ //else insert
+		signal->write = true;
 		(&(tempq->q))->insert(a,m.m_ma);
+	}
 	//printf(" Step 4 complete\n");
 	dumptriggercheck();
 	//logDump();	
 	//printf(" Step 5 complete\n");
 }
 
-void QofQueue::read(addr_uint a){
+void QofQueue::read(addr_uint a,mes_mem *signal){
 
 	int minia=0;
 	Queue* tempq = getQueue(a);
 	if(tempq == NULL){
-		//printf("Look at DRAM\n");
+		//printf("Look at NVM\n");
+		signal->read_from_nvm = true;
 		return;
 	}
 	minia = tempq->getMiniAddressFromQueue(a);
 	if(minia == -1){
-		//printf("data missing in the queue, check / wrong queue\n");
+		//printf("ERROR : data missing in the queue, check / wrong queue\n");
+		signal->read_from_nvm = true;
+		return;
 	}
 	else if((flag[minia].dump == true)){
 		//printf("data found in dump, Address: " PRINTADD "\n",a);
+		signal->ma = minia;
+		signal->read_from_dram = true;
+		return;
 	}
 	else{
 		//printf("Address: " PRINTADD ", MiniAddress: %d\n",a,minia);
+		signal->ma = minia;
+		signal->read_from_dram = true;
+		return;
 	}
 }
 

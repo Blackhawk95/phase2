@@ -108,3 +108,726 @@ arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
   81308	   2588	  23344	 107240	  1a2e8	testMemory2.elf
 'Finished building: testMemory2.elf.size'
 ' '
+14:58:46 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  81308	   2588	  23344	 107240	  1a2e8	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:13:27 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  88112	   2588	  23336	 114036	  1bd74	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:24:48 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  88112	   2588	  23336	 114036	  1bd74	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:25:01 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  88112	   2588	  23336	 114036	  1bd74	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:25:16 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  88240	   2588	  23336	 114164	  1bdf4	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:27:30 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:46:10: warning: unused variable 'signal' [-Wunused-variable]
+  mes_mem signal;
+          ^~~~~~
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  88240	   2588	  23336	 114164	  1bdf4	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:28:27 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+15:28:50 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:49:8: error: 'arr' was not declared in this scope
+        arr[i][0] = (int)(arr[i][0] & 0xFFFF);
+        ^~~
+../src/main.cc:46:10: warning: unused variable 'signal' [-Wunused-variable]
+  mes_mem signal;
+          ^~~~~~
+make: *** [src/subdir.mk:43: src/main.o] Error 1
+15:29:18 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:49:10: warning: unused variable 'signal' [-Wunused-variable]
+  mes_mem signal;
+          ^~~~~~
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  88368	8680996	  23336	8792700	 862a7c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:47:33 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:78:68: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long long int' [-Wformat=]
+            printf("[W] MA %d, NewAddress: %d\n",signal.ma,arr[i][0]);
+                                                           ~~~~~~~~~^
+../src/main.cc:88:52: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long long int' [-Wformat=]
+            printf("[R_NVM] Address: %d\n",arr[i][0]);
+                                           ~~~~~~~~~^
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89184	8680996	  23336	8793516	 862dac	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:49:02 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:77:37: error: 'data' was not declared in this scope
+            XMem_Set_data_V_i(&doMem,data);
+                                     ^~~~
+../src/main.cc:79:68: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long long int' [-Wformat=]
+            printf("[W] MA %d, NewAddress: %d\n",signal.ma,arr[i][0]);
+                                                           ~~~~~~~~~^
+../src/main.cc:89:52: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long long int' [-Wformat=]
+            printf("[R_NVM] Address: %d\n",arr[i][0]);
+                                           ~~~~~~~~~^
+make: *** [src/subdir.mk:43: src/main.o] Error 1
+15:49:10 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:77:37: error: 'data' was not declared in this scope
+            XMem_Set_data_V_i(&doMem,data);
+                                     ^~~~
+../src/main.cc:79:68: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long long int' [-Wformat=]
+            printf("[W] MA %d, NewAddress: %d\n",signal.ma,arr[i][0]);
+                                                           ~~~~~~~~~^
+../src/main.cc:89:52: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long long int' [-Wformat=]
+            printf("[R_NVM] Address: %d\n",arr[i][0]);
+                                           ~~~~~~~~~^
+make: *** [src/subdir.mk:43: src/main.o] Error 1
+15:56:44 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:79:42: error: expected primary-expression before ']' token
+            XMem_Set_data_V_i(&doMem,arrn[]);
+                                          ^
+../src/main.cc:81:68: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long long int' [-Wformat=]
+            printf("[W] MA %d, NewAddress: %d\n",signal.ma,arr[i][0]);
+                                                           ~~~~~~~~~^
+../src/main.cc:91:52: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long long int' [-Wformat=]
+            printf("[R_NVM] Address: %d\n",arr[i][0]);
+                                           ~~~~~~~~~^
+make: *** [src/subdir.mk:43: src/main.o] Error 1
+15:57:34 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:81:68: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long long int' [-Wformat=]
+            printf("[W] MA %d, NewAddress: %d\n",signal.ma,arr[i][0]);
+                                                           ~~~~~~~~~^
+../src/main.cc:91:52: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long long int' [-Wformat=]
+            printf("[R_NVM] Address: %d\n",arr[i][0]);
+                                           ~~~~~~~~~^
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89440	8680996	  23336	8793772	 862eac	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:57:55 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:91:52: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long long int' [-Wformat=]
+            printf("[R_NVM] Address: %d\n",arr[i][0]);
+                                           ~~~~~~~~~^
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89504	8680996	  23336	8793836	 862eec	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:58:35 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:91:52: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long long int' [-Wformat=]
+            printf("[R_NVM] Address: %d\n",arr[i][0]);
+                                           ~~~~~~~~~^
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89520	8680996	  23336	8793852	 862efc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:00:53 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89648	8680996	  23336	8793980	 862f7c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:02:57 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:91:98: warning: format '%d' expects argument of type 'int', but argument 3 has type 'u32 {aka long unsigned int}' [-Wformat=]
+           printf("[R_DRAM] MiniAddress: %d Data from MA %d\n",signal.ma,XMem_Get_data_V_o(&doMem));
+                                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~^
+../src/main.cc:97:70: error: expected primary-expression before ',' token
+            printf("[R_NVM] Address: %d Data from MA %d\n",arrn[i][0],,XMem_Get_data_V_o(&doMem));
+                                                                      ^
+make: *** [src/subdir.mk:43: src/main.o] Error 1
+16:03:15 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:91:98: warning: format '%d' expects argument of type 'int', but argument 3 has type 'u32 {aka long unsigned int}' [-Wformat=]
+           printf("[R_DRAM] MiniAddress: %d Data from MA %d\n",signal.ma,XMem_Get_data_V_o(&doMem));
+                                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~^
+../src/main.cc:97:95: warning: format '%d' expects argument of type 'int', but argument 3 has type 'u32 {aka long unsigned int}' [-Wformat=]
+            printf("[R_NVM] Address: %d Data from MA %d\n",arrn[i][0],XMem_Get_data_V_o(&doMem));
+                                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~^
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89808	8680996	  23336	8794140	 86301c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:08:47 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:98:98: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'u32 {aka long unsigned int}' [-Wformat=]
+           printf("[R_DRAM] MiniAddress: %d Data from MA %u\n",signal.ma,XMem_Get_data_V_o(&doMem));
+                                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~^
+../src/main.cc:104:95: warning: format '%d' expects argument of type 'int', but argument 3 has type 'u32 {aka long unsigned int}' [-Wformat=]
+            printf("[R_NVM] Address: %d Data from MA %d\n",arrn[i][0],XMem_Get_data_V_o(&doMem));
+                                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~^
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89936	8680996	  23336	8794268	 86309c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:09:12 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:98:98: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'u32 {aka long unsigned int}' [-Wformat=]
+           printf("[R_DRAM] MiniAddress: %d Data from MA %u\n",signal.ma,XMem_Get_data_V_o(&doMem));
+                                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~^
+../src/main.cc:104:95: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'u32 {aka long unsigned int}' [-Wformat=]
+            printf("[R_NVM] Address: %d Data from MA %u\n",arrn[i][0],XMem_Get_data_V_o(&doMem));
+                                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~^
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89936	8680996	  23336	8794268	 86309c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:11:27 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:100:14: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+              while(!XMem_IsDone(&doMem));
+              ^~~~~
+../src/main.cc:102:11: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+           printf("[R_DRAM] MiniAddress: %d Data from MA %c\n",signal.ma,XMem_Get_data_V_o(&doMem));
+           ^~~~~~
+../src/main.cc:102:98: warning: format '%c' expects argument of type 'int', but argument 3 has type 'u32 {aka long unsigned int}' [-Wformat=]
+           printf("[R_DRAM] MiniAddress: %d Data from MA %c\n",signal.ma,XMem_Get_data_V_o(&doMem));
+                                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~^
+../src/main.cc:112:96: warning: format '%c' expects argument of type 'int', but argument 3 has type 'u32 {aka long unsigned int}' [-Wformat=]
+             printf("[R_NVM] Address: %d Data from MA %c\n",arrn[i][0],XMem_Get_data_V_o(&doMem));
+                                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~^
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  90064	8680996	  23336	8794396	 86311c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:11:58 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:100:14: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+              while(!XMem_IsDone(&doMem));
+              ^~~~~
+../src/main.cc:102:11: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+           printf("[R_DRAM] MiniAddress: %d Data from MA %lu\n",signal.ma,XMem_Get_data_V_o(&doMem));
+           ^~~~~~
+../src/main.cc:112:96: warning: format '%c' expects argument of type 'int', but argument 3 has type 'u32 {aka long unsigned int}' [-Wformat=]
+             printf("[R_NVM] Address: %d Data from MA %c\n",arrn[i][0],XMem_Get_data_V_o(&doMem));
+                                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~^
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  90064	8680996	  23336	8794396	 86311c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:13:42 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:100:14: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+              while(!XMem_IsDone(&doMem));
+              ^~~~~
+../src/main.cc:102:11: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+           printf("[R_DRAM] MiniAddress: %d Data from MA %lu\n",signal.ma,XMem_Get_data_V_o(&doMem));
+           ^~~~~~
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  90064	8680996	  23336	8794396	 86311c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:14:06 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:100:14: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+              while(!XMem_IsDone(&doMem));
+              ^~~~~
+../src/main.cc:102:11: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+           printf("[R_DRAM] MiniAddress: %d Data from MA %u\n",signal.ma,XMem_Get_data_V_o(&doMem));
+           ^~~~~~
+../src/main.cc:102:98: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'u32 {aka long unsigned int}' [-Wformat=]
+           printf("[R_DRAM] MiniAddress: %d Data from MA %u\n",signal.ma,XMem_Get_data_V_o(&doMem));
+                                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~^
+../src/main.cc:112:96: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'u32 {aka long unsigned int}' [-Wformat=]
+             printf("[R_NVM] Address: %d Data from MA %u\n",arrn[i][0],XMem_Get_data_V_o(&doMem));
+                                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~^
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  90064	8680996	  23336	8794396	 86311c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:14:55 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:100:14: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+              while(!XMem_IsDone(&doMem));
+              ^~~~~
+../src/main.cc:102:11: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+           printf("[R_DRAM] MiniAddress: %d Data from MA %u\n",signal.ma,(int)XMem_Get_data_V_o(&doMem));
+           ^~~~~~
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  90064	8680996	  23336	8794396	 86311c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:15:33 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:100:14: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+              while(!XMem_IsDone(&doMem));
+              ^~~~~
+../src/main.cc:102:11: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+           printf("[R_DRAM] MiniAddress: %d Data from MA %u\n",signal.ma,(int)XMem_Get_data_V_o(&doMem));
+           ^~~~~~
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:16:33 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:18:50 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89520	8680996	  23336	8793852	 862efc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:19:27 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89584	8680996	  23336	8793916	 862f3c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
