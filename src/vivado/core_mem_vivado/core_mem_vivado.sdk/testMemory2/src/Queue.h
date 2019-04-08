@@ -3,7 +3,7 @@
 
 #include "mes_mem.h"
 
-typedef /*long long int*/ int addr_uint;
+typedef /*long long int*/ uint16_t addr_uint;
 
 struct entry{
     addr_uint Address;

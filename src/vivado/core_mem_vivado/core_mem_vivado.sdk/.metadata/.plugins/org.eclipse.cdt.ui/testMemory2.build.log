@@ -1,40 +1,8 @@
-16:19:27 **** Auto Build of configuration Debug for project testMemory2 ****
+15:14:48 **** Incremental Build of configuration Debug for project testMemory2 ****
 make pre-build main-build 
 a9-linaro-pre-build-step
 ' '
-'Building file: ../src/QofQueue.cpp'
-'Invoking: ARM v7 g++ compiler'
-arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
-../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
-../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
-  Queue dump = Queue();
-        ^~~~
-../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
-  message m = {0,0,false,false};
-          ^
-'Finished building: ../src/QofQueue.cpp'
-' '
-'Building file: ../src/Queue.cpp'
-'Invoking: ARM v7 g++ compiler'
-arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
-'Finished building: ../src/Queue.cpp'
-' '
-'Building file: ../src/main.cc'
-'Invoking: ARM v7 g++ compiler'
-arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
-'Finished building: ../src/main.cc'
-' '
-'Building target: testMemory2.elf'
-'Invoking: ARM v7 g++ linker'
-arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
-'Finished building target: testMemory2.elf'
-' '
-'Invoking: ARM v7 Print Size'
-arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-  89584	8680996	  23336	8793916	 862f3c	testMemory2.elf
-'Finished building: testMemory2.elf.size'
-' '
+make: Nothing to be done for 'main-build'.
 
-16:19:46 Build Finished (took 19s.812ms)
+15:14:48 Build Finished (took 372ms)
 

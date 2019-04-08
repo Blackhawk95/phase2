@@ -1,6 +1,16 @@
-16:30:58 **** Incremental Build of configuration Debug for project testMemory ****
+15:02:41 **** Build of configuration Debug for project testMemory ****
 make pre-build main-build 
 a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -I../../testMemory_bsp/ps7_cortexa9_0/include -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building file: ../src/platform.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -I../../testMemory_bsp/ps7_cortexa9_0/include -c -fmessage-length=0 -MT"src/platform.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.cc"
+'Finished building: ../src/platform.cc'
 ' '
 'Building target: testMemory.elf'
 'Invoking: ARM v7 g++ linker'
@@ -9,5 +19,5 @@ arm-none-eabi-g++: fatal error: no input files
 compilation terminated.
 make: *** [makefile:53: testMemory.elf] Error 1
 
-16:30:59 Build Finished (took 506ms)
+15:02:43 Build Finished (took 1s.833ms)
 

@@ -831,3 +831,1942 @@ arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
   89584	8680996	  23336	8793916	 862f3c	testMemory2.elf
 'Finished building: testMemory2.elf.size'
 ' '
+16:30:26 **** Incremental Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+16:33:32 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc:16:36: error: conflicting declaration 'typedef uint16_t addr_uint'
+ typedef /*long long int*/ uint16_t addr_uint;
+                                    ^~~~~~~~~
+In file included from ../src/QofQueue.h:4:0,
+                 from ../src/main.cc:9:
+../src/Queue.h:6:31: note: previous declaration as 'typedef int addr_uint'
+ typedef /*long long int*/ int addr_uint;
+                               ^~~~~~~~~
+make: *** [src/subdir.mk:43: src/main.o] Error 1
+16:33:50 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc:16:36: error: conflicting declaration 'typedef uint16_t addr_uint'
+ typedef /*long long int*/ uint16_t addr_uint;
+                                    ^~~~~~~~~
+In file included from ../src/QofQueue.h:4:0,
+                 from ../src/main.cc:9:
+../src/Queue.h:6:31: note: previous declaration as 'typedef int addr_uint'
+ typedef /*long long int*/ int addr_uint;
+                               ^~~~~~~~~
+make: *** [src/subdir.mk:43: src/main.o] Error 1
+16:39:09 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc:16:33: error: conflicting declaration 'typedef short int addr_uint'
+ typedef /*long long int*/ short addr_uint;
+                                 ^~~~~~~~~
+In file included from ../src/QofQueue.h:4:0,
+                 from ../src/main.cc:9:
+../src/Queue.h:6:31: note: previous declaration as 'typedef int addr_uint'
+ typedef /*long long int*/ int addr_uint;
+                               ^~~~~~~~~
+make: *** [src/subdir.mk:43: src/main.o] Error 1
+16:40:47 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89584	8680996	  23336	8793916	 862f3c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:43:10 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89648	8680996	  23336	8793980	 862f7c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:43:53 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+In file included from ../src/Queue.h:4:0,
+                 from ../src/QofQueue.h:4,
+                 from ../src/QofQueue.cpp:1:
+../src/mes_mem.h:15:5: error: 'uint16_t' does not name a type; did you mean 'char16_t'?
+     uint16_t ma;
+     ^~~~~~~~
+     char16_t
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::writeBack(entry*, mes_mem*)':
+../src/QofQueue.cpp:153:10: error: 'struct mes_mem' has no member named 'ma'
+  signal->ma = we->miniAddress;
+          ^~
+../src/QofQueue.cpp: In member function 'void QofQueue::dumpWriteBack(int, mes_mem*)':
+../src/QofQueue.cpp:182:11: error: 'struct mes_mem' has no member named 'ma'
+   signal->ma = ma;
+           ^~
+../src/QofQueue.cpp:196:11: error: 'struct mes_mem' has no member named 'ma'
+   signal->ma = ma;
+           ^~
+../src/QofQueue.cpp:212:12: error: 'struct mes_mem' has no member named 'ma'
+    signal->ma = ma;
+            ^~
+../src/QofQueue.cpp:225:11: error: 'struct mes_mem' has no member named 'ma'
+   signal->ma = ma;
+           ^~
+../src/QofQueue.cpp: In member function 'void QofQueue::write(addr_uint, mes_mem*)':
+../src/QofQueue.cpp:438:10: error: 'struct mes_mem' has no member named 'ma'
+  signal->ma = m.m_ma;
+          ^~
+../src/QofQueue.cpp: In member function 'void QofQueue::read(addr_uint, mes_mem*)':
+../src/QofQueue.cpp:471:11: error: 'struct mes_mem' has no member named 'ma'
+   signal->ma = minia;
+           ^~
+../src/QofQueue.cpp:477:11: error: 'struct mes_mem' has no member named 'ma'
+   signal->ma = minia;
+           ^~
+make: *** [src/subdir.mk:36: src/QofQueue.o] Error 1
+16:44:21 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+In file included from ../src/Queue.h:4:0,
+                 from ../src/QofQueue.h:4,
+                 from ../src/QofQueue.cpp:1:
+../src/mes_mem.h:13:6: error: 'miA' does not name a type
+      miA;
+      ^~~
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+make: *** [src/subdir.mk:36: src/QofQueue.o] Error 1
+16:44:37 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+In file included from ../src/Queue.h:4:0,
+                 from ../src/QofQueue.h:4,
+                 from ../src/QofQueue.cpp:1:
+../src/mes_mem.h:13:5: error: 'uint16_t' does not name a type; did you mean 'char16_t'?
+     uint16_t miA;
+     ^~~~~~~~
+     char16_t
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+make: *** [src/subdir.mk:36: src/QofQueue.o] Error 1
+16:44:47 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89648	8680996	  23336	8793980	 862f7c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:45:08 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89648	8680996	  23336	8793980	 862f7c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:45:42 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc:16:36: error: conflicting declaration 'typedef char16_t addr_uint'
+ typedef /*long long int*/ char16_t addr_uint;
+                                    ^~~~~~~~~
+In file included from ../src/QofQueue.h:4:0,
+                 from ../src/main.cc:9:
+../src/Queue.h:6:31: note: previous declaration as 'typedef int addr_uint'
+ typedef /*long long int*/ int addr_uint;
+                               ^~~~~~~~~
+make: *** [src/subdir.mk:43: src/main.o] Error 1
+16:46:04 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc:16:36: error: conflicting declaration 'typedef char16_t addr_uint'
+ typedef /*long long int*/ char16_t addr_uint;
+                                    ^~~~~~~~~
+In file included from ../src/QofQueue.h:4:0,
+                 from ../src/main.cc:9:
+../src/Queue.h:6:31: note: previous declaration as 'typedef int addr_uint'
+ typedef /*long long int*/ int addr_uint;
+                               ^~~~~~~~~
+make: *** [src/subdir.mk:43: src/main.o] Error 1
+16:46:42 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc:16:36: error: conflicting declaration 'typedef char16_t addr_uint'
+ typedef /*long long int*/ char16_t addr_uint;
+                                    ^~~~~~~~~
+In file included from ../src/QofQueue.h:4:0,
+                 from ../src/main.cc:9:
+../src/Queue.h:6:31: note: previous declaration as 'typedef int addr_uint'
+ typedef /*long long int*/ int addr_uint;
+                               ^~~~~~~~~
+make: *** [src/subdir.mk:43: src/main.o] Error 1
+16:48:23 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+In file included from ../src/QofQueue.h:4:0,
+                 from ../src/QofQueue.cpp:1:
+../src/Queue.h:9:5: error: 'addr_uint' does not name a type
+     addr_uint Address;
+     ^~~~~~~~~
+../src/Queue.h:20:17: error: 'addr_uint' has not been declared
+     void insert(addr_uint a,int ma);
+                 ^~~~~~~~~
+../src/Queue.h:26:33: error: 'addr_uint' has not been declared
+     int getMiniAddressFromQueue(addr_uint);
+                                 ^~~~~~~~~
+In file included from ../src/QofQueue.cpp:1:0:
+../src/QofQueue.h:13:2: error: 'addr_uint' does not name a type
+  addr_uint addr;
+  ^~~~~~~~~
+../src/QofQueue.h:19:2: error: 'addr_uint' does not name a type
+  addr_uint m_addr;
+  ^~~~~~~~~
+../src/QofQueue.h:56:23: error: 'addr_uint' has not been declared
+  void findMiniAddress(addr_uint a, message* mptr,mes_mem* signal);
+                       ^~~~~~~~~
+../src/QofQueue.h:59:12: error: expected ';' at end of member declaration
+  eofentry* classForNewData(addr_uint a); //if empty, make a new
+            ^~~~~~~~~~~~~~~
+../src/QofQueue.h:59:38: error: expected ')' before 'a'
+  eofentry* classForNewData(addr_uint a); //if empty, make a new
+                                      ^
+../src/QofQueue.h:61:9: error: expected ';' at end of member declaration
+  Queue* getQueue(addr_uint a);
+         ^~~~~~~~
+../src/QofQueue.h:61:28: error: expected ')' before 'a'
+  Queue* getQueue(addr_uint a);
+                            ^
+../src/QofQueue.h:67:13: error: 'addr_uint' has not been declared
+  void write(addr_uint a,mes_mem* signal); //use this after findMiniAddress to get ma
+             ^~~~~~~~~
+../src/QofQueue.h:68:12: error: 'addr_uint' has not been declared
+  void read(addr_uint a,mes_mem* signal);
+            ^~~~~~~~~
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:9:30: error: too many initializers for 'message'
+  message m = {0,0,false,false};
+                              ^
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: At global scope:
+../src/QofQueue.cpp:20:32: error: variable or field 'findMiniAddress' declared void
+ void QofQueue::findMiniAddress(addr_uint a,message* mptr,mes_mem* signal){
+                                ^~~~~~~~~
+../src/QofQueue.cpp:20:32: error: 'addr_uint' was not declared in this scope
+../src/QofQueue.cpp:20:32: note: suggested alternative: 'caddr_t'
+ void QofQueue::findMiniAddress(addr_uint a,message* mptr,mes_mem* signal){
+                                ^~~~~~~~~
+                                caddr_t
+../src/QofQueue.cpp:20:51: error: expected primary-expression before '*' token
+ void QofQueue::findMiniAddress(addr_uint a,message* mptr,mes_mem* signal){
+                                                   ^
+../src/QofQueue.cpp:20:53: error: 'mptr' was not declared in this scope
+ void QofQueue::findMiniAddress(addr_uint a,message* mptr,mes_mem* signal){
+                                                     ^~~~
+../src/QofQueue.cpp:20:65: error: expected primary-expression before '*' token
+ void QofQueue::findMiniAddress(addr_uint a,message* mptr,mes_mem* signal){
+                                                                 ^
+../src/QofQueue.cpp:20:67: error: 'signal' was not declared in this scope
+ void QofQueue::findMiniAddress(addr_uint a,message* mptr,mes_mem* signal){
+                                                                   ^~~~~~
+../src/QofQueue.cpp:20:67: note: suggested alternative: 'signed'
+ void QofQueue::findMiniAddress(addr_uint a,message* mptr,mes_mem* signal){
+                                                                   ^~~~~~
+                                                                   signed
+../src/QofQueue.cpp: In member function 'void QofQueue::writeBack(entry*, mes_mem*)':
+../src/QofQueue.cpp:152:20: error: 'struct entry' has no member named 'Address'; did you mean 'miniAddress'?
+  signal->mmA = we->Address;
+                    ^~~~~~~
+                    miniAddress
+../src/QofQueue.cpp: In member function 'void QofQueue::dumpWriteBack(int, mes_mem*)':
+../src/QofQueue.cpp:181:24: error: 'struct entry' has no member named 'Address'; did you mean 'miniAddress'?
+   signal->mmA = tempe->Address;
+                        ^~~~~~~
+                        miniAddress
+../src/QofQueue.cpp:195:24: error: 'struct entry' has no member named 'Address'; did you mean 'miniAddress'?
+   signal->mmA = tempe->Address;
+                        ^~~~~~~
+                        miniAddress
+../src/QofQueue.cpp:199:10: error: 'struct entry' has no member named 'Address'; did you mean 'miniAddress'?
+   tempe->Address = tempe3->Address;
+          ^~~~~~~
+          miniAddress
+../src/QofQueue.cpp:199:28: error: 'struct entry' has no member named 'Address'; did you mean 'miniAddress'?
+   tempe->Address = tempe3->Address;
+                            ^~~~~~~
+                            miniAddress
+../src/QofQueue.cpp:211:31: error: 'struct entry' has no member named 'Address'; did you mean 'miniAddress'?
+    signal->mmA = tempe->next->Address;
+                               ^~~~~~~
+                               miniAddress
+../src/QofQueue.cpp:224:24: error: 'struct entry' has no member named 'Address'; did you mean 'miniAddress'?
+   signal->mmA = tempe->Address;
+                        ^~~~~~~
+                        miniAddress
+../src/QofQueue.cpp: At global scope:
+../src/QofQueue.cpp:274:37: error: 'eofentry* QofQueue::classForNewData' is not a static data member of 'class QofQueue'
+ eofentry* QofQueue::classForNewData(addr_uint a){
+                                     ^~~~~~~~~
+../src/QofQueue.cpp:274:37: error: 'addr_uint' was not declared in this scope
+../src/QofQueue.cpp:274:37: note: suggested alternative: 'caddr_t'
+ eofentry* QofQueue::classForNewData(addr_uint a){
+                                     ^~~~~~~~~
+                                     caddr_t
+../src/QofQueue.cpp:373:27: error: 'Queue* QofQueue::getQueue' is not a static data member of 'class QofQueue'
+ Queue* QofQueue::getQueue(addr_uint a){
+                           ^~~~~~~~~
+../src/QofQueue.cpp:373:27: error: 'addr_uint' was not declared in this scope
+../src/QofQueue.cpp:373:27: note: suggested alternative: 'caddr_t'
+ Queue* QofQueue::getQueue(addr_uint a){
+                           ^~~~~~~~~
+                           caddr_t
+../src/QofQueue.cpp:429:22: error: variable or field 'write' declared void
+ void QofQueue::write(addr_uint a,mes_mem* signal){
+                      ^~~~~~~~~
+../src/QofQueue.cpp:429:22: error: 'addr_uint' was not declared in this scope
+../src/QofQueue.cpp:429:22: note: suggested alternative: 'caddr_t'
+ void QofQueue::write(addr_uint a,mes_mem* signal){
+                      ^~~~~~~~~
+                      caddr_t
+../src/QofQueue.cpp:429:41: error: expected primary-expression before '*' token
+ void QofQueue::write(addr_uint a,mes_mem* signal){
+                                         ^
+../src/QofQueue.cpp:429:43: error: 'signal' was not declared in this scope
+ void QofQueue::write(addr_uint a,mes_mem* signal){
+                                           ^~~~~~
+../src/QofQueue.cpp:429:43: note: suggested alternative: 'signed'
+ void QofQueue::write(addr_uint a,mes_mem* signal){
+                                           ^~~~~~
+                                           signed
+../src/QofQueue.cpp:454:21: error: variable or field 'read' declared void
+ void QofQueue::read(addr_uint a,mes_mem *signal){
+                     ^~~~~~~~~
+../src/QofQueue.cpp:454:21: error: 'addr_uint' was not declared in this scope
+../src/QofQueue.cpp:454:21: note: suggested alternative: 'caddr_t'
+ void QofQueue::read(addr_uint a,mes_mem *signal){
+                     ^~~~~~~~~
+                     caddr_t
+../src/QofQueue.cpp:454:41: error: expected primary-expression before '*' token
+ void QofQueue::read(addr_uint a,mes_mem *signal){
+                                         ^
+../src/QofQueue.cpp:454:42: error: 'signal' was not declared in this scope
+ void QofQueue::read(addr_uint a,mes_mem *signal){
+                                          ^~~~~~
+../src/QofQueue.cpp:454:42: note: suggested alternative: 'signed'
+ void QofQueue::read(addr_uint a,mes_mem *signal){
+                                          ^~~~~~
+                                          signed
+../src/QofQueue.cpp: In member function 'void QofQueue::logFlag()':
+../src/QofQueue.cpp:496:50: error: 'struct flagObj' has no member named 'addr'
+   printf(" %d\t" PRINTADD "\t%d\t%d\n",i,flag[i].addr,flag[i].dump,flag[i].taken);
+                                                  ^~~~
+../src/QofQueue.cpp: In member function 'void QofQueue::logDump()':
+../src/QofQueue.cpp:524:64: error: 'struct entry' has no member named 'Address'; did you mean 'miniAddress'?
+   printf("-> ( %d | " PRINTADD " )",tempe->miniAddress, tempe->Address);
+                                                                ^~~~~~~
+                                                                miniAddress
+make: *** [src/subdir.mk:36: src/QofQueue.o] Error 1
+16:49:33 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:49:55 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:50:35 **** Incremental Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+16:52:33 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+In file included from ../src/Queue.h:4:0,
+                 from ../src/QofQueue.h:4,
+                 from ../src/QofQueue.cpp:1:
+../src/mes_mem.h:4:10: fatal error: uintstd.h: No such file or directory
+ #include <uintstd.h>
+          ^~~~~~~~~~~
+compilation terminated.
+make: *** [src/subdir.mk:36: src/QofQueue.o] Error 1
+16:53:30 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:53:57 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:54:17 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:54:38 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:55:03 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc:16:36: error: conflicting declaration 'typedef uint16_t addr_uint'
+ typedef /*long long int*/ uint16_t addr_uint;
+                                    ^~~~~~~~~
+In file included from ../src/QofQueue.h:4:0,
+                 from ../src/main.cc:9:
+../src/Queue.h:6:36: note: previous declaration as 'typedef char16_t addr_uint'
+ typedef /*long long int*/ char16_t addr_uint;
+                                    ^~~~~~~~~
+make: *** [src/subdir.mk:43: src/main.o] Error 1
+16:55:32 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:56:23 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:56:44 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:58:07 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:58:27 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:77:79: warning: format '%lu' expects argument of type 'long unsigned int', but argument 3 has type 'int' [-Wformat=]
+              printf("[WB] MA %u, WriteBackAddress: %lu\n",signal.ma,signal.mmA);
+                                                                     ~~~~~~~~~~^
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+16:59:36 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+17:00:29 **** Incremental Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+17:02:23 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+17:02:44 **** Incremental Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+17:07:25 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89712	8680996	  23336	8794044	 862fbc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+17:08:49 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+In file included from ../src/QofQueue.cpp:1:0:
+../src/QofQueue.h:13:2: error: 'int8' does not name a type; did you mean 'int'?
+  int8 addr;
+  ^~~~
+  int
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:33:14: error: 'struct flagObj' has no member named 'addr'
+   if(flag[i].addr == a){
+              ^~~~
+../src/QofQueue.cpp:101:37: error: no match for 'operator=' (operand types are 'flagObj' and '<brace-enclosed initializer list>')
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+In file included from ../src/QofQueue.cpp:1:0:
+../src/QofQueue.h:12:8: note: candidate: constexpr flagObj& flagObj::operator=(const flagObj&)
+ struct flagObj{
+        ^~~~~~~
+../src/QofQueue.h:12:8: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'const flagObj&'
+../src/QofQueue.h:12:8: note: candidate: constexpr flagObj& flagObj::operator=(flagObj&&)
+../src/QofQueue.h:12:8: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'flagObj&&'
+../src/QofQueue.cpp: In member function 'Queue* QofQueue::getQueue(addr_uint)':
+../src/QofQueue.cpp:383:14: error: 'struct flagObj' has no member named 'addr'
+   if(flag[i].addr == a){
+              ^~~~
+../src/QofQueue.cpp: In member function 'void QofQueue::logFlag()':
+../src/QofQueue.cpp:496:50: error: 'struct flagObj' has no member named 'addr'
+   printf(" %d\t" PRINTADD "\t%d\t%d\n",i,flag[i].addr,flag[i].dump,flag[i].taken);
+                                                  ^~~~
+make: *** [src/subdir.mk:36: src/QofQueue.o] Error 1
+17:08:53 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+In file included from ../src/QofQueue.cpp:1:0:
+../src/QofQueue.h:13:2: error: 'uint8' does not name a type; did you mean 'uint8_t'?
+  uint8 addr;
+  ^~~~~
+  uint8_t
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:33:14: error: 'struct flagObj' has no member named 'addr'
+   if(flag[i].addr == a){
+              ^~~~
+../src/QofQueue.cpp:101:37: error: no match for 'operator=' (operand types are 'flagObj' and '<brace-enclosed initializer list>')
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+In file included from ../src/QofQueue.cpp:1:0:
+../src/QofQueue.h:12:8: note: candidate: constexpr flagObj& flagObj::operator=(const flagObj&)
+ struct flagObj{
+        ^~~~~~~
+../src/QofQueue.h:12:8: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'const flagObj&'
+../src/QofQueue.h:12:8: note: candidate: constexpr flagObj& flagObj::operator=(flagObj&&)
+../src/QofQueue.h:12:8: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'flagObj&&'
+../src/QofQueue.cpp: In member function 'Queue* QofQueue::getQueue(addr_uint)':
+../src/QofQueue.cpp:383:14: error: 'struct flagObj' has no member named 'addr'
+   if(flag[i].addr == a){
+              ^~~~
+../src/QofQueue.cpp: In member function 'void QofQueue::logFlag()':
+../src/QofQueue.cpp:496:50: error: 'struct flagObj' has no member named 'addr'
+   printf(" %d\t" PRINTADD "\t%d\t%d\n",i,flag[i].addr,flag[i].dump,flag[i].taken);
+                                                  ^~~~
+make: *** [src/subdir.mk:36: src/QofQueue.o] Error 1
+17:09:29 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+In file included from ../src/QofQueue.cpp:1:0:
+../src/QofQueue.h:13:2: error: 'uint8' does not name a type; did you mean 'int8'?
+  uint8 addr;
+  ^~~~~
+  int8
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:33:14: error: 'struct flagObj' has no member named 'addr'
+   if(flag[i].addr == a){
+              ^~~~
+../src/QofQueue.cpp:101:37: error: no match for 'operator=' (operand types are 'flagObj' and '<brace-enclosed initializer list>')
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+In file included from ../src/QofQueue.cpp:1:0:
+../src/QofQueue.h:12:8: note: candidate: constexpr flagObj& flagObj::operator=(const flagObj&)
+ struct flagObj{
+        ^~~~~~~
+../src/QofQueue.h:12:8: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'const flagObj&'
+../src/QofQueue.h:12:8: note: candidate: constexpr flagObj& flagObj::operator=(flagObj&&)
+../src/QofQueue.h:12:8: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'flagObj&&'
+../src/QofQueue.cpp: In member function 'Queue* QofQueue::getQueue(addr_uint)':
+../src/QofQueue.cpp:383:14: error: 'struct flagObj' has no member named 'addr'
+   if(flag[i].addr == a){
+              ^~~~
+../src/QofQueue.cpp: In member function 'void QofQueue::logFlag()':
+../src/QofQueue.cpp:496:50: error: 'struct flagObj' has no member named 'addr'
+   printf(" %d\t" PRINTADD "\t%d\t%d\n",i,flag[i].addr,flag[i].dump,flag[i].taken);
+                                                  ^~~~
+make: *** [src/subdir.mk:36: src/QofQueue.o] Error 1
+17:09:47 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:101:37: warning: narrowing conversion of 'm_addr' from 'addr_uint {aka short unsigned int}' to 'int8 {aka unsigned char}' inside { } [-Wnarrowing]
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89840	8680996	  23336	8794172	 86303c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+17:10:10 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:101:37: warning: narrowing conversion of 'm_addr' from 'addr_uint {aka short unsigned int}' to 'int8 {aka unsigned char}' inside { } [-Wnarrowing]
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89840	8680996	  23336	8794172	 86303c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+17:10:44 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89840	8680996	  23336	8794172	 86303c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+11:31:14 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89904	8680996	  23336	8794236	 86307c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+11:45:41 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89904	8680996	  23336	8794236	 86307c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+11:47:04 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:101:37: warning: narrowing conversion of 'm_addr' from 'addr_uint {aka short unsigned int}' to 'int8 {aka unsigned char}' inside { } [-Wnarrowing]
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+../src/QofQueue.cpp: At global scope:
+../src/QofQueue.cpp:171:6: error: prototype for 'void QofQueue::dumpWriteBack(int, mes_mem*)' does not match any in class 'QofQueue'
+ void QofQueue::dumpWriteBack(int ma,mes_mem* signal){
+      ^~~~~~~~
+In file included from ../src/QofQueue.cpp:1:0:
+../src/QofQueue.h:66:7: error: candidate is: void QofQueue::dumpWriteBack(int8, mes_mem*)
+  void dumpWriteBack(int8 ma,mes_mem* signal);
+       ^~~~~~~~~~~~~
+make: *** [src/subdir.mk:36: src/QofQueue.o] Error 1
+11:47:32 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:101:37: warning: narrowing conversion of 'm_addr' from 'addr_uint {aka short unsigned int}' to 'int8 {aka unsigned char}' inside { } [-Wnarrowing]
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+../src/QofQueue.cpp: At global scope:
+../src/QofQueue.cpp:171:6: error: prototype for 'void QofQueue::dumpWriteBack(int, mes_mem*)' does not match any in class 'QofQueue'
+ void QofQueue::dumpWriteBack(int ma,mes_mem* signal){
+      ^~~~~~~~
+In file included from ../src/QofQueue.cpp:1:0:
+../src/QofQueue.h:66:7: error: candidate is: void QofQueue::dumpWriteBack(int8, mes_mem*)
+  void dumpWriteBack(int8 ma,mes_mem* signal);
+       ^~~~~~~~~~~~~
+make: *** [src/subdir.mk:36: src/QofQueue.o] Error 1
+11:48:05 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:101:37: warning: narrowing conversion of 'm_addr' from 'addr_uint {aka short unsigned int}' to 'int8 {aka unsigned char}' inside { } [-Wnarrowing]
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+../src/QofQueue.cpp: At global scope:
+../src/QofQueue.cpp:134:5: error: prototype for 'int QofQueue::performWriteBack(mes_mem*)' does not match any in class 'QofQueue'
+ int QofQueue::performWriteBack(mes_mem* signal){
+     ^~~~~~~~
+In file included from ../src/QofQueue.cpp:1:0:
+../src/QofQueue.h:62:7: error: candidate is: int8 QofQueue::performWriteBack(mes_mem*)
+  int8 performWriteBack(mes_mem* signal);
+       ^~~~~~~~~~~~~~~~
+../src/QofQueue.cpp:171:6: error: prototype for 'void QofQueue::dumpWriteBack(int, mes_mem*)' does not match any in class 'QofQueue'
+ void QofQueue::dumpWriteBack(int ma,mes_mem* signal){
+      ^~~~~~~~
+In file included from ../src/QofQueue.cpp:1:0:
+../src/QofQueue.h:66:7: error: candidate is: void QofQueue::dumpWriteBack(int8, mes_mem*)
+  void dumpWriteBack(int8 ma,mes_mem* signal);
+       ^~~~~~~~~~~~~
+make: *** [src/subdir.mk:36: src/QofQueue.o] Error 1
+11:48:31 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:101:37: warning: narrowing conversion of 'm_addr' from 'addr_uint {aka short unsigned int}' to 'int8 {aka unsigned char}' inside { } [-Wnarrowing]
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+../src/QofQueue.cpp: At global scope:
+../src/QofQueue.cpp:171:6: error: prototype for 'void QofQueue::dumpWriteBack(int, mes_mem*)' does not match any in class 'QofQueue'
+ void QofQueue::dumpWriteBack(int ma,mes_mem* signal){
+      ^~~~~~~~
+In file included from ../src/QofQueue.cpp:1:0:
+../src/QofQueue.h:66:7: error: candidate is: void QofQueue::dumpWriteBack(int8, mes_mem*)
+  void dumpWriteBack(int8 ma,mes_mem* signal);
+       ^~~~~~~~~~~~~
+make: *** [src/subdir.mk:36: src/QofQueue.o] Error 1
+11:48:41 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:101:37: warning: narrowing conversion of 'm_addr' from 'addr_uint {aka short unsigned int}' to 'int8 {aka unsigned char}' inside { } [-Wnarrowing]
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89904	8680996	  23336	8794236	 86307c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+11:49:34 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:101:37: warning: narrowing conversion of 'm_addr' from 'addr_uint {aka short unsigned int}' to 'int8 {aka unsigned char}' inside { } [-Wnarrowing]
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89840	8680996	  23336	8794172	 86303c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+11:49:43 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:101:37: warning: narrowing conversion of 'm_addr' from 'addr_uint {aka short unsigned int}' to 'int8 {aka unsigned char}' inside { } [-Wnarrowing]
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89728	8680996	  23336	8794060	 862fcc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+11:49:56 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:101:37: warning: narrowing conversion of 'm_addr' from 'addr_uint {aka short unsigned int}' to 'int8 {aka unsigned char}' inside { } [-Wnarrowing]
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89728	8680996	  23336	8794060	 862fcc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+11:50:03 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:101:37: warning: narrowing conversion of 'm_addr' from 'addr_uint {aka short unsigned int}' to 'int8 {aka unsigned char}' inside { } [-Wnarrowing]
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89728	8680996	  23336	8794060	 862fcc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+11:50:14 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+../src/QofQueue.cpp: In member function 'void QofQueue::findMiniAddress(addr_uint, message*, mes_mem*)':
+../src/QofQueue.cpp:101:37: warning: narrowing conversion of 'm_addr' from 'addr_uint {aka short unsigned int}' to 'int8 {aka unsigned char}' inside { } [-Wnarrowing]
+  flag[m_ma] = {m_addr,m_taken,m_dump};
+                                     ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89728	8680996	  23336	8794060	 862fcc	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+11:51:11 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89600	8680996	  23336	8793932	 862f4c	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+11:52:15 **** Incremental Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+14:17:54 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89608	8680996	  23336	8793940	 862f54	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+14:19:13 **** Incremental Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+14:27:30 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89736	8680996	  23336	8794068	 862fd4	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+14:39:08 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89736	8680996	  23336	8794068	 862fd4	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+14:58:09 **** Incremental Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+15:00:36 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89736	8680996	  23336	8794068	 862fd4	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:01:02 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:60:23: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long int' [-Wformat=]
+        printf("%d\t",i);
+                       ^
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89736	8680996	  23336	8794068	 862fd4	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:01:26 **** Clean-only build of configuration Debug for project justhelloworld ****
+make clean 
+rm -rf  ./src/helloworld.o ./src/platform.o  ./src/helloworld.d ./src/platform.d  justhelloworld.elf.size  justhelloworld.elf
+' '
+15:01:26 **** Clean-only build of configuration Debug for project testMemory ****
+make clean 
+rm -rf  ./src/main.d ./src/platform.d  ./src/main.o ./src/platform.o  testMemory.elf.size  testMemory.elf
+' '
+15:01:27 **** Clean-only build of configuration Debug for project testMemory2 ****
+make clean 
+rm -rf  ./src/main.d ./src/platform.d  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o  ./src/QofQueue.d ./src/Queue.d  testMemory2.elf.size  testMemory2.elf
+' '
+15:01:27 **** Clean-only build of project testMemory_bsp ****
+make -k clean 
+make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src -s clean 
+make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src -s clean 
+make -C ps7_cortexa9_0/libsrc/ddrps_v1_0/src -s clean 
+make -C ps7_cortexa9_0/libsrc/devcfg_v3_5/src -s clean 
+make -C ps7_cortexa9_0/libsrc/dmaps_v2_4/src -s clean 
+make -C ps7_cortexa9_0/libsrc/emacps_v3_8/src -s clean 
+make -C ps7_cortexa9_0/libsrc/gpiops_v3_4/src -s clean 
+make -C ps7_cortexa9_0/libsrc/mem_v1_0/src -s clean 
+rm: cannot lstat `*.o': Invalid argument
+make[1]: *** [Makefile:34: clean] Error 1
+make: *** [Makefile:33: ps7_cortexa9_0/libsrc/mem_v1_0/src/make.clean] Error 2
+make -C ps7_cortexa9_0/libsrc/qspips_v3_5/src -s clean 
+make -C ps7_cortexa9_0/libsrc/scugic_v3_10/src -s clean 
+make -C ps7_cortexa9_0/libsrc/scutimer_v2_1/src -s clean 
+make -C ps7_cortexa9_0/libsrc/scuwdt_v2_1/src -s clean 
+make -C ps7_cortexa9_0/libsrc/sdps_v3_6/src -s clean 
+make -C ps7_cortexa9_0/libsrc/standalone_v6_8/src -s clean 
+make -C ps7_cortexa9_0/libsrc/ttcps_v3_7/src -s clean 
+make -C ps7_cortexa9_0/libsrc/uartps_v3_7/src -s clean 
+make -C ps7_cortexa9_0/libsrc/usbps_v2_4/src -s clean 
+make -C ps7_cortexa9_0/libsrc/xadcps_v2_3/src -s clean 
+make: Target 'clean' not remade because of errors.
+15:01:30 **** Build of project testMemory_bsp ****
+make -k all 
+"Running Make include in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src"
+make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src"
+make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/ddrps_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/ddrps_v1_0/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/devcfg_v3_5/src"
+make -C ps7_cortexa9_0/libsrc/devcfg_v3_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/dmaps_v2_4/src"
+make -C ps7_cortexa9_0/libsrc/dmaps_v2_4/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/emacps_v3_8/src"
+make -C ps7_cortexa9_0/libsrc/emacps_v3_8/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/gpiops_v3_4/src"
+make -C ps7_cortexa9_0/libsrc/gpiops_v3_4/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/mem_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/mem_v1_0/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/qspips_v3_5/src"
+make -C ps7_cortexa9_0/libsrc/qspips_v3_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/scugic_v3_10/src"
+make -C ps7_cortexa9_0/libsrc/scugic_v3_10/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/scutimer_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/scutimer_v2_1/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/scuwdt_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/scuwdt_v2_1/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/sdps_v3_6/src"
+make -C ps7_cortexa9_0/libsrc/sdps_v3_6/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/standalone_v6_8/src"
+make -C ps7_cortexa9_0/libsrc/standalone_v6_8/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/ttcps_v3_7/src"
+make -C ps7_cortexa9_0/libsrc/ttcps_v3_7/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/uartps_v3_7/src"
+make -C ps7_cortexa9_0/libsrc/uartps_v3_7/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/usbps_v2_4/src"
+make -C ps7_cortexa9_0/libsrc/usbps_v2_4/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/xadcps_v2_3/src"
+make -C ps7_cortexa9_0/libsrc/xadcps_v2_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make libs in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src"
+make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling coresightps_dcc"
+"Running Make libs in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src"
+make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling cpu_cortexa9"
+"Running Make libs in ps7_cortexa9_0/libsrc/ddrps_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/ddrps_v1_0/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling ddrps"
+"Running Make libs in ps7_cortexa9_0/libsrc/devcfg_v3_5/src"
+make -C ps7_cortexa9_0/libsrc/devcfg_v3_5/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling devcfg"
+"Running Make libs in ps7_cortexa9_0/libsrc/dmaps_v2_4/src"
+make -C ps7_cortexa9_0/libsrc/dmaps_v2_4/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling dmaps"
+"Running Make libs in ps7_cortexa9_0/libsrc/emacps_v3_8/src"
+make -C ps7_cortexa9_0/libsrc/emacps_v3_8/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling emacps"
+"Running Make libs in ps7_cortexa9_0/libsrc/gpiops_v3_4/src"
+make -C ps7_cortexa9_0/libsrc/gpiops_v3_4/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling gpiops"
+"Running Make libs in ps7_cortexa9_0/libsrc/mem_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/mem_v1_0/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling mem"
+"Running Make libs in ps7_cortexa9_0/libsrc/qspips_v3_5/src"
+make -C ps7_cortexa9_0/libsrc/qspips_v3_5/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling qspips"
+"Running Make libs in ps7_cortexa9_0/libsrc/scugic_v3_10/src"
+make -C ps7_cortexa9_0/libsrc/scugic_v3_10/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling scugic"
+"Running Make libs in ps7_cortexa9_0/libsrc/scutimer_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/scutimer_v2_1/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling scutimer"
+"Running Make libs in ps7_cortexa9_0/libsrc/scuwdt_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/scuwdt_v2_1/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling scuwdt"
+"Running Make libs in ps7_cortexa9_0/libsrc/sdps_v3_6/src"
+make -C ps7_cortexa9_0/libsrc/sdps_v3_6/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling sdps"
+"Running Make libs in ps7_cortexa9_0/libsrc/standalone_v6_8/src"
+make -C ps7_cortexa9_0/libsrc/standalone_v6_8/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling standalone"
+In file included from usleep.c:56:0:
+xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from xil_sleeptimer.c:51:0:
+xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from xtime_l.c:49:0:
+xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from sleep.c:53:0:
+xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+"Running Make libs in ps7_cortexa9_0/libsrc/ttcps_v3_7/src"
+make -C ps7_cortexa9_0/libsrc/ttcps_v3_7/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling ttcps"
+"Running Make libs in ps7_cortexa9_0/libsrc/uartps_v3_7/src"
+make -C ps7_cortexa9_0/libsrc/uartps_v3_7/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling uartps"
+"Running Make libs in ps7_cortexa9_0/libsrc/usbps_v2_4/src"
+make -C ps7_cortexa9_0/libsrc/usbps_v2_4/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling usbps"
+"Running Make libs in ps7_cortexa9_0/libsrc/xadcps_v2_3/src"
+make -C ps7_cortexa9_0/libsrc/xadcps_v2_3/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling xadcps"
+'Finished building libraries'
+15:02:16 **** Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:60:23: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long int' [-Wformat=]
+        printf("%d\t",i);
+                       ^
+'Finished building: ../src/main.cc'
+' '
+'Building file: ../src/platform.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.cc"
+'Finished building: ../src/platform.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89736	8680996	  23336	8794068	 862fd4	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:02:41 **** Build of configuration Debug for project testMemory ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -I../../testMemory_bsp/ps7_cortexa9_0/include -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+'Finished building: ../src/main.cc'
+' '
+'Building file: ../src/platform.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -I../../testMemory_bsp/ps7_cortexa9_0/include -c -fmessage-length=0 -MT"src/platform.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.cc"
+'Finished building: ../src/platform.cc'
+' '
+'Building target: testMemory.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -L"D:\Xilinx\Vivado\2018.3\include\" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory.elf"  ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+arm-none-eabi-g++: fatal error: no input files
+compilation terminated.
+make: *** [makefile:53: testMemory.elf] Error 1
+15:02:43 **** Build of configuration Debug for project justhelloworld ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+'Finished building: ../src/helloworld.c'
+' '
+'Building file: ../src/platform.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+'Finished building: ../src/platform.c'
+' '
+'Building target: justhelloworld.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "justhelloworld.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: justhelloworld.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size justhelloworld.elf  |tee "justhelloworld.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  19352	   1144	  22568	  43064	   a838	justhelloworld.elf
+'Finished building: justhelloworld.elf.size'
+' '
+15:03:11 **** Incremental Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+15:04:35 **** Incremental Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+15:14:24 **** Auto Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/QofQueue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/QofQueue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/QofQueue.d" -MT"src/QofQueue.o" -o "src/QofQueue.o" "../src/QofQueue.cpp"
+../src/QofQueue.cpp: In constructor 'QofQueue::QofQueue()':
+../src/QofQueue.cpp:8:8: warning: variable 'dump' set but not used [-Wunused-but-set-variable]
+  Queue dump = Queue();
+        ^~~~
+../src/QofQueue.cpp:9:10: warning: unused variable 'm' [-Wunused-variable]
+  message m = {0,0,false,false};
+          ^
+'Finished building: ../src/QofQueue.cpp'
+' '
+'Building file: ../src/Queue.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Queue.d" -MT"src/Queue.o" -o "src/Queue.o" "../src/Queue.cpp"
+'Finished building: ../src/Queue.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:60:23: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long int' [-Wformat=]
+        printf("%d\t",i);
+                       ^
+'Finished building: ../src/main.cc'
+' '
+'Building target: testMemory2.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../testMemory_bsp/ps7_cortexa9_0/lib -o "testMemory2.elf"  ./src/QofQueue.o ./src/Queue.o ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: testMemory2.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size testMemory2.elf  |tee "testMemory2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89672	8680996	  23336	8794004	 862f94	testMemory2.elf
+'Finished building: testMemory2.elf.size'
+' '
+15:14:48 **** Incremental Build of configuration Debug for project testMemory2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.

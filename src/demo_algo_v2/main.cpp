@@ -28,11 +28,14 @@ int main(int argc, char** argv){
     //taking the last 16 bits only - Hashing
     for(int i = 0;i < INST_SIZE;i++){
       arrn[i][0] = (int)(arr[i][0] & 0xFFFF);
+      arrn[i][1] = (int)arr[i][1];
+      arrn[i][2] = (int)arr[i][2];
     }
-
+    
 
     for(int i = 0;i< INST_SIZE;i++){
       initSignal(&signal);
+      printf("%d\t",arrn[i][2]);
       if(arrn[i][1] == 1){
 
 	      qoq.write(arrn[i][0],&signal);

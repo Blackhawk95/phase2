@@ -23,13 +23,13 @@ void QofQueue::findMiniAddress(addr_uint a,message* mptr,mes_mem* signal){
 	addr_uint m_addr = a;
 	bool m_taken = false;
 	bool m_dump = false;
-	int m_ma = -1;
+	int8 m_ma = -1;
 
 	bool l_present = false;
 	bool l_dumpfoundflag = false;
 
 	// Address already on the DRAM
-	for(int i = 0;i< SIZE;i++){
+	for(int8 i = 0;i< SIZE;i++){
 		if(flag[i].addr == a){
 			//found - so touch corresponding queue TO.DO
 			//if a data with same address exist in dump, remove the data from dump and proceed with an insert
@@ -53,7 +53,7 @@ void QofQueue::findMiniAddress(addr_uint a,message* mptr,mes_mem* signal){
 		//printf("Size : %d\n",size);
 		// If the DRAM isn't full
 		if(size < SIZE){
-			for(int i = 0;i< SIZE;i++){
+			for(int8 i = 0;i< SIZE;i++){
 				//find an empty location
 				if(flag[i].taken == false){
 					//prep for the message
@@ -73,7 +73,7 @@ void QofQueue::findMiniAddress(addr_uint a,message* mptr,mes_mem* signal){
 			//printf("QofQueue : findMiniAddress | Flag D\n");
 			//m_dump = true;
 			//check if any dump ones exist
-			for(int i = 0;i< SIZE;i++){
+			for(int8 i = 0;i< SIZE;i++){
 				if(flag[i].dump == true){ //this indicates, checking for a dump entry
 					//prep for message
 					m_ma = i;
@@ -131,8 +131,8 @@ int QofQueue::createADump(){
  * and returns its mini address
  * */
 
-int QofQueue::performWriteBack(mes_mem* signal){
-	int tempma;
+int8 QofQueue::performWriteBack(mes_mem* signal){
+	int8 tempma;
 	//printf("QofQueue : performWriteBack | Flag A\n");
 	struct entry* temp = old()->old();
 	tempma = temp->miniAddress;
@@ -168,7 +168,7 @@ void QofQueue::writeBack(entry* we,mes_mem* signal){
 	//printf("QofQueue : writeBack | Flag C\n");
 }
 
-void QofQueue::dumpWriteBack(int ma,mes_mem* signal){
+void QofQueue::dumpWriteBack(int8 ma,mes_mem* signal){
 	entry* tempe = dump.old();
 	//printf(" dumpWriteBack(%d) ",ma);
 	if(tempe == NULL){
@@ -453,7 +453,7 @@ void QofQueue::write(addr_uint a,mes_mem* signal){
 
 void QofQueue::read(addr_uint a,mes_mem *signal){
 
-	int minia=0;
+	int8 minia=0;
 	Queue* tempq = getQueue(a);
 	if(tempq == NULL){
 		//printf("Look at NVM\n");

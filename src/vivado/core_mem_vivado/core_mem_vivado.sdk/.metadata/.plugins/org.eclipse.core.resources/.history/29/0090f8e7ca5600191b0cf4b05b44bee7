@@ -1,0 +1,21 @@
+#ifndef MESMEM_H
+#define MESMEM_H
+
+#define SIZE 64
+#define THRESHOLD 500
+#define DUMPLIMIT 16
+#define PRINTADD "%d"
+#define INST_SIZE 50
+
+struct mes_mem
+{
+    /* data */
+    char16_t miA;
+    int mmA;
+    char ma;
+    bool writeBack;
+    bool write;
+    bool read_from_nvm;
+    bool read_from_dram;
+};
+#endif

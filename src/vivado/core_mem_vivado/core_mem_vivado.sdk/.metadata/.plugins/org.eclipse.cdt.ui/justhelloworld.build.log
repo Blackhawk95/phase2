@@ -1,4 +1,4 @@
-16:28:47 **** Auto Build of configuration Debug for project justhelloworld ****
+15:02:43 **** Build of configuration Debug for project justhelloworld ****
 make pre-build main-build 
 a9-linaro-pre-build-step
 ' '
@@ -24,5 +24,5 @@ arm-none-eabi-size justhelloworld.elf  |tee "justhelloworld.elf.size"
 'Finished building: justhelloworld.elf.size'
 ' '
 
-16:28:48 Build Finished (took 1s.679ms)
+15:02:44 Build Finished (took 1s.778ms)
 

@@ -13,8 +13,6 @@
 #include "final_out_wr.h"
 //#include <ap_int.h>
 
-typedef /*long long int*/ int addr_uint;
-typedef char int8;
 
 void initSignal(mes_mem* signal){
   signal->writeBack = false;
@@ -50,15 +48,16 @@ int main()
 	QofQueue qoq;
 	mes_mem signal;
 
-	int arrn[INST_SIZE][3];
-	for(int i = 0;i < INST_SIZE;i++){
-	      arrn[i][0] = (int)(arr[i][0] & 0xFFFF);
-	      arrn[i][1] = (char)arr[i][1];
-	      arrn[i][2] = (char)arr[i][2];
+	addr_uint arrn[INST_SIZE][3];
+	for(long int i = 0;i < INST_SIZE;i++){
+	      arrn[i][0] = (uint16_t)(arr[i][0] & 0xFFFF);
+	      arrn[i][1] = (uint8_t)arr[i][1];
+	      arrn[i][2] = (uint8_t)arr[i][2];
 	}
 
-	for(int i = 0;i< INST_SIZE;i++){
+	for(long int i = 0;i< INST_SIZE;i++){
 	      initSignal(&signal);
+	      printf("%d\t",i);
 	      if(arrn[i][1] == 1){
 
 		      qoq.write(arrn[i][0],&signal);
@@ -74,7 +73,7 @@ int main()
 	        	XMem_Start(&doMem);
 	        	while(!XMem_IsDone(&doMem));
 
-	            printf("[WB] MA %d, WriteBackAddress: %d\n",signal.ma,signal.mmA);
+	            printf("[WB] MA %u, WriteBackAddress: %u\n",signal.ma,signal.mmA);
 	          }
 	          //10 - write
 	          XMem_Set_a_V(&doMem,arrn[i][0]);
@@ -85,7 +84,7 @@ int main()
 	          XMem_Start(&doMem);
 	          while(!XMem_IsDone(&doMem));
 
-	          printf("[W] MA %d, NewAddress: %d, Data: %d\n",signal.ma,arrn[i][0],arrn[i][2]);
+	          printf("[W] MA %u, NewAddress: %u, Data: %u\n",signal.ma,arrn[i][0],arrn[i][2]);
 	        }
 	      }
 	      else if(arr[i][1] == 0){
@@ -99,7 +98,7 @@ int main()
 	            XMem_Start(&doMem);
 	            while(!XMem_IsDone(&doMem));
 
-	        printf("[R_DRAM] MiniAddress: %d Data from MA %u\n",signal.ma,(int)XMem_Get_data_V_o(&doMem));
+	        printf("[R_DRAM] MiniAddress: %u Data from MA %u\n",signal.ma,(int8)XMem_Get_data_V_o(&doMem));
 	        }
 	        else if(signal.read_from_nvm){
 	        	XMem_Set_a_V(&doMem,arrn[i][0]);
@@ -109,7 +108,7 @@ int main()
 		        XMem_Start(&doMem);
 		        while(!XMem_IsDone(&doMem));
 
-	           printf("[R_NVM] Address: %d Data from MA %u\n",arrn[i][0],(int)XMem_Get_data_V_o(&doMem));
+	           printf("[R_NVM] Address: %u Data from MA %u\n",arrn[i][0],(int8)XMem_Get_data_V_o(&doMem));
 	        }
 	      }
 	}
