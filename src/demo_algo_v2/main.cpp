@@ -3,7 +3,11 @@
 #include "QofQueue.h"
 //#include "../../dataset/testinput.h"
 //#include "../../dataset/hai.h"
-#include "../../dataset/final_out_wr.h"
+//#include "../../dataset/final_out_wr.h"
+//#include "../../dataset/outTestBatchAdd.h"
+//#include "../../dataset/outTestLinearAdd.h"
+#include "../../dataset/outTestRandomAdd.h"
+
 #include "mes_mem.h"
 
 //int arr[] = {1000,1001,2000,2001,2002,2003,2005,2006,1003,1004,1005,3001,3002,2003};
