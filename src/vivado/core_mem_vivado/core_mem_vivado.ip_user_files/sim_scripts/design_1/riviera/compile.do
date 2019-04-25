@@ -48,10 +48,10 @@ vcom -work xpm -93 \
 "D:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_VCOMP.vhd" \
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/70cf/hdl" "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0" "+incdir+D:/Xilinx/Vivado/2018.3/data/xilinx_vip/include" \
-"../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_CRTL_BUS_s_axi.v" \
-"../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_dram.v" \
-"../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_nvm.v" \
-"../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem.v" \
+"../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/fe85/hdl/verilog/mem_CRTL_BUS_s_axi.v" \
+"../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/fe85/hdl/verilog/mem_dram.v" \
+"../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/fe85/hdl/verilog/mem_nvm.v" \
+"../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/fe85/hdl/verilog/mem.v" \
 "../../../bd/design_1/ip/design_1_mem_0_0/sim/design_1_mem_0_0.v" \
 
 vlog -work axi_infrastructure_v1_1_0  -v2k5 "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/70cf/hdl" "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0" "+incdir+D:/Xilinx/Vivado/2018.3/data/xilinx_vip/include" \
@@ -74,6 +74,9 @@ vcom -work proc_sys_reset_v5_0_13 -93 \
 
 vcom -work xil_defaultlib -93 \
 "../../../bd/design_1/ip/design_1_rst_ps7_0_100M_0/sim/design_1_rst_ps7_0_100M_0.vhd" \
+
+vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/70cf/hdl" "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0" "+incdir+D:/Xilinx/Vivado/2018.3/data/xilinx_vip/include" \
+"../../../bd/design_1/sim/design_1.v" \
 
 vlog -work generic_baseblocks_v2_1_0  -v2k5 "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/70cf/hdl" "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0" "+incdir+D:/Xilinx/Vivado/2018.3/data/xilinx_vip/include" \
 "../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/b752/hdl/generic_baseblocks_v2_1_vl_rfs.v" \
@@ -98,7 +101,6 @@ vlog -work axi_protocol_converter_v2_1_18  -v2k5 "+incdir+../../../../core_mem_v
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/70cf/hdl" "+incdir+../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0" "+incdir+D:/Xilinx/Vivado/2018.3/data/xilinx_vip/include" \
 "../../../bd/design_1/ip/design_1_auto_pc_0/sim/design_1_auto_pc_0.v" \
-"../../../bd/design_1/sim/design_1.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

@@ -8,9 +8,11 @@
 #include <stdio.h>
 #include "QofQueue.h"
 #include "mes_mem.h"
+#include <iostream>
 
 //data
 #include "final_out_wr.h"
+//#include "hai.h"
 //#include <ap_int.h>
 
 
@@ -48,23 +50,46 @@ int main()
 	QofQueue qoq;
 	mes_mem signal;
 
+
+
 	addr_uint arrn[INST_SIZE][3];
+	/*printf(" hello\n");
+	scanf("%hu",&arrn[0][0]);
+	scanf("%hu",&arrn[0][1]);
+	scanf("%hu",&arrn[0][2]);
+	printf("%hu\n",arrn[0][0]);
+	printf("%hu\n",arrn[0][1]);
+	printf("%hu\n",arrn[0][2]);
+
+
+	*/
 	for(long int i = 0;i < INST_SIZE;i++){
-	      arrn[i][0] = (uint16_t)(arr[i][0] & 0xFFFF);
-	      arrn[i][1] = (uint8_t)arr[i][1];
-	      arrn[i][2] = (uint8_t)arr[i][2];
+	      arrn[i][0] = (arr[i][0] & 0xFFFF);
+	      arrn[i][1] = arr[i][1];  //(int8);
+	      arrn[i][2] = arr[i][2];
 	}
 
 	for(long int i = 0;i< INST_SIZE;i++){
-	      initSignal(&signal);
-	      printf("%d\t",i);
-	      if(arrn[i][1] == 1){
+	//while(true){
 
-		      qoq.write(arrn[i][0],&signal);
+		/*printf(" hello\n");
+		scanf("%lld",&arrn[0][0]);
+		scanf("%lld",&arrn[0][1]);
+		scanf("%lld",&arrn[0][2]);
+		printf("%lld\n",arrn[0][0]);
+		printf("%lld\n",arrn[0][1]);
+		printf("%lld\n",arrn[0][2]);
+		long int i = 0;*/
+	      initSignal(&signal);
+	      //printf("%ld\t",i);
+	      if(arrn[i][1] == 1){
+	    	  std::cout<<(int)signal.ma<<"\n";
+		    qoq.write(arrn[i][0],&signal);
+		    std::cout<<signal.ma<<"\n";
 	        if(signal.write){ //DATA too
 	          if(signal.writeBack){ //00 - writeback
 
-
+	        	//XMem_Set_a_V(&doMem,arrn[i][0]);
 	        	XMem_Set_a_V(&doMem,arrn[i][0]);
 	        	XMem_Set_ma_V(&doMem,signal.ma);
 	        	XMem_Set_flag_V(&doMem,0x00);
@@ -72,8 +97,9 @@ int main()
 
 	        	XMem_Start(&doMem);
 	        	while(!XMem_IsDone(&doMem));
+	        	while(!XMem_IsReady(&doMem));
 
-	            printf("[WB] MA %u, WriteBackAddress: %u\n",signal.ma,signal.mmA);
+	            printf("[WB] MA %d, WriteBackAddress: %lld\n",signal.ma,signal.mmA);
 	          }
 	          //10 - write
 	          XMem_Set_a_V(&doMem,arrn[i][0]);
@@ -83,8 +109,10 @@ int main()
 
 	          XMem_Start(&doMem);
 	          while(!XMem_IsDone(&doMem));
+	          while(!XMem_IsReady(&doMem));
 
-	          printf("[W] MA %u, NewAddress: %u, Data: %u\n",signal.ma,arrn[i][0],arrn[i][2]);
+
+	          printf("[W] MA %d, NewAddress: %lld, Data: %lld\n",signal.ma,arrn[i][0],arrn[i][2]);
 	        }
 	      }
 	      else if(arr[i][1] == 0){
@@ -97,8 +125,9 @@ int main()
 
 	            XMem_Start(&doMem);
 	            while(!XMem_IsDone(&doMem));
-
-	        printf("[R_DRAM] MiniAddress: %u Data from MA %u\n",signal.ma,(int8)XMem_Get_data_V_o(&doMem));
+	            while(!XMem_IsReady(&doMem));
+	            //std::cout<<(int)signal.ma<<"\n";
+	        printf("[R_DRAM] MiniAddress: %d Data from MA %lu\n",signal.ma,XMem_Get_data_V_o(&doMem));
 	        }
 	        else if(signal.read_from_nvm){
 	        	XMem_Set_a_V(&doMem,arrn[i][0]);
@@ -107,14 +136,15 @@ int main()
 
 		        XMem_Start(&doMem);
 		        while(!XMem_IsDone(&doMem));
+		        while(!XMem_IsReady(&doMem));
 
-	           printf("[R_NVM] Address: %u Data from MA %u\n",arrn[i][0],(int8)XMem_Get_data_V_o(&doMem));
+	           printf("[R_NVM] Address: %lld Data from MA %lu\n",arrn[i][0],XMem_Get_data_V_o(&doMem));
 	        }
 	      }
 	}
 
 	//Hardware code
-	printf(" Hello\n");
+	//printf(" Hello\n");
 	/*
 	addr_uint a = 1900;
 	int8 ma = 54;

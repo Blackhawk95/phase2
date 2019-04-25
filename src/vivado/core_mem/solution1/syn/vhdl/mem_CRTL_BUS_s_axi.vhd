@@ -1,5 +1,5 @@
 -- ==============================================================
--- File generated on Wed Apr 03 13:02:10 +0530 2019
+-- File generated on Tue Apr 09 13:16:47 +0530 2019
 -- Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 -- SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 -- IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -41,12 +41,12 @@ port (
     ap_done               :in   STD_LOGIC;
     ap_ready              :in   STD_LOGIC;
     ap_idle               :in   STD_LOGIC;
-    a_V                   :out  STD_LOGIC_VECTOR(15 downto 0);
-    ma_V                  :out  STD_LOGIC_VECTOR(7 downto 0);
-    data_V_i              :out  STD_LOGIC_VECTOR(7 downto 0);
-    data_V_o              :in   STD_LOGIC_VECTOR(7 downto 0);
-    data_V_o_ap_vld       :in   STD_LOGIC;
-    flag_V                :out  STD_LOGIC_VECTOR(7 downto 0)
+    a                     :out  STD_LOGIC_VECTOR(63 downto 0);
+    ma                    :out  STD_LOGIC_VECTOR(31 downto 0);
+    data_i                :out  STD_LOGIC_VECTOR(31 downto 0);
+    data_o                :in   STD_LOGIC_VECTOR(31 downto 0);
+    data_o_ap_vld         :in   STD_LOGIC;
+    flag                  :out  STD_LOGIC_VECTOR(31 downto 0)
 );
 end entity mem_CRTL_BUS_s_axi;
 
@@ -69,28 +69,25 @@ end entity mem_CRTL_BUS_s_axi;
 --        bit 0  - Channel 0 (ap_done)
 --        bit 1  - Channel 1 (ap_ready)
 --        others - reserved
--- 0x10 : Data signal of a_V
---        bit 15~0 - a_V[15:0] (Read/Write)
---        others   - reserved
--- 0x14 : reserved
--- 0x18 : Data signal of ma_V
---        bit 7~0 - ma_V[7:0] (Read/Write)
---        others  - reserved
--- 0x1c : reserved
--- 0x20 : Data signal of data_V_i
---        bit 7~0 - data_V_i[7:0] (Read/Write)
---        others  - reserved
--- 0x24 : reserved
--- 0x28 : Data signal of data_V_o
---        bit 7~0 - data_V_o[7:0] (Read)
---        others  - reserved
--- 0x2c : Control signal of data_V_o
---        bit 0  - data_V_o_ap_vld (Read/COR)
+-- 0x10 : Data signal of a
+--        bit 31~0 - a[31:0] (Read/Write)
+-- 0x14 : Data signal of a
+--        bit 31~0 - a[63:32] (Read/Write)
+-- 0x18 : reserved
+-- 0x1c : Data signal of ma
+--        bit 31~0 - ma[31:0] (Read/Write)
+-- 0x20 : reserved
+-- 0x24 : Data signal of data_i
+--        bit 31~0 - data_i[31:0] (Read/Write)
+-- 0x28 : reserved
+-- 0x2c : Data signal of data_o
+--        bit 31~0 - data_o[31:0] (Read)
+-- 0x30 : Control signal of data_o
+--        bit 0  - data_o_ap_vld (Read/COR)
 --        others - reserved
--- 0x30 : Data signal of flag_V
---        bit 7~0 - flag_V[7:0] (Read/Write)
---        others  - reserved
--- 0x34 : reserved
+-- 0x34 : Data signal of flag
+--        bit 31~0 - flag[31:0] (Read/Write)
+-- 0x38 : reserved
 -- (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
 architecture behave of mem_CRTL_BUS_s_axi is
@@ -98,20 +95,21 @@ architecture behave of mem_CRTL_BUS_s_axi is
     signal wstate  : states := wrreset;
     signal rstate  : states := rdreset;
     signal wnext, rnext: states;
-    constant ADDR_AP_CTRL         : INTEGER := 16#00#;
-    constant ADDR_GIE             : INTEGER := 16#04#;
-    constant ADDR_IER             : INTEGER := 16#08#;
-    constant ADDR_ISR             : INTEGER := 16#0c#;
-    constant ADDR_A_V_DATA_0      : INTEGER := 16#10#;
-    constant ADDR_A_V_CTRL        : INTEGER := 16#14#;
-    constant ADDR_MA_V_DATA_0     : INTEGER := 16#18#;
-    constant ADDR_MA_V_CTRL       : INTEGER := 16#1c#;
-    constant ADDR_DATA_V_I_DATA_0 : INTEGER := 16#20#;
-    constant ADDR_DATA_V_I_CTRL   : INTEGER := 16#24#;
-    constant ADDR_DATA_V_O_DATA_0 : INTEGER := 16#28#;
-    constant ADDR_DATA_V_O_CTRL   : INTEGER := 16#2c#;
-    constant ADDR_FLAG_V_DATA_0   : INTEGER := 16#30#;
-    constant ADDR_FLAG_V_CTRL     : INTEGER := 16#34#;
+    constant ADDR_AP_CTRL       : INTEGER := 16#00#;
+    constant ADDR_GIE           : INTEGER := 16#04#;
+    constant ADDR_IER           : INTEGER := 16#08#;
+    constant ADDR_ISR           : INTEGER := 16#0c#;
+    constant ADDR_A_DATA_0      : INTEGER := 16#10#;
+    constant ADDR_A_DATA_1      : INTEGER := 16#14#;
+    constant ADDR_A_CTRL        : INTEGER := 16#18#;
+    constant ADDR_MA_DATA_0     : INTEGER := 16#1c#;
+    constant ADDR_MA_CTRL       : INTEGER := 16#20#;
+    constant ADDR_DATA_I_DATA_0 : INTEGER := 16#24#;
+    constant ADDR_DATA_I_CTRL   : INTEGER := 16#28#;
+    constant ADDR_DATA_O_DATA_0 : INTEGER := 16#2c#;
+    constant ADDR_DATA_O_CTRL   : INTEGER := 16#30#;
+    constant ADDR_FLAG_DATA_0   : INTEGER := 16#34#;
+    constant ADDR_FLAG_CTRL     : INTEGER := 16#38#;
     constant ADDR_BITS         : INTEGER := 6;
 
     signal waddr               : UNSIGNED(ADDR_BITS-1 downto 0);
@@ -134,12 +132,12 @@ architecture behave of mem_CRTL_BUS_s_axi is
     signal int_gie             : STD_LOGIC := '0';
     signal int_ier             : UNSIGNED(1 downto 0) := (others => '0');
     signal int_isr             : UNSIGNED(1 downto 0) := (others => '0');
-    signal int_a_V             : UNSIGNED(15 downto 0) := (others => '0');
-    signal int_ma_V            : UNSIGNED(7 downto 0) := (others => '0');
-    signal int_data_V_i        : UNSIGNED(7 downto 0) := (others => '0');
-    signal int_data_V_o        : UNSIGNED(7 downto 0) := (others => '0');
-    signal int_data_V_o_ap_vld : STD_LOGIC;
-    signal int_flag_V          : UNSIGNED(7 downto 0) := (others => '0');
+    signal int_a               : UNSIGNED(63 downto 0) := (others => '0');
+    signal int_ma              : UNSIGNED(31 downto 0) := (others => '0');
+    signal int_data_i          : UNSIGNED(31 downto 0) := (others => '0');
+    signal int_data_o          : UNSIGNED(31 downto 0) := (others => '0');
+    signal int_data_o_ap_vld   : STD_LOGIC;
+    signal int_flag            : UNSIGNED(31 downto 0) := (others => '0');
 
 
 begin
@@ -261,18 +259,20 @@ begin
                         rdata_data <= (1 => int_ier(1), 0 => int_ier(0), others => '0');
                     when ADDR_ISR =>
                         rdata_data <= (1 => int_isr(1), 0 => int_isr(0), others => '0');
-                    when ADDR_A_V_DATA_0 =>
-                        rdata_data <= RESIZE(int_a_V(15 downto 0), 32);
-                    when ADDR_MA_V_DATA_0 =>
-                        rdata_data <= RESIZE(int_ma_V(7 downto 0), 32);
-                    when ADDR_DATA_V_I_DATA_0 =>
-                        rdata_data <= RESIZE(int_data_V_i(7 downto 0), 32);
-                    when ADDR_DATA_V_O_DATA_0 =>
-                        rdata_data <= RESIZE(int_data_V_o(7 downto 0), 32);
-                    when ADDR_DATA_V_O_CTRL =>
-                        rdata_data <= (0 => int_data_V_o_ap_vld, others => '0');
-                    when ADDR_FLAG_V_DATA_0 =>
-                        rdata_data <= RESIZE(int_flag_V(7 downto 0), 32);
+                    when ADDR_A_DATA_0 =>
+                        rdata_data <= RESIZE(int_a(31 downto 0), 32);
+                    when ADDR_A_DATA_1 =>
+                        rdata_data <= RESIZE(int_a(63 downto 32), 32);
+                    when ADDR_MA_DATA_0 =>
+                        rdata_data <= RESIZE(int_ma(31 downto 0), 32);
+                    when ADDR_DATA_I_DATA_0 =>
+                        rdata_data <= RESIZE(int_data_i(31 downto 0), 32);
+                    when ADDR_DATA_O_DATA_0 =>
+                        rdata_data <= RESIZE(int_data_o(31 downto 0), 32);
+                    when ADDR_DATA_O_CTRL =>
+                        rdata_data <= (0 => int_data_o_ap_vld, others => '0');
+                    when ADDR_FLAG_DATA_0 =>
+                        rdata_data <= RESIZE(int_flag(31 downto 0), 32);
                     when others =>
                         rdata_data <= (others => '0');
                     end case;
@@ -284,10 +284,10 @@ begin
 -- ----------------------- Register logic ----------------
     interrupt            <= int_gie and (int_isr(0) or int_isr(1));
     ap_start             <= int_ap_start;
-    a_V                  <= STD_LOGIC_VECTOR(int_a_V);
-    ma_V                 <= STD_LOGIC_VECTOR(int_ma_V);
-    data_V_i             <= STD_LOGIC_VECTOR(int_data_V_i);
-    flag_V               <= STD_LOGIC_VECTOR(int_flag_V);
+    a                    <= STD_LOGIC_VECTOR(int_a);
+    ma                   <= STD_LOGIC_VECTOR(int_ma);
+    data_i               <= STD_LOGIC_VECTOR(int_data_i);
+    flag                 <= STD_LOGIC_VECTOR(int_flag);
 
     process (ACLK)
     begin
@@ -418,8 +418,8 @@ begin
     begin
         if (ACLK'event and ACLK = '1') then
             if (ACLK_EN = '1') then
-                if (w_hs = '1' and waddr = ADDR_A_V_DATA_0) then
-                    int_a_V(15 downto 0) <= (UNSIGNED(WDATA(15 downto 0)) and wmask(15 downto 0)) or ((not wmask(15 downto 0)) and int_a_V(15 downto 0));
+                if (w_hs = '1' and waddr = ADDR_A_DATA_0) then
+                    int_a(31 downto 0) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_a(31 downto 0));
                 end if;
             end if;
         end if;
@@ -429,8 +429,8 @@ begin
     begin
         if (ACLK'event and ACLK = '1') then
             if (ACLK_EN = '1') then
-                if (w_hs = '1' and waddr = ADDR_MA_V_DATA_0) then
-                    int_ma_V(7 downto 0) <= (UNSIGNED(WDATA(7 downto 0)) and wmask(7 downto 0)) or ((not wmask(7 downto 0)) and int_ma_V(7 downto 0));
+                if (w_hs = '1' and waddr = ADDR_A_DATA_1) then
+                    int_a(63 downto 32) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_a(63 downto 32));
                 end if;
             end if;
         end if;
@@ -440,8 +440,19 @@ begin
     begin
         if (ACLK'event and ACLK = '1') then
             if (ACLK_EN = '1') then
-                if (w_hs = '1' and waddr = ADDR_DATA_V_I_DATA_0) then
-                    int_data_V_i(7 downto 0) <= (UNSIGNED(WDATA(7 downto 0)) and wmask(7 downto 0)) or ((not wmask(7 downto 0)) and int_data_V_i(7 downto 0));
+                if (w_hs = '1' and waddr = ADDR_MA_DATA_0) then
+                    int_ma(31 downto 0) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_ma(31 downto 0));
+                end if;
+            end if;
+        end if;
+    end process;
+
+    process (ACLK)
+    begin
+        if (ACLK'event and ACLK = '1') then
+            if (ACLK_EN = '1') then
+                if (w_hs = '1' and waddr = ADDR_DATA_I_DATA_0) then
+                    int_data_i(31 downto 0) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_data_i(31 downto 0));
                 end if;
             end if;
         end if;
@@ -451,10 +462,10 @@ begin
     begin
         if (ACLK'event and ACLK = '1') then
             if (ARESET = '1') then
-                int_data_V_o <= (others => '0');
+                int_data_o <= (others => '0');
             elsif (ACLK_EN = '1') then
-                if (data_V_o_ap_vld = '1') then
-                    int_data_V_o <= UNSIGNED(data_V_o); -- clear on read
+                if (data_o_ap_vld = '1') then
+                    int_data_o <= UNSIGNED(data_o); -- clear on read
                 end if;
             end if;
         end if;
@@ -464,12 +475,12 @@ begin
     begin
         if (ACLK'event and ACLK = '1') then
             if (ARESET = '1') then
-                int_data_V_o_ap_vld <= '0';
+                int_data_o_ap_vld <= '0';
             elsif (ACLK_EN = '1') then
-                if (data_V_o_ap_vld = '1') then
-                    int_data_V_o_ap_vld <= '1';
-                elsif (ar_hs = '1' and raddr = ADDR_DATA_V_O_CTRL) then
-                    int_data_V_o_ap_vld <= '0'; -- clear on read
+                if (data_o_ap_vld = '1') then
+                    int_data_o_ap_vld <= '1';
+                elsif (ar_hs = '1' and raddr = ADDR_DATA_O_CTRL) then
+                    int_data_o_ap_vld <= '0'; -- clear on read
                 end if;
             end if;
         end if;
@@ -479,8 +490,8 @@ begin
     begin
         if (ACLK'event and ACLK = '1') then
             if (ACLK_EN = '1') then
-                if (w_hs = '1' and waddr = ADDR_FLAG_V_DATA_0) then
-                    int_flag_V(7 downto 0) <= (UNSIGNED(WDATA(7 downto 0)) and wmask(7 downto 0)) or ((not wmask(7 downto 0)) and int_flag_V(7 downto 0));
+                if (w_hs = '1' and waddr = ADDR_FLAG_DATA_0) then
+                    int_flag(31 downto 0) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_flag(31 downto 0));
                 end if;
             end if;
         end if;

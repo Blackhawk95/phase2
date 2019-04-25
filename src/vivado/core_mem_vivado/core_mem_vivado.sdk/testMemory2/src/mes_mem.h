@@ -3,22 +3,22 @@
 
 #include <stdint.h>
 
-#define SIZE 64
+#define SIZE 8
 #define THRESHOLD 500
-#define DUMPLIMIT 16
+#define DUMPLIMIT 4
 #define PRINTADD "%d"
-#define INST_SIZE 3000
+#define INST_SIZE 30
 
-typedef /*long long int*/ uint16_t addr_uint;
-typedef uint8_t int8;
+typedef long long int addr_uint;
+typedef int int8;
 
 
 struct mes_mem
 {
     /* data */
-    uint16_t miA;
-    uint16_t mmA;
-    uint8_t ma;
+	addr_uint miA;
+	addr_uint mmA;
+    int ma;
     bool writeBack;
     bool write;
     bool read_from_nvm;

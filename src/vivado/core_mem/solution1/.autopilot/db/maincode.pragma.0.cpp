@@ -6543,8 +6543,8 @@ inline bool operator!=(
 
 
 
-typedef ap_int<16> addr_uint;
-typedef ap_int<8> int8;
+typedef long long int addr_uint;
+typedef int int8;
 # 23 "core_mem/maincode.cpp"
 void mem(addr_uint a,int8 ma,int8 *data,int8 flag){
 #pragma HLS INTERFACE s_axilite port=return bundle=CRTL_BUS

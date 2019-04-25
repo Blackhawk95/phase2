@@ -1,5 +1,5 @@
 // ==============================================================
-// File generated on Wed Apr 03 13:02:10 +0530 2019
+// File generated on Tue Apr 09 13:16:47 +0530 2019
 // Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 // SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 // IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -87,16 +87,16 @@ u32 XMem_IsReady(XMem *InstancePtr);
 void XMem_EnableAutoRestart(XMem *InstancePtr);
 void XMem_DisableAutoRestart(XMem *InstancePtr);
 
-void XMem_Set_a_V(XMem *InstancePtr, u32 Data);
-u32 XMem_Get_a_V(XMem *InstancePtr);
-void XMem_Set_ma_V(XMem *InstancePtr, u32 Data);
-u32 XMem_Get_ma_V(XMem *InstancePtr);
-void XMem_Set_data_V_i(XMem *InstancePtr, u32 Data);
-u32 XMem_Get_data_V_i(XMem *InstancePtr);
-u32 XMem_Get_data_V_o(XMem *InstancePtr);
-u32 XMem_Get_data_V_o_vld(XMem *InstancePtr);
-void XMem_Set_flag_V(XMem *InstancePtr, u32 Data);
-u32 XMem_Get_flag_V(XMem *InstancePtr);
+void XMem_Set_a(XMem *InstancePtr, u64 Data);
+u64 XMem_Get_a(XMem *InstancePtr);
+void XMem_Set_ma(XMem *InstancePtr, u32 Data);
+u32 XMem_Get_ma(XMem *InstancePtr);
+void XMem_Set_data_i(XMem *InstancePtr, u32 Data);
+u32 XMem_Get_data_i(XMem *InstancePtr);
+u32 XMem_Get_data_o(XMem *InstancePtr);
+u32 XMem_Get_data_o_vld(XMem *InstancePtr);
+void XMem_Set_flag(XMem *InstancePtr, u32 Data);
+u32 XMem_Get_flag(XMem *InstancePtr);
 
 void XMem_InterruptGlobalEnable(XMem *InstancePtr);
 void XMem_InterruptGlobalDisable(XMem *InstancePtr);

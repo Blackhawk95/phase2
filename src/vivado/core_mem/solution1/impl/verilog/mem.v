@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="mem,hls_ip_2018_3,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020clg484-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=6.508000,HLS_SYN_LAT=1,HLS_SYN_TPT=none,HLS_SYN_MEM=33,HLS_SYN_DSP=0,HLS_SYN_FF=134,HLS_SYN_LUT=204,HLS_VERSION=2018_3}" *)
+(* CORE_GENERATION_INFO="mem,hls_ip_2018_3,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7z020clg484-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=6.508000,HLS_SYN_LAT=1,HLS_SYN_TPT=none,HLS_SYN_MEM=129,HLS_SYN_DSP=0,HLS_SYN_FF=326,HLS_SYN_LUT=516,HLS_VERSION=2018_3}" *)
 
 module mem (
         ap_clk,
@@ -69,36 +69,33 @@ reg    ap_idle;
 (* fsm_encoding = "none" *) reg   [1:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
 reg    ap_ready;
-wire   [15:0] a_V;
-wire   [7:0] ma_V;
-wire   [7:0] data_V_i;
-reg   [7:0] data_V_o;
-reg    data_V_o_ap_vld;
-wire   [7:0] flag_V;
+wire   [63:0] a;
+wire   [31:0] ma;
+wire   [31:0] data_i;
+reg   [31:0] data_o;
+reg    data_o_ap_vld;
+wire   [31:0] flag;
 reg   [15:0] nvm_address0;
 reg    nvm_ce0;
 reg    nvm_we0;
-wire   [7:0] nvm_q0;
+wire   [31:0] nvm_q0;
 reg   [5:0] dram_address0;
 reg    dram_ce0;
 reg    dram_we0;
-wire   [7:0] dram_q0;
-reg  signed [15:0] a_V_read_reg_175;
-wire   [0:0] tmp_fu_131_p1;
-reg   [0:0] tmp_reg_180;
-wire   [0:0] tmp_1_fu_135_p3;
-reg   [0:0] tmp_1_reg_184;
-wire  signed [63:0] tmp_3_fu_143_p1;
-wire  signed [63:0] tmp_6_fu_148_p1;
-wire  signed [63:0] tmp_7_fu_153_p1;
-wire  signed [63:0] tmp_8_fu_158_p1;
-wire  signed [63:0] tmp_4_fu_163_p1;
+wire   [31:0] dram_q0;
+reg   [63:0] a_read_reg_167;
+wire   [0:0] tmp_fu_132_p1;
+reg   [0:0] tmp_reg_172;
+wire   [0:0] tmp_1_fu_136_p3;
+reg   [0:0] tmp_1_reg_176;
+wire  signed [63:0] tmp_6_fu_144_p1;
+wire  signed [63:0] tmp_7_fu_149_p1;
+wire  signed [63:0] tmp_8_fu_154_p1;
 wire    ap_CS_fsm_state2;
-wire   [7:0] storemerge_in_v_fu_167_p3;
-wire  signed [7:0] tmp_3_fu_143_p0;
-wire  signed [7:0] tmp_6_fu_148_p0;
-wire  signed [15:0] tmp_7_fu_153_p0;
-wire  signed [7:0] tmp_8_fu_158_p0;
+wire   [31:0] storemerge_fu_159_p3;
+wire  signed [31:0] tmp_6_fu_144_p0;
+wire  signed [31:0] tmp_7_fu_149_p0;
+wire  signed [31:0] tmp_8_fu_154_p0;
 reg   [1:0] ap_NS_fsm;
 
 // power-on initialization
@@ -107,7 +104,7 @@ initial begin
 end
 
 mem_nvm #(
-    .DataWidth( 8 ),
+    .DataWidth( 32 ),
     .AddressRange( 65536 ),
     .AddressWidth( 16 ))
 nvm_U(
@@ -121,7 +118,7 @@ nvm_U(
 );
 
 mem_dram #(
-    .DataWidth( 8 ),
+    .DataWidth( 32 ),
     .AddressRange( 64 ),
     .AddressWidth( 6 ))
 dram_U(
@@ -130,7 +127,7 @@ dram_U(
     .address0(dram_address0),
     .ce0(dram_ce0),
     .we0(dram_we0),
-    .d0(data_V_i),
+    .d0(data_i),
     .q0(dram_q0)
 );
 
@@ -163,12 +160,12 @@ mem_CRTL_BUS_s_axi_U(
     .ap_ready(ap_ready),
     .ap_done(ap_done),
     .ap_idle(ap_idle),
-    .a_V(a_V),
-    .ma_V(ma_V),
-    .data_V_o(data_V_o),
-    .data_V_o_ap_vld(data_V_o_ap_vld),
-    .data_V_i(data_V_i),
-    .flag_V(flag_V)
+    .a(a),
+    .ma(ma),
+    .data_o(data_o),
+    .data_o_ap_vld(data_o_ap_vld),
+    .data_i(data_i),
+    .flag(flag)
 );
 
 always @ (posedge ap_clk) begin
@@ -181,9 +178,9 @@ end
 
 always @ (posedge ap_clk) begin
     if (((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
-        a_V_read_reg_175 <= a_V;
-        tmp_1_reg_184 <= flag_V[32'd1];
-        tmp_reg_180 <= tmp_fu_131_p1;
+        a_read_reg_167 <= a;
+        tmp_1_reg_176 <= flag[32'd1];
+        tmp_reg_172 <= tmp_fu_132_p1;
     end
 end
 
@@ -212,29 +209,29 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((tmp_reg_180 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
-        data_V_o = storemerge_in_v_fu_167_p3;
+    if (((tmp_reg_172 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
+        data_o = storemerge_fu_159_p3;
     end else begin
-        data_V_o = data_V_i;
+        data_o = data_i;
     end
 end
 
 always @ (*) begin
-    if (((tmp_reg_180 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
-        data_V_o_ap_vld = 1'b1;
+    if (((tmp_reg_172 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
+        data_o_ap_vld = 1'b1;
     end else begin
-        data_V_o_ap_vld = 1'b0;
+        data_o_ap_vld = 1'b0;
     end
 end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state1)) begin
-        if ((tmp_fu_131_p1 == 1'd1)) begin
-            dram_address0 = tmp_8_fu_158_p1;
-        end else if (((tmp_1_fu_135_p3 == 1'd1) & (tmp_fu_131_p1 == 1'd0))) begin
-            dram_address0 = tmp_6_fu_148_p1;
-        end else if (((tmp_1_fu_135_p3 == 1'd0) & (tmp_fu_131_p1 == 1'd0))) begin
-            dram_address0 = tmp_3_fu_143_p1;
+        if ((tmp_fu_132_p1 == 1'd1)) begin
+            dram_address0 = tmp_8_fu_154_p1;
+        end else if (((tmp_1_fu_136_p3 == 1'd1) & (tmp_fu_132_p1 == 1'd0))) begin
+            dram_address0 = tmp_7_fu_149_p1;
+        end else if (((tmp_1_fu_136_p3 == 1'd0) & (tmp_fu_132_p1 == 1'd0))) begin
+            dram_address0 = tmp_6_fu_144_p1;
         end else begin
             dram_address0 = 'bx;
         end
@@ -244,7 +241,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((((ap_start == 1'b1) & (tmp_1_fu_135_p3 == 1'd0) & (tmp_fu_131_p1 == 1'd0) & (1'b1 == ap_CS_fsm_state1)) | ((ap_start == 1'b1) & (tmp_1_fu_135_p3 == 1'd1) & (tmp_fu_131_p1 == 1'd0) & (1'b1 == ap_CS_fsm_state1)) | ((ap_start == 1'b1) & (tmp_fu_131_p1 == 1'd1) & (1'b1 == ap_CS_fsm_state1)))) begin
+    if ((((ap_start == 1'b1) & (tmp_1_fu_136_p3 == 1'd0) & (tmp_fu_132_p1 == 1'd0) & (1'b1 == ap_CS_fsm_state1)) | ((ap_start == 1'b1) & (tmp_1_fu_136_p3 == 1'd1) & (tmp_fu_132_p1 == 1'd0) & (1'b1 == ap_CS_fsm_state1)) | ((ap_start == 1'b1) & (tmp_fu_132_p1 == 1'd1) & (1'b1 == ap_CS_fsm_state1)))) begin
         dram_ce0 = 1'b1;
     end else begin
         dram_ce0 = 1'b0;
@@ -252,7 +249,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((ap_start == 1'b1) & (tmp_1_fu_135_p3 == 1'd1) & (tmp_fu_131_p1 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+    if (((ap_start == 1'b1) & (tmp_1_fu_136_p3 == 1'd1) & (tmp_fu_132_p1 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
         dram_we0 = 1'b1;
     end else begin
         dram_we0 = 1'b0;
@@ -261,9 +258,9 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        nvm_address0 = tmp_4_fu_163_p1;
+        nvm_address0 = a_read_reg_167;
     end else if ((1'b1 == ap_CS_fsm_state1)) begin
-        nvm_address0 = tmp_7_fu_153_p1;
+        nvm_address0 = a;
     end else begin
         nvm_address0 = 'bx;
     end
@@ -278,7 +275,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((tmp_1_reg_184 == 1'd0) & (tmp_reg_180 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+    if (((tmp_1_reg_176 == 1'd0) & (tmp_reg_172 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
         nvm_we0 = 1'b1;
     end else begin
         nvm_we0 = 1'b0;
@@ -311,28 +308,22 @@ always @ (*) begin
     ap_rst_n_inv = ~ap_rst_n;
 end
 
-assign storemerge_in_v_fu_167_p3 = ((tmp_1_reg_184[0:0] === 1'b1) ? dram_q0 : nvm_q0);
+assign storemerge_fu_159_p3 = ((tmp_1_reg_176[0:0] === 1'b1) ? dram_q0 : nvm_q0);
 
-assign tmp_1_fu_135_p3 = flag_V[32'd1];
+assign tmp_1_fu_136_p3 = flag[32'd1];
 
-assign tmp_3_fu_143_p0 = ma_V;
+assign tmp_6_fu_144_p0 = ma;
 
-assign tmp_3_fu_143_p1 = tmp_3_fu_143_p0;
+assign tmp_6_fu_144_p1 = tmp_6_fu_144_p0;
 
-assign tmp_4_fu_163_p1 = a_V_read_reg_175;
+assign tmp_7_fu_149_p0 = ma;
 
-assign tmp_6_fu_148_p0 = ma_V;
+assign tmp_7_fu_149_p1 = tmp_7_fu_149_p0;
 
-assign tmp_6_fu_148_p1 = tmp_6_fu_148_p0;
+assign tmp_8_fu_154_p0 = ma;
 
-assign tmp_7_fu_153_p0 = a_V;
+assign tmp_8_fu_154_p1 = tmp_8_fu_154_p0;
 
-assign tmp_7_fu_153_p1 = tmp_7_fu_153_p0;
-
-assign tmp_8_fu_158_p0 = ma_V;
-
-assign tmp_8_fu_158_p1 = tmp_8_fu_158_p0;
-
-assign tmp_fu_131_p1 = flag_V[0:0];
+assign tmp_fu_132_p1 = flag[0:0];
 
 endmodule //mem

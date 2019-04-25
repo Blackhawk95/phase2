@@ -48,11 +48,11 @@
 
 
 // IP VLNV: xilinx.com:hls:mem:1.0
-// IP Revision: 1904031303
+// IP Revision: 1904091317
 
 (* X_CORE_INFO = "mem,Vivado 2018.3" *)
 (* CHECK_LICENSE_TYPE = "design_1_mem_0_0,mem,{}" *)
-(* CORE_GENERATION_INFO = "design_1_mem_0_0,mem,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=mem,x_ipVersion=1.0,x_ipCoreRevision=1904031303,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S_AXI_CRTL_BUS_ADDR_WIDTH=6,C_S_AXI_CRTL_BUS_DATA_WIDTH=32}" *)
+(* CORE_GENERATION_INFO = "design_1_mem_0_0,mem,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=mem,x_ipVersion=1.0,x_ipCoreRevision=1904091317,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S_AXI_CRTL_BUS_ADDR_WIDTH=6,C_S_AXI_CRTL_BUS_DATA_WIDTH=32}" *)
 (* IP_DEFINITION_SOURCE = "HLS" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_mem_0_0 (

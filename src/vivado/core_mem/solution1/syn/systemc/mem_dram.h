@@ -1,5 +1,5 @@
 // ==============================================================
-// File generated on Wed Apr 03 13:02:10 +0530 2019
+// File generated on Tue Apr 09 13:16:47 +0530 2019
 // Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 // SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 // IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -21,7 +21,7 @@ using namespace sc_dt;
 
 struct mem_dram_ram : public sc_core::sc_module {
 
-  static const unsigned DataWidth = 8;
+  static const unsigned DataWidth = 32;
   static const unsigned AddressRange = 64;
   static const unsigned AddressWidth = 6;
 
@@ -81,7 +81,7 @@ void prc_write_0()
 SC_MODULE(mem_dram) {
 
 
-static const unsigned DataWidth = 8;
+static const unsigned DataWidth = 32;
 static const unsigned AddressRange = 64;
 static const unsigned AddressWidth = 6;
 

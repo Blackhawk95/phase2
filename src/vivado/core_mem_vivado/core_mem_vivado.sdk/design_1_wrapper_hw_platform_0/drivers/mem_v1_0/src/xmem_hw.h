@@ -1,5 +1,5 @@
 // ==============================================================
-// File generated on Wed Apr 03 13:02:10 +0530 2019
+// File generated on Tue Apr 09 13:16:47 +0530 2019
 // Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 // SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 // IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -24,43 +24,40 @@
 //        bit 0  - Channel 0 (ap_done)
 //        bit 1  - Channel 1 (ap_ready)
 //        others - reserved
-// 0x10 : Data signal of a_V
-//        bit 15~0 - a_V[15:0] (Read/Write)
-//        others   - reserved
-// 0x14 : reserved
-// 0x18 : Data signal of ma_V
-//        bit 7~0 - ma_V[7:0] (Read/Write)
-//        others  - reserved
-// 0x1c : reserved
-// 0x20 : Data signal of data_V_i
-//        bit 7~0 - data_V_i[7:0] (Read/Write)
-//        others  - reserved
-// 0x24 : reserved
-// 0x28 : Data signal of data_V_o
-//        bit 7~0 - data_V_o[7:0] (Read)
-//        others  - reserved
-// 0x2c : Control signal of data_V_o
-//        bit 0  - data_V_o_ap_vld (Read/COR)
+// 0x10 : Data signal of a
+//        bit 31~0 - a[31:0] (Read/Write)
+// 0x14 : Data signal of a
+//        bit 31~0 - a[63:32] (Read/Write)
+// 0x18 : reserved
+// 0x1c : Data signal of ma
+//        bit 31~0 - ma[31:0] (Read/Write)
+// 0x20 : reserved
+// 0x24 : Data signal of data_i
+//        bit 31~0 - data_i[31:0] (Read/Write)
+// 0x28 : reserved
+// 0x2c : Data signal of data_o
+//        bit 31~0 - data_o[31:0] (Read)
+// 0x30 : Control signal of data_o
+//        bit 0  - data_o_ap_vld (Read/COR)
 //        others - reserved
-// 0x30 : Data signal of flag_V
-//        bit 7~0 - flag_V[7:0] (Read/Write)
-//        others  - reserved
-// 0x34 : reserved
+// 0x34 : Data signal of flag
+//        bit 31~0 - flag[31:0] (Read/Write)
+// 0x38 : reserved
 // (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
-#define XMEM_CRTL_BUS_ADDR_AP_CTRL       0x00
-#define XMEM_CRTL_BUS_ADDR_GIE           0x04
-#define XMEM_CRTL_BUS_ADDR_IER           0x08
-#define XMEM_CRTL_BUS_ADDR_ISR           0x0c
-#define XMEM_CRTL_BUS_ADDR_A_V_DATA      0x10
-#define XMEM_CRTL_BUS_BITS_A_V_DATA      16
-#define XMEM_CRTL_BUS_ADDR_MA_V_DATA     0x18
-#define XMEM_CRTL_BUS_BITS_MA_V_DATA     8
-#define XMEM_CRTL_BUS_ADDR_DATA_V_I_DATA 0x20
-#define XMEM_CRTL_BUS_BITS_DATA_V_I_DATA 8
-#define XMEM_CRTL_BUS_ADDR_DATA_V_O_DATA 0x28
-#define XMEM_CRTL_BUS_BITS_DATA_V_O_DATA 8
-#define XMEM_CRTL_BUS_ADDR_DATA_V_O_CTRL 0x2c
-#define XMEM_CRTL_BUS_ADDR_FLAG_V_DATA   0x30
-#define XMEM_CRTL_BUS_BITS_FLAG_V_DATA   8
+#define XMEM_CRTL_BUS_ADDR_AP_CTRL     0x00
+#define XMEM_CRTL_BUS_ADDR_GIE         0x04
+#define XMEM_CRTL_BUS_ADDR_IER         0x08
+#define XMEM_CRTL_BUS_ADDR_ISR         0x0c
+#define XMEM_CRTL_BUS_ADDR_A_DATA      0x10
+#define XMEM_CRTL_BUS_BITS_A_DATA      64
+#define XMEM_CRTL_BUS_ADDR_MA_DATA     0x1c
+#define XMEM_CRTL_BUS_BITS_MA_DATA     32
+#define XMEM_CRTL_BUS_ADDR_DATA_I_DATA 0x24
+#define XMEM_CRTL_BUS_BITS_DATA_I_DATA 32
+#define XMEM_CRTL_BUS_ADDR_DATA_O_DATA 0x2c
+#define XMEM_CRTL_BUS_BITS_DATA_O_DATA 32
+#define XMEM_CRTL_BUS_ADDR_DATA_O_CTRL 0x30
+#define XMEM_CRTL_BUS_ADDR_FLAG_DATA   0x34
+#define XMEM_CRTL_BUS_BITS_FLAG_DATA   32
 

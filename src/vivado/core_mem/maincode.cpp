@@ -5,8 +5,8 @@
 #define BITSDRAM 6
 #define READ (flag & 0x01) == 0x01
 #define DRAM (flag & 0x02) == 0x02
-typedef /*long long int*/ ap_int<16> addr_uint;
-typedef ap_int<8> int8;
+typedef long long int addr_uint;
+typedef int int8;
 
 
 /* Memory module

@@ -466,14 +466,15 @@ void QofQueue::read(addr_uint a,mes_mem *signal){
 		signal->read_from_nvm = true;
 		return;
 	}
-	else if((flag[minia].dump == true)){
+
+	if((flag[minia].dump == true)){
 		//printf("data found in dump, Address: " PRINTADD "\n",a);
 		signal->ma = minia;
 		signal->read_from_dram = true;
 		return;
 	}
 	else{
-		//printf("Address: " PRINTADD ", MiniAddress: %d\n",a,minia);
+		printf("Address: " PRINTADD ", MiniAddress: %d\n",a,minia);
 		signal->ma = minia;
 		signal->read_from_dram = true;
 		return;

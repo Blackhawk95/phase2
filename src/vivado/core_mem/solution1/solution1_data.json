@@ -19,9 +19,9 @@
       "config_sdx -target=none",
       "config_schedule -effort=medium",
       "config_schedule -relax_ii_for_timing=0",
-      "config_bind -effort=medium",
       "config_export -format=ip_catalog",
-      "config_export -rtl=verilog"
+      "config_export -rtl=verilog",
+      "config_bind -effort=medium"
     ]},
   "ClockInfo": {
     "ClockName": "ap_clk",
@@ -259,118 +259,93 @@
         },
         {
           "offset": "0x10",
-          "name": "a_V",
+          "name": "a_1",
           "access": "W",
           "reset_value": "0x0",
-          "description": "Data signal of a_V",
-          "fields": [
-            {
+          "description": "Data signal of a",
+          "fields": [{
               "offset": "0",
-              "width": "16",
-              "name": "a_V",
+              "width": "32",
+              "name": "a",
               "access": "W",
               "reset_value": "0",
-              "description": "Bit 15 to 0 Data signal of a_V"
-            },
-            {
-              "offset": "16",
-              "width": "16",
-              "name": "RESERVED",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Reserved.  0s on read."
-            }
-          ]
+              "description": "Bit 31 to 0 Data signal of a"
+            }]
         },
         {
-          "offset": "0x18",
-          "name": "ma_V",
+          "offset": "0x14",
+          "name": "a_2",
           "access": "W",
           "reset_value": "0x0",
-          "description": "Data signal of ma_V",
-          "fields": [
-            {
+          "description": "Data signal of a",
+          "fields": [{
               "offset": "0",
-              "width": "8",
-              "name": "ma_V",
+              "width": "32",
+              "name": "a",
               "access": "W",
               "reset_value": "0",
-              "description": "Bit 7 to 0 Data signal of ma_V"
-            },
-            {
-              "offset": "8",
-              "width": "24",
-              "name": "RESERVED",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Reserved.  0s on read."
-            }
-          ]
+              "description": "Bit 63 to 32 Data signal of a"
+            }]
         },
         {
-          "offset": "0x20",
-          "name": "data_V_i",
+          "offset": "0x1c",
+          "name": "ma",
           "access": "W",
           "reset_value": "0x0",
-          "description": "Data signal of data_V_i",
-          "fields": [
-            {
+          "description": "Data signal of ma",
+          "fields": [{
               "offset": "0",
-              "width": "8",
-              "name": "data_V_i",
+              "width": "32",
+              "name": "ma",
               "access": "W",
               "reset_value": "0",
-              "description": "Bit 7 to 0 Data signal of data_V_i"
-            },
-            {
-              "offset": "8",
-              "width": "24",
-              "name": "RESERVED",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Reserved.  0s on read."
-            }
-          ]
+              "description": "Bit 31 to 0 Data signal of ma"
+            }]
         },
         {
-          "offset": "0x28",
-          "name": "data_V_o",
-          "access": "R",
+          "offset": "0x24",
+          "name": "data_i",
+          "access": "W",
           "reset_value": "0x0",
-          "description": "Data signal of data_V_o",
-          "fields": [
-            {
+          "description": "Data signal of data_i",
+          "fields": [{
               "offset": "0",
-              "width": "8",
-              "name": "data_V_o",
-              "access": "R",
+              "width": "32",
+              "name": "data_i",
+              "access": "W",
               "reset_value": "0",
-              "description": "Bit 7 to 0 Data signal of data_V_o"
-            },
-            {
-              "offset": "8",
-              "width": "24",
-              "name": "RESERVED",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Reserved.  0s on read."
-            }
-          ]
+              "description": "Bit 31 to 0 Data signal of data_i"
+            }]
         },
         {
           "offset": "0x2c",
-          "name": "data_V_o_ctrl",
+          "name": "data_o",
           "access": "R",
           "reset_value": "0x0",
-          "description": "Control signal of data_V_o",
+          "description": "Data signal of data_o",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "data_o",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Bit 31 to 0 Data signal of data_o"
+            }]
+        },
+        {
+          "offset": "0x30",
+          "name": "data_o_ctrl",
+          "access": "R",
+          "reset_value": "0x0",
+          "description": "Control signal of data_o",
           "fields": [
             {
               "offset": "0",
               "width": "1",
-              "name": "data_V_o_ap_vld",
+              "name": "data_o_ap_vld",
               "access": "R",
               "reset_value": "0",
-              "description": "Control signal data_V_o_ap_vld"
+              "description": "Control signal data_o_ap_vld"
             },
             {
               "offset": "1",
@@ -383,29 +358,19 @@
           ]
         },
         {
-          "offset": "0x30",
-          "name": "flag_V",
+          "offset": "0x34",
+          "name": "flag",
           "access": "W",
           "reset_value": "0x0",
-          "description": "Data signal of flag_V",
-          "fields": [
-            {
+          "description": "Data signal of flag",
+          "fields": [{
               "offset": "0",
-              "width": "8",
-              "name": "flag_V",
+              "width": "32",
+              "name": "flag",
               "access": "W",
               "reset_value": "0",
-              "description": "Bit 7 to 0 Data signal of flag_V"
-            },
-            {
-              "offset": "8",
-              "width": "24",
-              "name": "RESERVED",
-              "access": "R",
-              "reset_value": "0",
-              "description": "Reserved.  0s on read."
-            }
-          ]
+              "description": "Bit 31 to 0 Data signal of flag"
+            }]
         }
       ],
       "memories": "",
@@ -434,7 +399,7 @@
         },
         "WDATA": {
           "Type": "integer signed",
-          "Width": "8"
+          "Width": "32"
         },
         "WSTRB": {
           "Type": "integer unsigned",
@@ -446,7 +411,7 @@
         },
         "RDATA": {
           "Type": "integer signed",
-          "Width": "8"
+          "Width": "32"
         }
       },
       "data_width": "32",
@@ -543,7 +508,7 @@
     }
   },
   "CPorts": {
-    "a_V": {
+    "a": {
       "interfaceRef": "s_axi_CRTL_BUS",
       "dir": "in",
       "offset": "16",
@@ -551,34 +516,34 @@
       "handshakeRef": "ap_none",
       "Object": "CRTL_BUS"
     },
-    "ma_V": {
+    "ma": {
       "interfaceRef": "s_axi_CRTL_BUS",
       "dir": "in",
-      "offset": "24",
+      "offset": "28",
       "statusOffset": "NA",
       "handshakeRef": "ap_none",
       "Object": "CRTL_BUS"
     },
-    "data_V_i": {
+    "data_i": {
       "interfaceRef": "s_axi_CRTL_BUS",
       "dir": "in",
-      "offset": "32",
+      "offset": "36",
       "statusOffset": "NA",
       "handshakeRef": "ap_none",
       "Object": "CRTL_BUS"
     },
-    "data_V_o": {
+    "data_o": {
       "interfaceRef": "s_axi_CRTL_BUS",
       "dir": "out",
-      "offset": "40",
-      "statusOffset": "44",
+      "offset": "44",
+      "statusOffset": "48",
       "handshakeRef": "ap_vld",
       "Object": "CRTL_BUS"
     },
-    "flag_V": {
+    "flag": {
       "interfaceRef": "s_axi_CRTL_BUS",
       "dir": "in",
-      "offset": "48",
+      "offset": "52",
       "statusOffset": "NA",
       "handshakeRef": "ap_none",
       "Object": "CRTL_BUS"
@@ -606,9 +571,9 @@
           "Estimate": "6.508"
         },
         "Area": {
-          "BRAM_18K": "33",
-          "FF": "134",
-          "LUT": "204",
+          "BRAM_18K": "129",
+          "FF": "326",
+          "LUT": "516",
           "DSP48E": "0"
         }
       }}
@@ -623,7 +588,7 @@
   },
   "GenData": {
     "DataVersion": "0.1",
-    "Time": "2019-04-03 13:02:11 +0530",
+    "Time": "2019-04-09 13:16:49 +0530",
     "ToolName": "vivado_hls",
     "ToolVersion": "2018.3"
   }

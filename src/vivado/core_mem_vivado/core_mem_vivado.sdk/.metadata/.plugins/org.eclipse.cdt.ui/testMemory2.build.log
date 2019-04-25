@@ -1,8 +1,117 @@
-15:14:48 **** Incremental Build of configuration Debug for project testMemory2 ****
+15:09:55 **** Auto Build of configuration Debug for project testMemory2 ****
 make pre-build main-build 
 a9-linaro-pre-build-step
 ' '
-make: Nothing to be done for 'main-build'.
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../testMemory_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:93:11: error: 'XMem_Set_a_V' was not declared in this scope
+           XMem_Set_a_V(&doMem,arrn[i][0]);
+           ^~~~~~~~~~~~
+../src/main.cc:93:11: note: suggested alternative: 'XMem_Set_a'
+           XMem_Set_a_V(&doMem,arrn[i][0]);
+           ^~~~~~~~~~~~
+           XMem_Set_a
+../src/main.cc:94:11: error: 'XMem_Set_ma_V' was not declared in this scope
+           XMem_Set_ma_V(&doMem,signal.ma);
+           ^~~~~~~~~~~~~
+../src/main.cc:94:11: note: suggested alternative: 'XMem_Set_ma'
+           XMem_Set_ma_V(&doMem,signal.ma);
+           ^~~~~~~~~~~~~
+           XMem_Set_ma
+../src/main.cc:95:11: error: 'XMem_Set_flag_V' was not declared in this scope
+           XMem_Set_flag_V(&doMem,0x00);
+           ^~~~~~~~~~~~~~~
+../src/main.cc:95:11: note: suggested alternative: 'XMem_Set_flag'
+           XMem_Set_flag_V(&doMem,0x00);
+           ^~~~~~~~~~~~~~~
+           XMem_Set_flag
+../src/main.cc:105:12: error: 'XMem_Set_a_V' was not declared in this scope
+            XMem_Set_a_V(&doMem,arrn[i][0]);
+            ^~~~~~~~~~~~
+../src/main.cc:105:12: note: suggested alternative: 'XMem_Set_a'
+            XMem_Set_a_V(&doMem,arrn[i][0]);
+            ^~~~~~~~~~~~
+            XMem_Set_a
+../src/main.cc:106:12: error: 'XMem_Set_ma_V' was not declared in this scope
+            XMem_Set_ma_V(&doMem,signal.ma);
+            ^~~~~~~~~~~~~
+../src/main.cc:106:12: note: suggested alternative: 'XMem_Set_ma'
+            XMem_Set_ma_V(&doMem,signal.ma);
+            ^~~~~~~~~~~~~
+            XMem_Set_ma
+../src/main.cc:107:12: error: 'XMem_Set_flag_V' was not declared in this scope
+            XMem_Set_flag_V(&doMem,0x02);
+            ^~~~~~~~~~~~~~~
+../src/main.cc:107:12: note: suggested alternative: 'XMem_Set_flag'
+            XMem_Set_flag_V(&doMem,0x02);
+            ^~~~~~~~~~~~~~~
+            XMem_Set_flag
+../src/main.cc:108:12: error: 'XMem_Set_data_V_i' was not declared in this scope
+            XMem_Set_data_V_i(&doMem,arrn[i][2]);
+            ^~~~~~~~~~~~~~~~~
+../src/main.cc:108:12: note: suggested alternative: 'XMem_Set_data_i'
+            XMem_Set_data_V_i(&doMem,arrn[i][2]);
+            ^~~~~~~~~~~~~~~~~
+            XMem_Set_data_i
+../src/main.cc:122:11: error: 'XMem_Set_a_V' was not declared in this scope
+           XMem_Set_a_V(&doMem,arrn[i][0]);
+           ^~~~~~~~~~~~
+../src/main.cc:122:11: note: suggested alternative: 'XMem_Set_a'
+           XMem_Set_a_V(&doMem,arrn[i][0]);
+           ^~~~~~~~~~~~
+           XMem_Set_a
+../src/main.cc:123:11: error: 'XMem_Set_ma_V' was not declared in this scope
+           XMem_Set_ma_V(&doMem,signal.ma);
+           ^~~~~~~~~~~~~
+../src/main.cc:123:11: note: suggested alternative: 'XMem_Set_ma'
+           XMem_Set_ma_V(&doMem,signal.ma);
+           ^~~~~~~~~~~~~
+           XMem_Set_ma
+../src/main.cc:124:11: error: 'XMem_Set_flag_V' was not declared in this scope
+           XMem_Set_flag_V(&doMem,0x03);
+           ^~~~~~~~~~~~~~~
+../src/main.cc:124:11: note: suggested alternative: 'XMem_Set_flag'
+           XMem_Set_flag_V(&doMem,0x03);
+           ^~~~~~~~~~~~~~~
+           XMem_Set_flag
+../src/main.cc:130:73: error: 'XMem_Get_data_V_o' was not declared in this scope
+          printf("[R_DRAM] MiniAddress: %d Data from MA %lu\n",signal.ma,XMem_Get_data_V_o(&doMem));
+                                                                         ^~~~~~~~~~~~~~~~~
+../src/main.cc:130:73: note: suggested alternative: 'XMem_Get_data_o'
+          printf("[R_DRAM] MiniAddress: %d Data from MA %lu\n",signal.ma,XMem_Get_data_V_o(&doMem));
+                                                                         ^~~~~~~~~~~~~~~~~
+                                                                         XMem_Get_data_o
+../src/main.cc:133:11: error: 'XMem_Set_a_V' was not declared in this scope
+           XMem_Set_a_V(&doMem,arrn[i][0]);
+           ^~~~~~~~~~~~
+../src/main.cc:133:11: note: suggested alternative: 'XMem_Set_a'
+           XMem_Set_a_V(&doMem,arrn[i][0]);
+           ^~~~~~~~~~~~
+           XMem_Set_a
+../src/main.cc:134:11: error: 'XMem_Set_ma_V' was not declared in this scope
+           XMem_Set_ma_V(&doMem,signal.ma);
+           ^~~~~~~~~~~~~
+../src/main.cc:134:11: note: suggested alternative: 'XMem_Set_ma'
+           XMem_Set_ma_V(&doMem,signal.ma);
+           ^~~~~~~~~~~~~
+           XMem_Set_ma
+../src/main.cc:135:11: error: 'XMem_Set_flag_V' was not declared in this scope
+           XMem_Set_flag_V(&doMem,0x01);
+           ^~~~~~~~~~~~~~~
+../src/main.cc:135:11: note: suggested alternative: 'XMem_Set_flag'
+           XMem_Set_flag_V(&doMem,0x01);
+           ^~~~~~~~~~~~~~~
+           XMem_Set_flag
+../src/main.cc:141:74: error: 'XMem_Get_data_V_o' was not declared in this scope
+             printf("[R_NVM] Address: %lld Data from MA %lu\n",arrn[i][0],XMem_Get_data_V_o(&doMem));
+                                                                          ^~~~~~~~~~~~~~~~~
+../src/main.cc:141:74: note: suggested alternative: 'XMem_Get_data_o'
+             printf("[R_NVM] Address: %lld Data from MA %lu\n",arrn[i][0],XMem_Get_data_V_o(&doMem));
+                                                                          ^~~~~~~~~~~~~~~~~
+                                                                          XMem_Get_data_o
+make: *** [src/subdir.mk:43: src/main.o] Error 1
 
-15:14:48 Build Finished (took 372ms)
+15:10:05 Build Finished (took 10s.336ms)
 

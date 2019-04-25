@@ -1,5 +1,5 @@
 // ==============================================================
-// File generated on Wed Apr 03 13:02:10 +0530 2019
+// File generated on Tue Apr 09 13:16:47 +0530 2019
 // Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 // SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 // IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -38,12 +38,12 @@ module mem_CRTL_BUS_s_axi
     input  wire                          ap_done,
     input  wire                          ap_ready,
     input  wire                          ap_idle,
-    output wire [15:0]                   a_V,
-    output wire [7:0]                    ma_V,
-    output wire [7:0]                    data_V_i,
-    input  wire [7:0]                    data_V_o,
-    input  wire                          data_V_o_ap_vld,
-    output wire [7:0]                    flag_V
+    output wire [63:0]                   a,
+    output wire [31:0]                   ma,
+    output wire [31:0]                   data_i,
+    input  wire [31:0]                   data_o,
+    input  wire                          data_o_ap_vld,
+    output wire [31:0]                   flag
 );
 //------------------------Address Info-------------------
 // 0x00 : Control signals
@@ -64,53 +64,51 @@ module mem_CRTL_BUS_s_axi
 //        bit 0  - Channel 0 (ap_done)
 //        bit 1  - Channel 1 (ap_ready)
 //        others - reserved
-// 0x10 : Data signal of a_V
-//        bit 15~0 - a_V[15:0] (Read/Write)
-//        others   - reserved
-// 0x14 : reserved
-// 0x18 : Data signal of ma_V
-//        bit 7~0 - ma_V[7:0] (Read/Write)
-//        others  - reserved
-// 0x1c : reserved
-// 0x20 : Data signal of data_V_i
-//        bit 7~0 - data_V_i[7:0] (Read/Write)
-//        others  - reserved
-// 0x24 : reserved
-// 0x28 : Data signal of data_V_o
-//        bit 7~0 - data_V_o[7:0] (Read)
-//        others  - reserved
-// 0x2c : Control signal of data_V_o
-//        bit 0  - data_V_o_ap_vld (Read/COR)
+// 0x10 : Data signal of a
+//        bit 31~0 - a[31:0] (Read/Write)
+// 0x14 : Data signal of a
+//        bit 31~0 - a[63:32] (Read/Write)
+// 0x18 : reserved
+// 0x1c : Data signal of ma
+//        bit 31~0 - ma[31:0] (Read/Write)
+// 0x20 : reserved
+// 0x24 : Data signal of data_i
+//        bit 31~0 - data_i[31:0] (Read/Write)
+// 0x28 : reserved
+// 0x2c : Data signal of data_o
+//        bit 31~0 - data_o[31:0] (Read)
+// 0x30 : Control signal of data_o
+//        bit 0  - data_o_ap_vld (Read/COR)
 //        others - reserved
-// 0x30 : Data signal of flag_V
-//        bit 7~0 - flag_V[7:0] (Read/Write)
-//        others  - reserved
-// 0x34 : reserved
+// 0x34 : Data signal of flag
+//        bit 31~0 - flag[31:0] (Read/Write)
+// 0x38 : reserved
 // (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
 //------------------------Parameter----------------------
 localparam
-    ADDR_AP_CTRL         = 6'h00,
-    ADDR_GIE             = 6'h04,
-    ADDR_IER             = 6'h08,
-    ADDR_ISR             = 6'h0c,
-    ADDR_A_V_DATA_0      = 6'h10,
-    ADDR_A_V_CTRL        = 6'h14,
-    ADDR_MA_V_DATA_0     = 6'h18,
-    ADDR_MA_V_CTRL       = 6'h1c,
-    ADDR_DATA_V_I_DATA_0 = 6'h20,
-    ADDR_DATA_V_I_CTRL   = 6'h24,
-    ADDR_DATA_V_O_DATA_0 = 6'h28,
-    ADDR_DATA_V_O_CTRL   = 6'h2c,
-    ADDR_FLAG_V_DATA_0   = 6'h30,
-    ADDR_FLAG_V_CTRL     = 6'h34,
-    WRIDLE               = 2'd0,
-    WRDATA               = 2'd1,
-    WRRESP               = 2'd2,
-    WRRESET              = 2'd3,
-    RDIDLE               = 2'd0,
-    RDDATA               = 2'd1,
-    RDRESET              = 2'd2,
+    ADDR_AP_CTRL       = 6'h00,
+    ADDR_GIE           = 6'h04,
+    ADDR_IER           = 6'h08,
+    ADDR_ISR           = 6'h0c,
+    ADDR_A_DATA_0      = 6'h10,
+    ADDR_A_DATA_1      = 6'h14,
+    ADDR_A_CTRL        = 6'h18,
+    ADDR_MA_DATA_0     = 6'h1c,
+    ADDR_MA_CTRL       = 6'h20,
+    ADDR_DATA_I_DATA_0 = 6'h24,
+    ADDR_DATA_I_CTRL   = 6'h28,
+    ADDR_DATA_O_DATA_0 = 6'h2c,
+    ADDR_DATA_O_CTRL   = 6'h30,
+    ADDR_FLAG_DATA_0   = 6'h34,
+    ADDR_FLAG_CTRL     = 6'h38,
+    WRIDLE             = 2'd0,
+    WRDATA             = 2'd1,
+    WRRESP             = 2'd2,
+    WRRESET            = 2'd3,
+    RDIDLE             = 2'd0,
+    RDDATA             = 2'd1,
+    RDRESET            = 2'd2,
     ADDR_BITS         = 6;
 
 //------------------------Local signal-------------------
@@ -134,12 +132,12 @@ localparam
     reg                           int_gie = 1'b0;
     reg  [1:0]                    int_ier = 2'b0;
     reg  [1:0]                    int_isr = 2'b0;
-    reg  [15:0]                   int_a_V = 'b0;
-    reg  [7:0]                    int_ma_V = 'b0;
-    reg  [7:0]                    int_data_V_i = 'b0;
-    reg  [7:0]                    int_data_V_o = 'b0;
-    reg                           int_data_V_o_ap_vld;
-    reg  [7:0]                    int_flag_V = 'b0;
+    reg  [63:0]                   int_a = 'b0;
+    reg  [31:0]                   int_ma = 'b0;
+    reg  [31:0]                   int_data_i = 'b0;
+    reg  [31:0]                   int_data_o = 'b0;
+    reg                           int_data_o_ap_vld;
+    reg  [31:0]                   int_flag = 'b0;
 
 //------------------------Instantiation------------------
 
@@ -247,23 +245,26 @@ always @(posedge ACLK) begin
                 ADDR_ISR: begin
                     rdata <= int_isr;
                 end
-                ADDR_A_V_DATA_0: begin
-                    rdata <= int_a_V[15:0];
+                ADDR_A_DATA_0: begin
+                    rdata <= int_a[31:0];
                 end
-                ADDR_MA_V_DATA_0: begin
-                    rdata <= int_ma_V[7:0];
+                ADDR_A_DATA_1: begin
+                    rdata <= int_a[63:32];
                 end
-                ADDR_DATA_V_I_DATA_0: begin
-                    rdata <= int_data_V_i[7:0];
+                ADDR_MA_DATA_0: begin
+                    rdata <= int_ma[31:0];
                 end
-                ADDR_DATA_V_O_DATA_0: begin
-                    rdata <= int_data_V_o[7:0];
+                ADDR_DATA_I_DATA_0: begin
+                    rdata <= int_data_i[31:0];
                 end
-                ADDR_DATA_V_O_CTRL: begin
-                    rdata[0] <= int_data_V_o_ap_vld;
+                ADDR_DATA_O_DATA_0: begin
+                    rdata <= int_data_o[31:0];
                 end
-                ADDR_FLAG_V_DATA_0: begin
-                    rdata <= int_flag_V[7:0];
+                ADDR_DATA_O_CTRL: begin
+                    rdata[0] <= int_data_o_ap_vld;
+                end
+                ADDR_FLAG_DATA_0: begin
+                    rdata <= int_flag[31:0];
                 end
             endcase
         end
@@ -274,10 +275,10 @@ end
 //------------------------Register logic-----------------
 assign interrupt = int_gie & (|int_isr);
 assign ap_start  = int_ap_start;
-assign a_V       = int_a_V;
-assign ma_V      = int_ma_V;
-assign data_V_i  = int_data_V_i;
-assign flag_V    = int_flag_V;
+assign a         = int_a;
+assign ma        = int_ma;
+assign data_i    = int_data_i;
+assign flag      = int_flag;
 // int_ap_start
 always @(posedge ACLK) begin
     if (ARESET)
@@ -374,65 +375,75 @@ always @(posedge ACLK) begin
     end
 end
 
-// int_a_V[15:0]
+// int_a[31:0]
 always @(posedge ACLK) begin
     if (ARESET)
-        int_a_V[15:0] <= 0;
+        int_a[31:0] <= 0;
     else if (ACLK_EN) begin
-        if (w_hs && waddr == ADDR_A_V_DATA_0)
-            int_a_V[15:0] <= (WDATA[31:0] & wmask) | (int_a_V[15:0] & ~wmask);
+        if (w_hs && waddr == ADDR_A_DATA_0)
+            int_a[31:0] <= (WDATA[31:0] & wmask) | (int_a[31:0] & ~wmask);
     end
 end
 
-// int_ma_V[7:0]
+// int_a[63:32]
 always @(posedge ACLK) begin
     if (ARESET)
-        int_ma_V[7:0] <= 0;
+        int_a[63:32] <= 0;
     else if (ACLK_EN) begin
-        if (w_hs && waddr == ADDR_MA_V_DATA_0)
-            int_ma_V[7:0] <= (WDATA[31:0] & wmask) | (int_ma_V[7:0] & ~wmask);
+        if (w_hs && waddr == ADDR_A_DATA_1)
+            int_a[63:32] <= (WDATA[31:0] & wmask) | (int_a[63:32] & ~wmask);
     end
 end
 
-// int_data_V_i[7:0]
+// int_ma[31:0]
 always @(posedge ACLK) begin
     if (ARESET)
-        int_data_V_i[7:0] <= 0;
+        int_ma[31:0] <= 0;
     else if (ACLK_EN) begin
-        if (w_hs && waddr == ADDR_DATA_V_I_DATA_0)
-            int_data_V_i[7:0] <= (WDATA[31:0] & wmask) | (int_data_V_i[7:0] & ~wmask);
+        if (w_hs && waddr == ADDR_MA_DATA_0)
+            int_ma[31:0] <= (WDATA[31:0] & wmask) | (int_ma[31:0] & ~wmask);
     end
 end
 
-// int_data_V_o
+// int_data_i[31:0]
 always @(posedge ACLK) begin
     if (ARESET)
-        int_data_V_o <= 0;
+        int_data_i[31:0] <= 0;
     else if (ACLK_EN) begin
-        if (data_V_o_ap_vld)
-            int_data_V_o <= data_V_o;
+        if (w_hs && waddr == ADDR_DATA_I_DATA_0)
+            int_data_i[31:0] <= (WDATA[31:0] & wmask) | (int_data_i[31:0] & ~wmask);
     end
 end
 
-// int_data_V_o_ap_vld
+// int_data_o
 always @(posedge ACLK) begin
     if (ARESET)
-        int_data_V_o_ap_vld <= 1'b0;
+        int_data_o <= 0;
     else if (ACLK_EN) begin
-        if (data_V_o_ap_vld)
-            int_data_V_o_ap_vld <= 1'b1;
-        else if (ar_hs && raddr == ADDR_DATA_V_O_CTRL)
-            int_data_V_o_ap_vld <= 1'b0; // clear on read
+        if (data_o_ap_vld)
+            int_data_o <= data_o;
     end
 end
 
-// int_flag_V[7:0]
+// int_data_o_ap_vld
 always @(posedge ACLK) begin
     if (ARESET)
-        int_flag_V[7:0] <= 0;
+        int_data_o_ap_vld <= 1'b0;
     else if (ACLK_EN) begin
-        if (w_hs && waddr == ADDR_FLAG_V_DATA_0)
-            int_flag_V[7:0] <= (WDATA[31:0] & wmask) | (int_flag_V[7:0] & ~wmask);
+        if (data_o_ap_vld)
+            int_data_o_ap_vld <= 1'b1;
+        else if (ar_hs && raddr == ADDR_DATA_O_CTRL)
+            int_data_o_ap_vld <= 1'b0; // clear on read
+    end
+end
+
+// int_flag[31:0]
+always @(posedge ACLK) begin
+    if (ARESET)
+        int_flag[31:0] <= 0;
+    else if (ACLK_EN) begin
+        if (w_hs && waddr == ADDR_FLAG_DATA_0)
+            int_flag[31:0] <= (WDATA[31:0] & wmask) | (int_flag[31:0] & ~wmask);
     end
 end
 

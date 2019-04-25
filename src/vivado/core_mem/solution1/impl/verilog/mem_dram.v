@@ -1,5 +1,5 @@
 // ==============================================================
-// File generated on Wed Apr 03 13:02:10 +0530 2019
+// File generated on Tue Apr 09 13:16:47 +0530 2019
 // Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 // SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 // IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -8,7 +8,7 @@
 `timescale 1 ns / 1 ps
 module mem_dram_ram (addr0, ce0, d0, we0, q0,  clk);
 
-parameter DWIDTH = 8;
+parameter DWIDTH = 32;
 parameter AWIDTH = 6;
 parameter MEM_SIZE = 64;
 
@@ -52,7 +52,7 @@ module mem_dram(
     d0,
     q0);
 
-parameter DataWidth = 32'd8;
+parameter DataWidth = 32'd32;
 parameter AddressRange = 32'd64;
 parameter AddressWidth = 32'd6;
 input reset;

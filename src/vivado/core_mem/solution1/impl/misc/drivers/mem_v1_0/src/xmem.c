@@ -1,5 +1,5 @@
 // ==============================================================
-// File generated on Wed Apr 03 13:02:10 +0530 2019
+// File generated on Tue Apr 09 13:16:47 +0530 2019
 // Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 // SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 // IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -76,91 +76,93 @@ void XMem_DisableAutoRestart(XMem *InstancePtr) {
     XMem_WriteReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_AP_CTRL, 0);
 }
 
-void XMem_Set_a_V(XMem *InstancePtr, u32 Data) {
+void XMem_Set_a(XMem *InstancePtr, u64 Data) {
     Xil_AssertVoid(InstancePtr != NULL);
     Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    XMem_WriteReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_A_V_DATA, Data);
+    XMem_WriteReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_A_DATA, (u32)(Data));
+    XMem_WriteReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_A_DATA + 4, (u32)(Data >> 32));
 }
 
-u32 XMem_Get_a_V(XMem *InstancePtr) {
-    u32 Data;
+u64 XMem_Get_a(XMem *InstancePtr) {
+    u64 Data;
 
     Xil_AssertNonvoid(InstancePtr != NULL);
     Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    Data = XMem_ReadReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_A_V_DATA);
+    Data = XMem_ReadReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_A_DATA);
+    Data += (u64)XMem_ReadReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_A_DATA + 4) << 32;
     return Data;
 }
 
-void XMem_Set_ma_V(XMem *InstancePtr, u32 Data) {
+void XMem_Set_ma(XMem *InstancePtr, u32 Data) {
     Xil_AssertVoid(InstancePtr != NULL);
     Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    XMem_WriteReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_MA_V_DATA, Data);
+    XMem_WriteReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_MA_DATA, Data);
 }
 
-u32 XMem_Get_ma_V(XMem *InstancePtr) {
+u32 XMem_Get_ma(XMem *InstancePtr) {
     u32 Data;
 
     Xil_AssertNonvoid(InstancePtr != NULL);
     Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    Data = XMem_ReadReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_MA_V_DATA);
+    Data = XMem_ReadReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_MA_DATA);
     return Data;
 }
 
-void XMem_Set_data_V_i(XMem *InstancePtr, u32 Data) {
+void XMem_Set_data_i(XMem *InstancePtr, u32 Data) {
     Xil_AssertVoid(InstancePtr != NULL);
     Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    XMem_WriteReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_DATA_V_I_DATA, Data);
+    XMem_WriteReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_DATA_I_DATA, Data);
 }
 
-u32 XMem_Get_data_V_i(XMem *InstancePtr) {
+u32 XMem_Get_data_i(XMem *InstancePtr) {
     u32 Data;
 
     Xil_AssertNonvoid(InstancePtr != NULL);
     Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    Data = XMem_ReadReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_DATA_V_I_DATA);
+    Data = XMem_ReadReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_DATA_I_DATA);
     return Data;
 }
 
-u32 XMem_Get_data_V_o(XMem *InstancePtr) {
+u32 XMem_Get_data_o(XMem *InstancePtr) {
     u32 Data;
 
     Xil_AssertNonvoid(InstancePtr != NULL);
     Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    Data = XMem_ReadReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_DATA_V_O_DATA);
+    Data = XMem_ReadReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_DATA_O_DATA);
     return Data;
 }
 
-u32 XMem_Get_data_V_o_vld(XMem *InstancePtr) {
+u32 XMem_Get_data_o_vld(XMem *InstancePtr) {
     u32 Data;
 
     Xil_AssertNonvoid(InstancePtr != NULL);
     Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    Data = XMem_ReadReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_DATA_V_O_CTRL);
+    Data = XMem_ReadReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_DATA_O_CTRL);
     return Data & 0x1;
 }
 
-void XMem_Set_flag_V(XMem *InstancePtr, u32 Data) {
+void XMem_Set_flag(XMem *InstancePtr, u32 Data) {
     Xil_AssertVoid(InstancePtr != NULL);
     Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    XMem_WriteReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_FLAG_V_DATA, Data);
+    XMem_WriteReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_FLAG_DATA, Data);
 }
 
-u32 XMem_Get_flag_V(XMem *InstancePtr) {
+u32 XMem_Get_flag(XMem *InstancePtr) {
     u32 Data;
 
     Xil_AssertNonvoid(InstancePtr != NULL);
     Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    Data = XMem_ReadReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_FLAG_V_DATA);
+    Data = XMem_ReadReg(InstancePtr->Crtl_bus_BaseAddress, XMEM_CRTL_BUS_ADDR_FLAG_DATA);
     return Data;
 }
 

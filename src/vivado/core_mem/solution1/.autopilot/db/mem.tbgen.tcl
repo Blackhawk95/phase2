@@ -12,16 +12,16 @@ set isEnableWaveformDebug 1
 set C_modelName {mem}
 set C_modelType { void 0 }
 set C_modelArgList {
-	{ a_V int 16 regular {axi_slave 0}  }
-	{ ma_V int 8 regular {axi_slave 0}  }
-	{ data_V int 8 regular {axi_slave 2}  }
-	{ flag_V int 8 regular {axi_slave 0}  }
+	{ a int 64 regular {axi_slave 0}  }
+	{ ma int 32 regular {axi_slave 0}  }
+	{ data int 32 regular {axi_slave 2}  }
+	{ flag int 32 regular {axi_slave 0}  }
 }
 set C_modelArgMapList {[ 
-	{ "Name" : "a_V", "interface" : "axi_slave", "bundle":"CRTL_BUS","type":"ap_none","bitwidth" : 16, "direction" : "READONLY", "bitSlice":[{"low":0,"up":15,"cElement": [{"cName": "a.V","cData": "int16","bit_use": { "low": 0,"up": 15},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}], "offset" : {"in":16}, "offset_end" : {"in":23}} , 
- 	{ "Name" : "ma_V", "interface" : "axi_slave", "bundle":"CRTL_BUS","type":"ap_none","bitwidth" : 8, "direction" : "READONLY", "bitSlice":[{"low":0,"up":7,"cElement": [{"cName": "ma.V","cData": "int8","bit_use": { "low": 0,"up": 7},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}], "offset" : {"in":24}, "offset_end" : {"in":31}} , 
- 	{ "Name" : "data_V", "interface" : "axi_slave", "bundle":"CRTL_BUS","type":"ap_ovld","bitwidth" : 8, "direction" : "READWRITE", "bitSlice":[{"low":0,"up":7,"cElement": [{"cName": "data.V","cData": "int8","bit_use": { "low": 0,"up": 7},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}], "offset" : {"in":32, "out":40}, "offset_end" : {"in":39, "out":47}} , 
- 	{ "Name" : "flag_V", "interface" : "axi_slave", "bundle":"CRTL_BUS","type":"ap_none","bitwidth" : 8, "direction" : "READONLY", "bitSlice":[{"low":0,"up":7,"cElement": [{"cName": "flag.V","cData": "int8","bit_use": { "low": 0,"up": 7},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}], "offset" : {"in":48}, "offset_end" : {"in":55}} ]}
+	{ "Name" : "a", "interface" : "axi_slave", "bundle":"CRTL_BUS","type":"ap_none","bitwidth" : 64, "direction" : "READONLY", "bitSlice":[{"low":0,"up":63,"cElement": [{"cName": "a","cData": "long long int","bit_use": { "low": 0,"up": 63},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}], "offset" : {"in":16}, "offset_end" : {"in":27}} , 
+ 	{ "Name" : "ma", "interface" : "axi_slave", "bundle":"CRTL_BUS","type":"ap_none","bitwidth" : 32, "direction" : "READONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "ma","cData": "int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}], "offset" : {"in":28}, "offset_end" : {"in":35}} , 
+ 	{ "Name" : "data", "interface" : "axi_slave", "bundle":"CRTL_BUS","type":"ap_ovld","bitwidth" : 32, "direction" : "READWRITE", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "data","cData": "int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}], "offset" : {"in":36, "out":44}, "offset_end" : {"in":43, "out":51}} , 
+ 	{ "Name" : "flag", "interface" : "axi_slave", "bundle":"CRTL_BUS","type":"ap_none","bitwidth" : 32, "direction" : "READONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "flag","cData": "int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}], "offset" : {"in":52}, "offset_end" : {"in":59}} ]}
 # RTL Port declarations: 
 set portNum 20
 set portList { 
@@ -47,14 +47,14 @@ set portList {
 	{ interrupt sc_out sc_logic 1 signal -1 } 
 }
 set NewPortList {[ 
-	{ "name": "s_axi_CRTL_BUS_AWADDR", "direction": "in", "datatype": "sc_lv", "bitwidth":6, "type": "signal", "bundle":{"name": "CRTL_BUS", "role": "AWADDR" },"address":[{"name":"mem","role":"start","value":"0","valid_bit":"0"},{"name":"mem","role":"continue","value":"0","valid_bit":"4"},{"name":"mem","role":"auto_start","value":"0","valid_bit":"7"},{"name":"a_V","role":"data","value":"16"},{"name":"ma_V","role":"data","value":"24"},{"name":"data_V","role":"data","value":"32"},{"name":"flag_V","role":"data","value":"48"}] },
+	{ "name": "s_axi_CRTL_BUS_AWADDR", "direction": "in", "datatype": "sc_lv", "bitwidth":6, "type": "signal", "bundle":{"name": "CRTL_BUS", "role": "AWADDR" },"address":[{"name":"mem","role":"start","value":"0","valid_bit":"0"},{"name":"mem","role":"continue","value":"0","valid_bit":"4"},{"name":"mem","role":"auto_start","value":"0","valid_bit":"7"},{"name":"a","role":"data","value":"16"},{"name":"ma","role":"data","value":"28"},{"name":"data","role":"data","value":"36"},{"name":"flag","role":"data","value":"52"}] },
 	{ "name": "s_axi_CRTL_BUS_AWVALID", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CRTL_BUS", "role": "AWVALID" } },
 	{ "name": "s_axi_CRTL_BUS_AWREADY", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CRTL_BUS", "role": "AWREADY" } },
 	{ "name": "s_axi_CRTL_BUS_WVALID", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CRTL_BUS", "role": "WVALID" } },
 	{ "name": "s_axi_CRTL_BUS_WREADY", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CRTL_BUS", "role": "WREADY" } },
 	{ "name": "s_axi_CRTL_BUS_WDATA", "direction": "in", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "CRTL_BUS", "role": "WDATA" } },
 	{ "name": "s_axi_CRTL_BUS_WSTRB", "direction": "in", "datatype": "sc_lv", "bitwidth":4, "type": "signal", "bundle":{"name": "CRTL_BUS", "role": "WSTRB" } },
-	{ "name": "s_axi_CRTL_BUS_ARADDR", "direction": "in", "datatype": "sc_lv", "bitwidth":6, "type": "signal", "bundle":{"name": "CRTL_BUS", "role": "ARADDR" },"address":[{"name":"mem","role":"start","value":"0","valid_bit":"0"},{"name":"mem","role":"done","value":"0","valid_bit":"1"},{"name":"mem","role":"idle","value":"0","valid_bit":"2"},{"name":"mem","role":"ready","value":"0","valid_bit":"3"},{"name":"mem","role":"auto_start","value":"0","valid_bit":"7"},{"name":"data_V","role":"data","value":"40"}, {"name":"data_V","role":"valid","value":"44","valid_bit":"0"}] },
+	{ "name": "s_axi_CRTL_BUS_ARADDR", "direction": "in", "datatype": "sc_lv", "bitwidth":6, "type": "signal", "bundle":{"name": "CRTL_BUS", "role": "ARADDR" },"address":[{"name":"mem","role":"start","value":"0","valid_bit":"0"},{"name":"mem","role":"done","value":"0","valid_bit":"1"},{"name":"mem","role":"idle","value":"0","valid_bit":"2"},{"name":"mem","role":"ready","value":"0","valid_bit":"3"},{"name":"mem","role":"auto_start","value":"0","valid_bit":"7"},{"name":"data","role":"data","value":"44"}, {"name":"data","role":"valid","value":"48","valid_bit":"0"}] },
 	{ "name": "s_axi_CRTL_BUS_ARVALID", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CRTL_BUS", "role": "ARVALID" } },
 	{ "name": "s_axi_CRTL_BUS_ARREADY", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CRTL_BUS", "role": "ARREADY" } },
 	{ "name": "s_axi_CRTL_BUS_RVALID", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CRTL_BUS", "role": "RVALID" } },
@@ -83,10 +83,10 @@ set RtlHierarchyInfo {[
 		"InDataflowNetwork" : "0",
 		"HasNonBlockingOperation" : "0",
 		"Port" : [
-			{"Name" : "a_V", "Type" : "None", "Direction" : "I"},
-			{"Name" : "ma_V", "Type" : "None", "Direction" : "I"},
-			{"Name" : "data_V", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "flag_V", "Type" : "None", "Direction" : "I"},
+			{"Name" : "a", "Type" : "None", "Direction" : "I"},
+			{"Name" : "ma", "Type" : "None", "Direction" : "I"},
+			{"Name" : "data", "Type" : "OVld", "Direction" : "IO"},
+			{"Name" : "flag", "Type" : "None", "Direction" : "I"},
 			{"Name" : "nvm", "Type" : "Memory", "Direction" : "IO"},
 			{"Name" : "dram", "Type" : "Memory", "Direction" : "IO"}]},
 	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.nvm_U", "Parent" : "0"},
@@ -96,10 +96,10 @@ set RtlHierarchyInfo {[
 
 set ArgLastReadFirstWriteLatency {
 	mem {
-		a_V {Type I LastRead 0 FirstWrite -1}
-		ma_V {Type I LastRead 0 FirstWrite -1}
-		data_V {Type IO LastRead 0 FirstWrite 1}
-		flag_V {Type I LastRead 0 FirstWrite -1}
+		a {Type I LastRead 0 FirstWrite -1}
+		ma {Type I LastRead 0 FirstWrite -1}
+		data {Type IO LastRead 0 FirstWrite 1}
+		flag {Type I LastRead 0 FirstWrite -1}
 		nvm {Type IO LastRead -1 FirstWrite -1}
 		dram {Type IO LastRead -1 FirstWrite -1}}}
 

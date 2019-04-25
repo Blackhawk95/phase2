@@ -6,7 +6,7 @@ set hasByteEnable 0
 set MemName mem_nvm
 set CoreName ap_simcore_mem
 set PortList { 2 }
-set DataWd 8
+set DataWd 32
 set AddrRange 65536
 set AddrWd 16
 set impl_style block
@@ -92,7 +92,7 @@ set hasByteEnable 0
 set MemName mem_dram
 set CoreName ap_simcore_mem
 set PortList { 2 }
-set DataWd 8
+set DataWd 32
 set AddrRange 64
 set AddrWd 6
 set impl_style block
@@ -184,45 +184,45 @@ ap_start { }
 ap_done { }
 ap_ready { }
 ap_idle { }
-a_V { 
+a { 
 	dir I
-	width 16
+	width 64
 	depth 1
 	mode ap_none
 	offset 16
-	offset_end 23
+	offset_end 27
 }
-ma_V { 
+ma { 
 	dir I
-	width 8
+	width 32
 	depth 1
 	mode ap_none
-	offset 24
-	offset_end 31
+	offset 28
+	offset_end 35
 }
-data_V_i { 
+data_i { 
 	dir I
-	width 8
+	width 32
 	depth 1
 	mode ap_none
-	offset 32
-	offset_end 39
+	offset 36
+	offset_end 43
 }
-data_V_o { 
+data_o { 
 	dir O
-	width 8
+	width 32
 	depth 1
 	mode ap_vld
-	offset 40
-	offset_end 47
+	offset 44
+	offset_end 51
 }
-flag_V { 
+flag { 
 	dir I
-	width 8
+	width 32
 	depth 1
 	mode ap_none
-	offset 48
-	offset_end 55
+	offset 52
+	offset_end 59
 }
 }
 

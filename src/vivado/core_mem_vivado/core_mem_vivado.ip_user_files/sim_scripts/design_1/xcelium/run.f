@@ -17,10 +17,10 @@
   "D:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_VCOMP.vhd" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
-  "../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_CRTL_BUS_s_axi.v" \
-  "../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_dram.v" \
-  "../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem_nvm.v" \
-  "../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/05ec/hdl/verilog/mem.v" \
+  "../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/fe85/hdl/verilog/mem_CRTL_BUS_s_axi.v" \
+  "../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/fe85/hdl/verilog/mem_dram.v" \
+  "../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/fe85/hdl/verilog/mem_nvm.v" \
+  "../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/fe85/hdl/verilog/mem.v" \
   "../../../bd/design_1/ip/design_1_mem_0_0/sim/design_1_mem_0_0.v" \
 -endlib
 -makelib xcelium_lib/axi_infrastructure_v1_1_0 \
@@ -43,6 +43,9 @@
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/design_1/ip/design_1_rst_ps7_0_100M_0/sim/design_1_rst_ps7_0_100M_0.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/design_1/sim/design_1.v" \
 -endlib
 -makelib xcelium_lib/generic_baseblocks_v2_1_0 \
   "../../../../core_mem_vivado.srcs/sources_1/bd/design_1/ipshared/b752/hdl/generic_baseblocks_v2_1_vl_rfs.v" \
@@ -67,7 +70,6 @@
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/design_1/ip/design_1_auto_pc_0/sim/design_1_auto_pc_0.v" \
-  "../../../bd/design_1/sim/design_1.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   glbl.v

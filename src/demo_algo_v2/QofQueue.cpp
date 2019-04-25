@@ -2,7 +2,8 @@
 #include <cstdlib>
 #include <cstdio>
 
-QofQueue::QofQueue(){
+QofQueue::QofQueue(int threshold){
+	giventhreshold = threshold;
 	eoe = NULL;
 	size = 0;
 	Queue dump = Queue();

@@ -6543,15 +6543,15 @@ inline bool operator!=(
 
 
 
-typedef ap_int<16> addr_uint;
-typedef ap_int<8> int8;
+typedef long long int addr_uint;
+typedef int int8;
 # 23 "core_mem/maincode.cpp"
 void mem(addr_uint a,int8 ma,int8 *data,int8 flag){
 _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, "", 0, 0, "CRTL_BUS", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(&flag, "s_axilite", 0, 0, "", 0, 0, "CRTL_BUS", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(flag, "s_axilite", 0, 0, "", 0, 0, "CRTL_BUS", "", "", 0, 0, 0, 0, "", "");
 _ssdm_op_SpecInterface(data, "s_axilite", 0, 0, "", 0, 0, "CRTL_BUS", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(&ma, "s_axilite", 0, 0, "", 0, 0, "CRTL_BUS", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(&a, "s_axilite", 0, 0, "", 0, 0, "CRTL_BUS", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(ma, "s_axilite", 0, 0, "", 0, 0, "CRTL_BUS", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(a, "s_axilite", 0, 0, "", 0, 0, "CRTL_BUS", "", "", 0, 0, 0, 0, "", "");
 
 
 
