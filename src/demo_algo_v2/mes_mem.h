@@ -1,11 +1,11 @@
 #ifndef MESMEM_H
 #define MESMEM_H
 
-#define SIZE 64
+#define SIZE 256
 #define THRESHOLD giventhreshold
-#define DUMPLIMIT 16
+#define DUMPLIMIT 64
 #define PRINTADD "%d"
-#define INST_SIZE 30000
+#define INST_SIZE 60000
 
 struct mes_mem
 {

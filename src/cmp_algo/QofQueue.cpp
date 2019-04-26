@@ -321,12 +321,21 @@ eofentry* QofQueue::classForNewData(addr_uint a){
 	return (e);
 }
 
-//FIX THIS
-void bubbleSort(eofentry* start) 
+/* function to swap data of two nodes a and b*/
+void QofQueue::swap(eofentry *a, eofentry *b)  // EARP
+{ 
+    Queue temp;
+	temp = a->q; 
+    a->q = b->q; 
+    b->q = temp; 
+} 
+
+
+void QofQueue::bubbleSort(eofentry* start)  // EARP
 { 
     int swapped, i; 
-    struct Node *ptr1; 
-    struct Node *lptr = NULL; 
+    eofentry *ptr1; 
+    eofentry *lptr = NULL; 
   
     /* Checking for empty list */
     if (start == NULL) 
@@ -339,7 +348,7 @@ void bubbleSort(eofentry* start)
   
         while (ptr1->next != lptr) 
         { 
-            if (ptr1->data > ptr1->next->data) 
+            if ((ptr1->q).queueSub > (ptr1->next->q).queueSub )
             {  
                 swap(ptr1, ptr1->next); 
                 swapped = 1; 
@@ -350,15 +359,6 @@ void bubbleSort(eofentry* start)
     } 
     while (swapped); 
 }
-
-/* function to swap data of two nodes a and b*/
-void swap(eofentry *a, eofentry *b) 
-{ 
-    Queue temp;
-	temp = a->q; 
-    a->q = b->q; 
-    b->q = temp; 
-} 
 
 
 /*
@@ -372,6 +372,8 @@ eofentry* QofQueue::updateQofQueue(eofentry* ce){
 
 
 	bubbleSort(eoe);
+
+
 
 
 	/*
@@ -482,7 +484,6 @@ void QofQueue::write(addr_uint a,mes_mem* signal){
 	//printf(" Step 1 complete\n");
 	eofentry* tempq = classForNewData(a);
 	//printf(" Step 2 complete\n");
-	tempq = updateQofQueue(tempq);
 	//printf(" Step 3 complete %d\n",m.m_ma);
 	//insert data
 	signal->ma = m.m_ma;
@@ -497,6 +498,8 @@ void QofQueue::write(addr_uint a,mes_mem* signal){
 	}
 	//printf(" Step 4 complete\n");
 	dumptriggercheck();
+	tempq = updateQofQueue(tempq);
+
 	//logDump();	
 	//printf(" Step 5 complete\n");
 }
@@ -555,6 +558,7 @@ void QofQueue::logQofqueue(){
 		Queue* tempq = &(tempeoe->q);
 		entry* tempe = tempq->old();
 		printf(" #");
+		printf("(%d)",tempq->queueSub);
 		while(tempe != NULL){
 			printf("-> %d ",tempe->miniAddress);
 			tempe = tempe->next;

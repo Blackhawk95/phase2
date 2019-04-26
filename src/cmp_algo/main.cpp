@@ -28,7 +28,7 @@ void initSignal(mes_mem* signal){
 }
 
 int main(int argc, char** argv){
-    QofQueue qoq(100000); // 500 - proposed, 100000 for LRU
+    QofQueue qoq(30); // 500 - proposed, 100000 for LRU
     mes_mem signal;
 
     int arrn[ INST_SIZE][3];

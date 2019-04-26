@@ -71,8 +71,8 @@ class QofQueue {
 	//QoQueue related ops
 	Queue* old();
 	eofentry* old_eoe();
-	void bubbleSort(); // EARP
-	void swap(); //EARP
+	void bubbleSort(eofentry* eoe); // EARP
+	void swap(eofentry* a,eofentry* b); //EARP
 	//LOGs
 	void logFlag();
 	void logQofqueue();

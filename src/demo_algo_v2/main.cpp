@@ -5,8 +5,8 @@
 //#include "../../dataset/hai.h"
 //#include "../../dataset/final_out_wr.h"
 //#include "../../dataset/outTestBatchAdd.h"
-//#include "../../dataset/outTestLinearAdd.h"
-#include "../../dataset/outTestRandomAdd.h"
+#include "../../dataset/outTestLinearAdd.h"
+//#include "../../dataset/outTestRandomAdd.h"
 
 #include "mes_mem.h"
 
@@ -26,7 +26,7 @@ void initSignal(mes_mem* signal){
 }
 
 int main(int argc, char** argv){
-    QofQueue qoq(100000); // 500 - proposed, 100000 for LRU
+    QofQueue qoq(500); // 500 - proposed, 100000 for LRU
     mes_mem signal;
 
     int arrn[ INST_SIZE][3];
